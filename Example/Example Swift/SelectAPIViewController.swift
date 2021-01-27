@@ -1,6 +1,6 @@
 //
 //  ScreenAPIViewController.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Peter Pult on 05/30/2016.
 //  Copyright © 2016 Gini. All rights reserved.
@@ -15,7 +15,7 @@ protocol SelectAPIViewControllerDelegate: class {
 }
 
 /**
- Integration options for Gini Vision library.
+ Integration options for Gini Capture SDK.
  */
 enum GiniVisionAPIType {
     case screen
@@ -23,7 +23,7 @@ enum GiniVisionAPIType {
 }
 
 /**
- View controller showing how to capture an image of a document using the Screen API of the Gini Vision Library for iOS
+ View controller showing how to capture an image of a document using the Screen API of the Gini Capture SDK for iOS
  and how to process it using the Gini SDK for iOS.
  */
 final class SelectAPIViewController: UIViewController {
@@ -38,7 +38,7 @@ final class SelectAPIViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        let metaTitle = "Gini Vision Library: (\(GiniVision.versionString)) / Client id: \(self.clientId ?? "")"
+        let metaTitle = "Gini Capture SDK: (\(GiniVision.versionString)) / Client id: \(self.clientId ?? "")"
         metaInformationButton.setTitle(metaTitle, for: .normal)
     }
     

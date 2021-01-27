@@ -5,8 +5,8 @@ platform :ios, '10.0'
 use_frameworks!
 
 def project_pods
-    pod 'GiniVision', :path => '../', :testspecs => ['Tests']
-    pod 'GiniVision/Networking', :path => '../'
+    pod 'GiniCapture', :path => '../', :testspecs => ['Tests']
+    pod 'GiniCapture/Networking', :path => '../'
 end
 
 target 'Example Swift' do
@@ -17,7 +17,7 @@ target 'Example Swift' do
         inherit! :search_paths
     end
 
-    target 'GiniVision_UITests' do
+    target 'GiniCapture_UITests' do
         inherit! :search_paths
     end
 end

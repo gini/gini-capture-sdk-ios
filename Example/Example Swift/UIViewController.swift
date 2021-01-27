@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GiniVision
+import GiniCapture
 
 extension UIViewController {
     func showErrorDialog(for error: Error, positiveAction: (() -> Void)?) {

@@ -57,7 +57,7 @@ final class AppCoordinator: Coordinator {
     init(window: UIWindow) {
         self.window = window
         print("------------------------------------\n\n",
-              "📸 Gini Vision Library for iOS (\(GiniVision.versionString))\n\n",
+              "📸 Gini Capture SDK for iOS (\(GiniVision.versionString))\n\n",
             "      - Client id:  \(client.id)\n",
             "      - Client email domain:  \(client.domain)",
             "\n\n------------------------------------\n")

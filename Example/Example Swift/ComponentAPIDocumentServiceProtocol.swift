@@ -1,6 +1,6 @@
 //
 //  ComponentAPIDocumentServiceProtocol.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Enrique del Pozo Gómez on 3/29/18.
 //

@@ -42,7 +42,7 @@
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 			<key>Title</key>
-			<string>Gini Vision Library</string>
+			<string>Gini Capture SDK</string>
 			<key>Key</key>
 			<string>SETTINGS_VERSIONS_GINI_VISION_LIBRARY</string>
 			<key>DefaultValue</key>

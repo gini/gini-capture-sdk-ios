@@ -7,16 +7,16 @@
 */
 
 /*
- GINI VISION LIBRARY
+ Gini Capture SDK
  ===================
  
- To easily customize texts in the Gini Vision Library overwrite keys by your own definitions.
+ To easily customize texts in the Gini Capture SDK overwrite keys by your own definitions.
  For example to change the title of the camera add:
  ```
  "ginivision.navigationbar.camera.title" = "Fotoüberweisung";
  ```
  
- All keys can be found in the `Localizable.strings` file in the Gini Vision Library bundle
+ All keys can be found in the `Localizable.strings` file in the Gini Capture SDK bundle
  or on [Github](https://github.com/gini/gini-vision-lib-ios/blob/master/GiniVision/Assets/Localizable.strings).
 */
 

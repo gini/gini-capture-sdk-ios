@@ -1,11 +1,11 @@
 //
 //  PartialDocumentInfo.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Enrique del Pozo Gómez on 5/3/18.
 //
 
-import Gini
+import GiniCapture
 
 struct PartialDocument {
     var info: Gini.PartialDocumentInfo

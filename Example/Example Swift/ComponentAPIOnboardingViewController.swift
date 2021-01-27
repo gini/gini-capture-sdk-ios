@@ -1,6 +1,6 @@
 //
 //  ComponentAPIHelpViewController.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Peter Pult on 06/07/2016.
 //  Copyright © 2016 Gini. All rights reserved.
@@ -11,7 +11,7 @@ import GiniVision
 
 /**
  View controller showing how to implement the onboarding screen
- using the Component API of the Gini Vision Library for iOS.
+ using the Component API of the Gini Capture SDK for iOS.
  */
 final class ComponentAPIOnboardingViewController: UIViewController {
     

@@ -22,7 +22,7 @@ NSString *kClientDomain = @"client_domain";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    NSLog(@"Gini Vision Library for iOS (%@)", [GiniVision versionString]);
+    NSLog(@"Gini Capture SDK for iOS (%@)", [GiniCapture versionString]);
     
     NSDictionary<NSString*, NSString*> *credentials = [[[CredentialsManager alloc] init]
                                                        getCredentials];
