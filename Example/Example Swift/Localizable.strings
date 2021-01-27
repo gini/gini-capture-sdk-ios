@@ -1,6 +1,6 @@
 /* 
   Localizable.strings
-  GiniVision
+  GiniCapture
 
   Created by Peter Pult on 16/06/16.
   Copyright © 2016 Gini. All rights reserved.
@@ -17,7 +17,7 @@
  ```
  
  All keys can be found in the `Localizable.strings` file in the Gini Capture SDK bundle
- or on [Github](https://github.com/gini/gini-vision-lib-ios/blob/master/GiniVision/Assets/Localizable.strings).
+ or on [Github](https://github.com/gini/gini-vision-lib-ios/blob/master/GiniCapture/Assets/Localizable.strings).
 */
 
 "next" = "Weiter";

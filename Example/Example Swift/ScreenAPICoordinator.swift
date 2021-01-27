@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import GiniVision
+import GiniCapture
 import Gini
 
 protocol ScreenAPICoordinatorDelegate: class {
@@ -64,7 +64,7 @@ final class ScreenAPICoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let viewController = GiniVision.viewController(withClient: client,
+        let viewController = GiniCapture.viewController(withClient: client,
                                                        importedDocuments: visionDocuments,
                                                        configuration: visionConfiguration,
                                                        resultsDelegate: self,

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-@testable import GiniVision
+@testable import GiniCapture
 
 final class IpadDevice: UIDevice {
     override var userInterfaceIdiom: UIUserInterfaceIdiom {

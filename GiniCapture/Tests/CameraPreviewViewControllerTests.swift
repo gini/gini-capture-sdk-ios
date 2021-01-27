@@ -7,7 +7,7 @@
 
 import XCTest
 import AVFoundation
-@testable import GiniVision
+@testable import GiniCapture
 
 final class CameraPreviewViewControllerTests: XCTestCase {
     

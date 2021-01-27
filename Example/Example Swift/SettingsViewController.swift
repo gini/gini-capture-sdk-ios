@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GiniVision
+import GiniCapture
 import AVFoundation
 
 protocol SettingsViewControllerDelegate: class {

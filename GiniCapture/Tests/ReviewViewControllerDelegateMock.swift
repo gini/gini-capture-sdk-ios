@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import GiniVision
+import GiniCapture
 
 final class ReviewViewControllerDelegateMock: ReviewViewControllerDelegate {
     

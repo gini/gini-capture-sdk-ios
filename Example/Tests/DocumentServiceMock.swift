@@ -8,7 +8,7 @@
 
 import Foundation
 @testable import Gini
-@testable import GiniVision
+@testable import GiniCapture
 @testable import Example_Swift
 
 final class DocumentServiceMock: ComponentAPIDocumentServiceProtocol {

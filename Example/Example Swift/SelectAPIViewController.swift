@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GiniVision
+import GiniCapture
 
 protocol SelectAPIViewControllerDelegate: class {
     func selectAPI(viewController: SelectAPIViewController, didSelectApi api: GiniVisionAPIType)
@@ -38,7 +38,7 @@ final class SelectAPIViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        let metaTitle = "Gini Capture SDK: (\(GiniVision.versionString)) / Client id: \(self.clientId ?? "")"
+        let metaTitle = "Gini Capture SDK: (\(GiniCapture.versionString)) / Client id: \(self.clientId ?? "")"
         metaInformationButton.setTitle(metaTitle, for: .normal)
     }
     

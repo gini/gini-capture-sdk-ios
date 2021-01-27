@@ -10,7 +10,7 @@
 #import "AnalysisManager.h"
 #import "ResultTableViewController.h"
 #import "NoResultViewController.h"
-#import <GiniVision/GiniVision-Swift.h>
+#import <GiniCapture/GiniCapture-Swift.h>
 #import "CredentialsManager.h"
 
 @interface ScreenAPIViewController () <GiniCaptureDelegate> {

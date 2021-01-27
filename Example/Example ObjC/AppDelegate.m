@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CredentialsManager.h"
-#import <GiniVision/GiniVision-Swift.h>
+#import <GiniCapture/GiniCapture-Swift.h>
 
 @interface AppDelegate ()
 

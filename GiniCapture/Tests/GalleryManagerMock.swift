@@ -8,7 +8,7 @@
 
 import Foundation
 import Photos
-@testable import GiniVision
+@testable import GiniCapture
 
 final class GalleryManagerMock: GalleryManagerProtocol {
     

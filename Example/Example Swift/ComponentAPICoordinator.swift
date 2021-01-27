@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import GiniVision
+import GiniCapture
 import Gini
 
 protocol ComponentAPICoordinatorDelegate: class {
@@ -85,7 +85,7 @@ final class ComponentAPICoordinator: NSObject, Coordinator {
         self.documentService = documentService
         super.init()
         
-        GiniVision.setConfiguration(configuration)
+        GiniCapture.setConfiguration(configuration)
     }
     
     func start() {

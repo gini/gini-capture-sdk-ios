@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import GiniVision
+@testable import GiniCapture
 
 final class ImagePickerViewControllerTests: XCTestCase {
     

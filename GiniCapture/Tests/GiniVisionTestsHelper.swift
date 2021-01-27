@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-@testable import GiniVision
+@testable import GiniCapture
 
 final class GiniVisionTestsHelper {
     

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import GiniVision
+@testable import GiniCapture
 
 final class GiniVisionDelegateMock: GiniCaptureDelegate {
     func didCapture(document: GiniCaptureDocument, networkDelegate: GiniVisionNetworkDelegate) {

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import GiniVision
+import GiniCapture
 import Gini
 
 enum CustomAnalysisError: GiniVisionError {

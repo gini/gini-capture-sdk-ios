@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Gini_iOS_SDK/GiniSDK.h>
-#import <GiniVision/GiniVision-Swift.h>
+#import <GiniCapture/GiniCapture-Swift.h>
 
 extern NSString * _Nonnull const GINIAnalysisManagerDidReceiveResultNotification;
 extern NSString * _Nonnull const GINIAnalysisManagerDidReceiveErrorNotification;

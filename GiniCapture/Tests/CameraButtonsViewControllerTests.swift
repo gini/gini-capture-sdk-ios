@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import GiniVision
+@testable import GiniCapture
 
 //swiftlint:disable type_body_length
 final class CameraButtonsViewControllerTests: XCTestCase {

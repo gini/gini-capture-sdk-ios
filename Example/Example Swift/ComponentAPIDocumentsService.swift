@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import GiniVision
+import GiniCapture
 import Gini
 
 final class ComponentAPIDocumentsService: ComponentAPIDocumentServiceProtocol {

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import GiniVision
+@testable import GiniCapture
 
 final class ImagePickerViewControllerDelegateMock: ImagePickerViewControllerDelegate {
     var selectedAssets: [Asset] = []

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import GiniVision
+@testable import GiniCapture
 import ImageIO
 
 final class ImageMetaInformationManagerTests: XCTestCase {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GiniVision
+import GiniCapture
 
 /**
  View controller showing how to implement the onboarding screen

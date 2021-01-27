@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import Example_Swift
-@testable import GiniVision
+@testable import GiniCapture
 
 final class ComponentAPICoordinatorTests: XCTestCase {
     

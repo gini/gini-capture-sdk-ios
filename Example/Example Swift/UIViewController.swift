@@ -13,10 +13,10 @@ extension UIViewController {
     func showErrorDialog(for error: Error, positiveAction: (() -> Void)?) {
         let message: String
         var cancelActionTitle: String = NSLocalizedString("ginivision.camera.errorPopup.cancelButton",
-                                                          bundle: Bundle(for: GiniVision.self),
+                                                          bundle: Bundle(for: GiniCapture.self),
                                                           comment: "cancel button title")
         var confirmActionTitle: String? = NSLocalizedString("ginivision.camera.errorPopup.pickanotherfileButton",
-                                                            bundle: Bundle(for: GiniVision.self),
+                                                            bundle: Bundle(for: GiniCapture.self),
                                                             comment: "pick another file button title")
         
         switch error {
@@ -29,28 +29,28 @@ extension UIViewController {
             switch pickerError {
             case .maxFilesPickedCountExceeded:
                 confirmActionTitle = NSLocalizedString("ginivision.camera.errorPopup.reviewPages",
-                                                       bundle: Bundle(for: GiniVision.self),
+                                                       bundle: Bundle(for: GiniCapture.self),
                                                        comment: "review pages button title")
             case .photoLibraryAccessDenied:
                 cancelActionTitle = NSLocalizedString("ginivision.camera.filepicker.errorPopup.cancelButton",
-                                                      bundle: Bundle(for: GiniVision.self),
+                                                      bundle: Bundle(for: GiniCapture.self),
                                                       comment: "cancel button title")
                 confirmActionTitle = NSLocalizedString("ginivision.camera.filepicker.errorPopup.grantAccessButton",
-                                                       bundle: Bundle(for: GiniVision.self),
+                                                       bundle: Bundle(for: GiniCapture.self),
                                                        comment: "cancel button title")
             case .mixedDocumentsUnsupported:
                 cancelActionTitle = NSLocalizedString("ginivision.camera.mixedarrayspopup.cancel",
-                                                      bundle: Bundle(for: GiniVision.self),
+                                                      bundle: Bundle(for: GiniCapture.self),
                                                       comment: "cancel button text for popup")
                 confirmActionTitle = NSLocalizedString("ginivision.camera.mixedarrayspopup.usePhotos",
-                                                       bundle: Bundle(for: GiniVision.self),
+                                                       bundle: Bundle(for: GiniCapture.self),
                                                        comment: "use photos button text in popup")
             }
         case let visionError as CustomAnalysisError:
             message = visionError.message
             confirmActionTitle = nil
             cancelActionTitle = NSLocalizedString("ginivision.analysis.error.actionTitle",
-                                                   bundle: Bundle(for: GiniVision.self),
+                                                   bundle: Bundle(for: GiniCapture.self),
                                                    comment: "Retry analysis")
         default:
             message = DocumentValidationError.unknown.message

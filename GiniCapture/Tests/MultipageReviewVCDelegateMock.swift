@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import GiniVision
+@testable import GiniCapture
 
 final class MultipageReviewVCDelegateMock: MultipageReviewViewControllerDelegate {
     func multipageReview(_ viewController: MultipageReviewViewController,
