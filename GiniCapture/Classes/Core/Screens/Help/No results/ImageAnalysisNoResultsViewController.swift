@@ -64,18 +64,18 @@ public final class ImageAnalysisNoResultsViewController: UIViewController {
     public var didTapBottomButton: (() -> Void) = { }
     
     public convenience init(title: String? = nil,
-                            subHeaderText: String? = NSLocalizedString("ginivision.noresults.collection.header",
+                            subHeaderText: String? = NSLocalizedString("ginicapture.noresults.collection.header",
                                                                        bundle: Bundle(for: GiniCapture.self),
                                                                        comment: "no results suggestions collection " +
         "header title"),
-                            topViewText: String = NSLocalizedString("ginivision.noresults.warning",
+                            topViewText: String = NSLocalizedString("ginicapture.noresults.warning",
                                                                     bundle: Bundle(for: GiniCapture.self),
                                                                     comment: "Warning text that indicates that there " +
         "was any result for this photo analysis"),
                             topViewIcon: UIImage? = UIImage(named: "warningNoResults",
                                                             in: Bundle(for: GiniCapture.self),
                                                             compatibleWith: nil)?.withRenderingMode(.alwaysTemplate),
-                            bottomButtonText: String? = NSLocalizedString("ginivision.noresults.gotocamera",
+                            bottomButtonText: String? = NSLocalizedString("ginicapture.noresults.gotocamera",
                                                                           bundle: Bundle(for: GiniCapture.self),
                                                                           comment: "bottom button title (go to camera" +
         " button)"),

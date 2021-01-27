@@ -12,7 +12,7 @@ import XCTest
 final class AnalysisViewControllerTests: XCTestCase {
     
     func testPDFPagesCountLocalizedString() {
-        let key = "ginivision.analysis.pdfpages"
+        let key = "ginicapture.analysis.pdfpages"
         let localizedStringFormat = NSLocalizedStringPreferredFormat(key,
                                                          comment: "Text appearing at the top of the " +
                                                                   "analysis screen indicating pdf number of pages")

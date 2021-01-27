@@ -391,7 +391,7 @@ extension ToolTipView {
 // MARK: - UserDefaults flags
 
 extension ToolTipView {
-    private static let shouldShowFileImportToolTipKey = "ginivision.defaults.shouldShowFileImportToolTip"
+    private static let shouldShowFileImportToolTipKey = "ginicapture.defaults.shouldShowFileImportToolTip"
     static var shouldShowFileImportToolTip: Bool {
         set {
             UserDefaults.standard.set(newValue, forKey: ToolTipView.shouldShowFileImportToolTipKey)
@@ -405,7 +405,7 @@ extension ToolTipView {
     }
     
     private static let shouldShowReorderPagesButtonToolTipKey =
-    "ginivision.defaults.shouldShowReorderPagesButtonToolTip"
+    "ginicapture.defaults.shouldShowReorderPagesButtonToolTip"
     static var shouldShowReorderPagesButtonToolTip: Bool {
         set {
             UserDefaults.standard.set(newValue, forKey: ToolTipView.shouldShowReorderPagesButtonToolTipKey)

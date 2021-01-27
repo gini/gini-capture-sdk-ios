@@ -59,7 +59,7 @@ final class OnboardingContainerViewController: UIViewController, ContainerViewCo
     fileprivate lazy var continueButton: UIBarButtonItem = {
         let continueButtonResources =
             GiniPreferredButtonResource(image: "navigationOnboardingContinue",
-                                        title: "ginivision.navigationbar.onboarding.continue",
+                                        title: "ginicapture.navigationbar.onboarding.continue",
                                         comment: "Button title in the navigation bar for the " +
                 "continue button on the onboarding screen",
                                         configEntry: self.giniConfiguration.navigationBarOnboardingTitleContinueButton)
@@ -215,7 +215,7 @@ extension OnboardingContainerViewController: UIScrollViewDelegate {
 extension OnboardingContainerViewController {
     static var willBeShown: Bool {
         return (GiniConfiguration.shared.onboardingShowAtFirstLaunch &&
-            !UserDefaults.standard.bool(forKey: "ginivision.defaults.onboardingShowed")) ||
+            !UserDefaults.standard.bool(forKey: "ginicapture.defaults.onboardingShowed")) ||
             GiniConfiguration.shared.onboardingShowAtLaunch
     }
 }

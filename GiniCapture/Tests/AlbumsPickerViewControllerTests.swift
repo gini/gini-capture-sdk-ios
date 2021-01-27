@@ -20,7 +20,7 @@ final class AlbumsPickerViewControllerTests: XCTestCase {
     }
     
     func testViewControllerTitle() {
-        let title = NSLocalizedStringPreferredFormat("ginivision.albums.title",
+        let title = NSLocalizedStringPreferredFormat("ginicapture.albums.title",
                                                      comment: "title for the albums picker view controller")
         XCTAssertEqual(title, vc.title, "title should match the one provided in the Localizable file")
     }

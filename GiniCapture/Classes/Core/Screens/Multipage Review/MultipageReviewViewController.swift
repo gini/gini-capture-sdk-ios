@@ -187,7 +187,7 @@ public final class MultipageReviewViewController: UIViewController {
                              insets: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2),
                              action: #selector(rotateImageButtonAction))
         
-        button.accessibilityLabel = NSLocalizedString("ginivision.review.rotateButton",
+        button.accessibilityLabel = NSLocalizedString("ginicapture.review.rotateButton",
                                                       bundle: Bundle(for: GiniCapture.self),
                                                       comment: "Rotate button")
         return button

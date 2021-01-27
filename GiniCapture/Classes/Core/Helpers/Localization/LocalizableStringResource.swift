@@ -20,7 +20,7 @@ protocol LocalizableStringResource {
 extension LocalizableStringResource {
 
     var localizedFormat: String {
-        let keyPrefix = "ginivision.\(tableName)"
+        let keyPrefix = "ginicapture.\(tableName)"
         let key = "\(keyPrefix).\(tableEntry.value)"
         let fallbackKey = "\(keyPrefix).\(fallbackTableEntry)"
 
