@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  GiniVisionExampleObjC
+//  GiniCaptureExampleObjC
 //
 //  Created by Peter Pult on 21/06/16.
 //  Copyright © 2016 Gini. All rights reserved.

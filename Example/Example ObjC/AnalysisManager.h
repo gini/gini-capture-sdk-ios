@@ -1,6 +1,6 @@
 //
 //  AnalysisManager.h
-//  GiniVisionExampleObjC
+//  GiniCaptureExampleObjC
 //
 //  Created by Peter Pult on 11/08/16.
 //  Copyright © 2016 Gini. All rights reserved.
