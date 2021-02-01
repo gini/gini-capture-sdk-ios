@@ -1,6 +1,6 @@
 //
 //  ContainerNavigationController.swift
-//  GiniVisionExample
+//  GiniCaptureExample
 //
 //  Created by Enrique del Pozo Gómez on 12/19/17.
 //  Copyright © 2017 Gini. All rights reserved.

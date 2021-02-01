@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias GiniVisionNetworkDelegate = AnalysisDelegate & UploadDelegate
+public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
 
 /**
  Delegate to inform the reveiver about the current status of the Gini Capture SDK.
@@ -21,22 +21,22 @@ public typealias GiniVisionNetworkDelegate = AnalysisDelegate & UploadDelegate
     /**
      Called when the user has taken a picture or imported a file (image or PDF) from camera roll or document explorer
      
-     - parameter document: `GiniVisionDocument`
-     - parameter networkDelegate: `GiniVisionNetworkDelegate` used to tell the Gini Vision
+     - parameter document: `GiniCaptureDocument`
+     - parameter networkDelegate: `GiniCaptureNetworkDelegate` used to tell the Gini Capture
                                    Library to upload the pages upload state
 
      */
     
-    func didCapture(document: GiniCaptureDocument, networkDelegate: GiniVisionNetworkDelegate)
+    func didCapture(document: GiniCaptureDocument, networkDelegate: GiniCaptureNetworkDelegate)
 
     /**
      Called when the user has taken a picture or imported a file (image or PDF) from camera roll or document explorer
      
-     - parameter document: `GiniVisionDocument`
+     - parameter document: `GiniCaptureDocument`
      */
     
     @available(*, unavailable,
-    message: "Use didCapture(document: GiniVisionDocument, networkDelegate: GiniVisionNetworkDelegate) instead")
+    message: "Use didCapture(document: GiniCaptureDocument, networkDelegate: GiniCaptureNetworkDelegate) instead")
     func didCapture(document: GiniCaptureDocument)
     
     /**
@@ -45,28 +45,28 @@ public typealias GiniVisionNetworkDelegate = AnalysisDelegate & UploadDelegate
      - parameter imageData: JPEG image data including meta information or PDF data
      */
     @available(*, unavailable,
-    message: "Use didCapture(document: GiniVisionDocument, uploadDelegate: UploadDelegate) instead")
+    message: "Use didCapture(document: GiniCaptureDocument, uploadDelegate: UploadDelegate) instead")
     func didCapture(_ imageData: Data)
     
     /**
      Called when the user has reviewed one or several documents.
      It is used to add any optional parameters, like rotationDelta, when creating the composite document.
      
-     - parameter documents: An array containing on or several reviewed `GiniVisionDocument`
-     - parameter networkDelegate: `GiniVisionNetworkDelegate` used to tell the Gini Capture SDK that the documents
+     - parameter documents: An array containing on or several reviewed `GiniCaptureDocument`
+     - parameter networkDelegate: `GiniCaptureNetworkDelegate` used to tell the Gini Capture SDK that the documents
                                    were reviewed and can be analyzed or uploaded.
 
      */
-    func didReview(documents: [GiniCaptureDocument], networkDelegate: GiniVisionNetworkDelegate)
+    func didReview(documents: [GiniCaptureDocument], networkDelegate: GiniCaptureNetworkDelegate)
     
     /**
      Called when the user has reviewed the image and potentially rotated it to the correct orientation.
      
-     - parameter document:  `GiniVisionDocument`
+     - parameter document:  `GiniCaptureDocument`
      - parameter changes:   Indicates whether `imageData` was altered.
      */
     @available(*, unavailable,
-    message: "Use didReview(documents: [GiniVisionDocument]) instead")
+    message: "Use didReview(documents: [GiniCaptureDocument]) instead")
     func didReview(document: GiniCaptureDocument, withChanges changes: Bool)
 
     /**
@@ -76,7 +76,7 @@ public typealias GiniVisionNetworkDelegate = AnalysisDelegate & UploadDelegate
      - parameter changes:   Indicates whether `imageData` was altered.
      */
     @available(*, unavailable,
-    message: "Use didReview(documents: [GiniVisionDocument]) instead")
+    message: "Use didReview(documents: [GiniCaptureDocument]) instead")
     func didReview(_ imageData: Data, withChanges changes: Bool)
     
     /**
@@ -108,7 +108,7 @@ public typealias GiniVisionNetworkDelegate = AnalysisDelegate & UploadDelegate
      Called when the user navigates back from the review screen to the camera potentially to
      retake an image. Should be used to cancel any ongoing analysis task on the image.
      */
-    @available(*, unavailable, message: "Use didCancelReview(for: GiniVisionDocument) instead")
+    @available(*, unavailable, message: "Use didCancelReview(for: GiniCaptureDocument) instead")
     func didCancelReview()
     
     /**

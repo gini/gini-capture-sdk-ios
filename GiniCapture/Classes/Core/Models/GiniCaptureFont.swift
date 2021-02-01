@@ -1,5 +1,5 @@
 //
-//  GiniVisionFont.swift
+//  GiniCaptureFont.swift
 //  GiniCapture
 //
 //  Created by Enrique del Pozo Gómez on 10/24/17.

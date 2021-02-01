@@ -1,5 +1,5 @@
 //
-//  GiniVisionPage.swift
+//  GiniCapturePage.swift
 //  GiniCapture
 //
 //  Created by Enrique del Pozo Gómez on 4/12/18.

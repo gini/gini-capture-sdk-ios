@@ -1,5 +1,5 @@
 //
-//  GiniVisionDocumentValidator.swift
+//  GiniCaptureDocumentValidator.swift
 //  GiniCapture
 //
 //  Created by Enrique del Pozo Gómez on 4/13/18.

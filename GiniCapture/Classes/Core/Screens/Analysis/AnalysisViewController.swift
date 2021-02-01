@@ -25,7 +25,7 @@ import UIKit
     func displayError(withMessage message: String?, andAction action: (() -> Void)?)
     
     /**
-     In case that the `GiniVisionDocument` analysed is an image it will display a no results screen
+     In case that the `GiniCaptureDocument` analysed is an image it will display a no results screen
      with some capture suggestions. It won't show any screen if it is not an image, return `false` in that case.
      
      - returns: `true` if the screen was shown or `false` if it wasn't.

@@ -16,7 +16,7 @@ final public class GiniImageDocument: NSObject, GiniCaptureDocument {
                                                kUTTypeGIF as String,
                                                kUTTypeTIFF as String]
     
-    public var type: GiniVisionDocumentType = .image
+    public var type: GiniCaptureDocumentType = .image
     public var id: String
     public var data: Data
     public var previewImage: UIImage?

@@ -154,7 +154,7 @@ fileprivate extension MultipageReviewCollectionCellPresenter {
         let message: String
         
         switch error {
-        case let error as GiniVisionError:
+        case let error as GiniCaptureError:
             message = error.message
         case let error as CustomDocumentValidationError:
             message = error.message

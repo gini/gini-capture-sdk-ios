@@ -27,7 +27,7 @@ public protocol MultipageReviewViewControllerDelegate: class {
      Called when a user rotates one of the pages.
      
      - parameter viewController: `MultipageReviewViewController` where the pages are reviewed.
-     - parameter page: `GiniVisionPage` rotated.
+     - parameter page: `GiniCapturePage` rotated.
      */
     func multipageReview(_ viewController: MultipageReviewViewController,
                          didRotate page: GiniCapturePage)

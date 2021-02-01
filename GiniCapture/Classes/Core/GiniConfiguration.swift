@@ -52,7 +52,7 @@ import UIKit
      Supported document types by Gini Capture SDK.
     */
     
-    @objc public enum GiniVisionImportFileTypes: Int {
+    @objc public enum GiniCaptureImportFileTypes: Int {
         case none
         case pdf
         case pdf_and_images
@@ -234,10 +234,10 @@ import UIKit
     @objc public var cameraPreviewCornerGuidesColor = UIColor.white
     
     /**
-     Set the types supported by the file import feature. `GiniVisionImportFileTypes.none` by default
+     Set the types supported by the file import feature. `GiniCaptureImportFileTypes.none` by default
      
      */
-    @objc public var fileImportSupportedTypes: GiniVisionImportFileTypes = .none
+    @objc public var fileImportSupportedTypes: GiniCaptureImportFileTypes = .none
     
     /**
      Sets the background color of the new file import button hint

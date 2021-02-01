@@ -9,7 +9,7 @@ import Foundation
 import Gini
 
 /**
- The GiniVisionResultsDelegate protocol defines methods that allow you to handle the analysis result.
+ The GiniCaptureResultsDelegate protocol defines methods that allow you to handle the analysis result.
  */
 @objc public protocol GiniCaptureResultsDelegate: class {
     
@@ -19,7 +19,7 @@ import Gini
      - parameter result: Contains the analysis result
      - parameter sendFeedbackBlock: Block used to send feeback once the results have been corrected
      */
-    func giniVisionAnalysisDidFinishWith(result: AnalysisResult,
+    func giniCaptureAnalysisDidFinishWith(result: AnalysisResult,
                                          sendFeedbackBlock: @escaping ([String: Extraction]) -> Void)
     
     /**
@@ -27,12 +27,12 @@ import Gini
      
      - parameter showingNoResultsScreen: Indicated if the `ImageAnalysisNoResultsViewController` has been shown
      */
-    func giniVisionAnalysisDidFinishWithoutResults(_ showingNoResultsScreen: Bool)
+    func giniCaptureAnalysisDidFinishWithoutResults(_ showingNoResultsScreen: Bool)
     
     /**
      Called when the analysis was cancelled.
      */
-    func giniVisionDidCancelAnalysis()
+    func giniCaptureDidCancelAnalysis()
 }
 
 final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
@@ -115,14 +115,14 @@ final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
                 let documentService = self.documentService
                 
                 self.resultsDelegate?
-                    .giniVisionAnalysisDidFinishWith(result: result) { updatedExtractions in
+                    .GiniCaptureAnalysisDidFinishWith(result: result) { updatedExtractions in
                         
                         documentService.sendFeedback(with: updatedExtractions.map { $0.value })
                         documentService.resetToInitialState()
                 }
             } else {
                 self.resultsDelegate?
-                    .giniVisionAnalysisDidFinishWithoutResults(analysisDelegate.tryDisplayNoResultsScreen())
+                    .GiniCaptureAnalysisDidFinishWithoutResults(analysisDelegate.tryDisplayNoResultsScreen())
                 self.documentService.resetToInitialState()
             }
         }
@@ -132,7 +132,7 @@ final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
 // MARK: - Networking methods
 
 extension GiniNetworkingScreenAPICoordinator {
-    fileprivate func startAnalysis(networkDelegate: GiniVisionNetworkDelegate) {
+    fileprivate func startAnalysis(networkDelegate: GiniCaptureNetworkDelegate) {
         self.documentService.startAnalysis { result in
             switch result {
             case .success(let extractions):
@@ -163,12 +163,12 @@ extension GiniNetworkingScreenAPICoordinator {
     }
 
     fileprivate func uploadAndStartAnalysis(document: GiniCaptureDocument,
-                                            networkDelegate: GiniVisionNetworkDelegate,
+                                            networkDelegate: GiniCaptureNetworkDelegate,
                                             uploadDidFail: @escaping () -> Void) {
         self.upload(document: document, didComplete: { _ in
             self.startAnalysis(networkDelegate: networkDelegate)
         }, didFail: { _, error in
-            let error = error as? GiniVisionError ?? AnalysisError.documentCreation
+            let error = error as? GiniCaptureError ?? AnalysisError.documentCreation
 
             guard let analysisError = error as? AnalysisError, case analysisError = AnalysisError.cancelled else {
                 networkDelegate.displayError(withMessage: error.message, andAction: {
@@ -184,10 +184,10 @@ extension GiniNetworkingScreenAPICoordinator {
 
 extension GiniNetworkingScreenAPICoordinator: GiniCaptureDelegate {
     func didCancelCapturing() {
-        resultsDelegate?.giniVisionDidCancelAnalysis()
+        resultsDelegate?.GiniCaptureDidCancelAnalysis()
     }
 
-    func didCapture(document: GiniCaptureDocument, networkDelegate: GiniVisionNetworkDelegate) {
+    func didCapture(document: GiniCaptureDocument, networkDelegate: GiniCaptureNetworkDelegate) {
         // The EPS QR codes are a special case, since they don0t have to be analyzed by the Gini API and therefore,
         // they are ready to be delivered after capturing them.
         if let qrCodeDocument = document as? GiniQRCodeDocument,
@@ -221,7 +221,7 @@ extension GiniNetworkingScreenAPICoordinator: GiniCaptureDelegate {
         }
     }
 
-    func didReview(documents: [GiniCaptureDocument], networkDelegate: GiniVisionNetworkDelegate) {
+    func didReview(documents: [GiniCaptureDocument], networkDelegate: GiniCaptureNetworkDelegate) {
         // It is necessary to check the order when using multipage before
         // creating the composite document
         if giniConfiguration.multipageEnabled {

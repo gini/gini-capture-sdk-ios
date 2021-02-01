@@ -1,5 +1,5 @@
 //
-//  GiniVisionUtils.swift
+//  GiniCaptureUtils.swift
 //  GiniCapture
 //
 //  Created by Peter Pult on 15/06/16.

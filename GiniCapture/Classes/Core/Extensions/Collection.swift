@@ -32,7 +32,7 @@ public extension Collection where Iterator.Element == GiniCaptureDocument {
         return true
     }
 
-    var type: GiniVisionDocumentType? {
+    var type: GiniCaptureDocumentType? {
         return containsDifferentTypes ? nil : first?.type
     }
 }
@@ -52,7 +52,7 @@ public extension Array where Iterator.Element == GiniCapturePage {
         return nil
     }
     
-    var type: GiniVisionDocumentType? {
+    var type: GiniCaptureDocumentType? {
         return map {$0.document}.type
     }
 }

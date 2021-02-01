@@ -95,7 +95,7 @@ final class ImageMetaInformationManager {
     let userCommentContentId = "ContentId"
     let userCommentPlatform = "Platform"
     let userCommentOSVer = "OSVer"
-    let userCommentGiniVersionVer = "GiniVisionVer"
+    let userCommentGiniVersionVer = "GiniCaptureVer"
     let userCommentDeviceOrientation = "DeviceOrientation"
     let userCommentSource = "Source"
     let userCommentImportMethod = "ImportMethod"
@@ -234,11 +234,11 @@ final class ImageMetaInformationManager {
     fileprivate func userComment(rotationDegrees: Int? = nil) -> String {
         let platform = "iOS"
         let osVersion = UIDevice.current.systemVersion
-        let giniVisionVersion = GiniCapture.versionString
+        let GiniCaptureVersion = GiniCapture.versionString
         let uuid = imageUUID()
         var comment = "\(userCommentPlatform)=\(platform)," +
             "\(userCommentOSVer)=\(osVersion)," +
-            "\(userCommentGiniVersionVer)=\(giniVisionVersion)," +
+            "\(userCommentGiniVersionVer)=\(GiniCaptureVersion)," +
             "\(userCommentContentId)=\(uuid)," +
         "\(userCommentSource)=\(imageSource.value)"
         

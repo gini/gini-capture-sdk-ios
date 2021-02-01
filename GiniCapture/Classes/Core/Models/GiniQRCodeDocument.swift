@@ -9,7 +9,7 @@ import Foundation
 
 //swiftlint:disable line_length
 /**
- A Gini Vision document made from a QR code.
+ A Gini Capture document made from a QR code.
  
  The Gini Capture SDK supports the following QR code formats:
  - Bezahlcode (http://www.bezahlcode.de).
@@ -18,7 +18,7 @@ import Foundation
  
  */
 @objc final public class GiniQRCodeDocument: NSObject, GiniCaptureDocument {
-    public var type: GiniVisionDocumentType = .qrcode
+    public var type: GiniCaptureDocumentType = .qrcode
     public lazy var data: Data = {
         return self.paymentInformation ?? Data(count: 0)
     }()

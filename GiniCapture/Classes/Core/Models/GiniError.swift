@@ -8,14 +8,14 @@
 
 import UIKit
 
-public protocol GiniVisionError: Error {
+public protocol GiniCaptureError: Error {
     var message: String { get }
 }
 
 /**
  Errors thrown on the camera screen or during camera initialization.
  */
-@objc public enum CameraError: Int, GiniVisionError {
+@objc public enum CameraError: Int, GiniCaptureError {
     /// Unknown error during camera use.
     case unknown
     
@@ -45,7 +45,7 @@ public protocol GiniVisionError: Error {
 /**
  Errors thrown on the review screen.
  */
-@objc public enum ReviewError: Int, GiniVisionError {
+@objc public enum ReviewError: Int, GiniCaptureError {
     
     /// Unknown error during review.
     case unknown
@@ -62,7 +62,7 @@ public protocol GiniVisionError: Error {
  Errors thrown on the file picker
  */
 
-@objc public enum FilePickerError: Int, GiniVisionError {
+@objc public enum FilePickerError: Int, GiniCaptureError {
     
     /// Camera roll can not be loaded because the user has denied authorization in the past.
     case photoLibraryAccessDenied
@@ -90,7 +90,7 @@ public protocol GiniVisionError: Error {
  Errors thrown when dealing with document analysis (both getting extractions and uploading documents)
  */
 
-@objc public enum AnalysisError: Int, GiniVisionError {
+@objc public enum AnalysisError: Int, GiniCaptureError {
     
     /// The analysis was cancelled
     case cancelled
@@ -114,7 +114,7 @@ public protocol GiniVisionError: Error {
 /**
  Errors thrown validating a document (image or pdf).
  */
-@objc public enum DocumentValidationError: Int, GiniVisionError, Equatable {
+@objc public enum DocumentValidationError: Int, GiniCaptureError, Equatable {
     
     /// Unknown error during review.
     case unknown

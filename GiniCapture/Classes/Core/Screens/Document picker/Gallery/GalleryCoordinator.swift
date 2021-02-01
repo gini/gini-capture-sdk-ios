@@ -147,7 +147,7 @@ final class GalleryCoordinator: NSObject, Coordinator {
     
     // MARK: Photo library permission
     
-    func checkGalleryAccessPermission(deniedHandler: @escaping (_ error: GiniVisionError) -> Void,
+    func checkGalleryAccessPermission(deniedHandler: @escaping (_ error: GiniCaptureError) -> Void,
                                       authorizedHandler: @escaping (() -> Void)) {
         
         switch PHPhotoLibrary.authorizationStatus() {

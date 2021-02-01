@@ -13,7 +13,7 @@ final public class GiniPDFDocument: NSObject, GiniCaptureDocument {
     
     static let acceptedPDFTypes: [String] = [kUTTypePDF as String]
     
-    public var type: GiniVisionDocumentType = .pdf
+    public var type: GiniCaptureDocumentType = .pdf
     public var id: String
     public let data: Data
     public var previewImage: UIImage?
