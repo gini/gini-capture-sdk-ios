@@ -1,6 +1,6 @@
 //
 //  ComponentAPICoordinatorTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 11/13/17.
 //  Copyright © 2017 Gini GmbH. All rights reserved.
@@ -44,10 +44,10 @@ final class ComponentAPICoordinatorTests: XCTestCase {
     
     func testInitializationWhenImageImported() {
         let image = UIImage(named: "tabBarIconHelp")
-        let builder = GiniVisionDocumentBuilder(documentSource: .external)
+        let builder = GiniCaptureDocumentBuilder(documentSource: .external)
         let document = builder.build(with: image!.pngData()!)!
         
-        componentAPICoordinator = ComponentAPICoordinator(pages: [GiniVisionPage(document: document)],
+        componentAPICoordinator = ComponentAPICoordinator(pages: [GiniCapturePage(document: document)],
                                                           configuration: GiniConfiguration(),
                                                           documentService: documentService)
         componentAPICoordinator?.start()
@@ -67,7 +67,7 @@ final class ComponentAPICoordinatorTests: XCTestCase {
     func testInitializationWhenPDFImported() {
         let pdfDocument = loadPDFDocument(withName: "testPDF")
         
-        componentAPICoordinator = ComponentAPICoordinator(pages: [GiniVisionPage(document: pdfDocument)],
+        componentAPICoordinator = ComponentAPICoordinator(pages: [GiniCapturePage(document: pdfDocument)],
                                                           configuration: GiniConfiguration(),
                                                           documentService: documentService)
         componentAPICoordinator?.start()
@@ -86,7 +86,7 @@ final class ComponentAPICoordinatorTests: XCTestCase {
     fileprivate func loadPDFDocument(withName name: String) -> GiniPDFDocument {
         let path = Bundle.main.url(forResource: name, withExtension: "pdf")
         let data = try? Data(contentsOf: path!)
-        let builder = GiniVisionDocumentBuilder(documentSource: .external)
+        let builder = GiniCaptureDocumentBuilder(documentSource: .external)
         return (builder.build(with: data!) as? GiniPDFDocument)!
     }
     

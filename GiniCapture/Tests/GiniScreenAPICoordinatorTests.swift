@@ -1,6 +1,6 @@
 //
 //  GiniScreenAPICoordinatorTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 3/8/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
@@ -13,7 +13,7 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     
     var coordinator: GiniScreenAPICoordinator!
     let giniConfiguration = GiniConfiguration()
-    let delegateMock = GiniVisionDelegateMock()
+    let delegateMock = GiniCaptureDelegateMock()
     
     override func setUp() {
         super.setUp()
@@ -39,8 +39,8 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     }
     
     func testNavControllerCountAfterStartWithImages() {
-        let capturedImages = [GiniVisionTestsHelper.loadImageDocument(named: "invoice"),
-                              GiniVisionTestsHelper.loadImageDocument(named: "invoice2")]
+        let capturedImages = [GiniCaptureTestsHelper.loadImageDocument(named: "invoice"),
+                              GiniCaptureTestsHelper.loadImageDocument(named: "invoice2")]
 
         let rootViewController = coordinator.start(withDocuments: capturedImages)
         _ = rootViewController.view
@@ -50,8 +50,8 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     }
     
     func testNavControllerTypesAfterStartWithImages() {
-        let capturedImages = [GiniVisionTestsHelper.loadImageDocument(named: "invoice"),
-                              GiniVisionTestsHelper.loadImageDocument(named: "invoice2")]
+        let capturedImages = [GiniCaptureTestsHelper.loadImageDocument(named: "invoice"),
+                              GiniCaptureTestsHelper.loadImageDocument(named: "invoice2")]
 
         let rootViewController = coordinator.start(withDocuments: capturedImages)
         _ = rootViewController.view
@@ -64,7 +64,7 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     }
     
     func testNavControllerCountAfterStartWithAPDF() {
-        let capturedPDFs = [GiniVisionTestsHelper.loadPDFDocument(named: "testPDF")]
+        let capturedPDFs = [GiniCaptureTestsHelper.loadPDFDocument(named: "testPDF")]
 
         let rootViewController = coordinator.start(withDocuments: capturedPDFs)
         _ = rootViewController.view
@@ -74,7 +74,7 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     }
     
     func testNavControllerTypesAfterStartWithPDF() {
-        let capturedPDFs = [GiniVisionTestsHelper.loadPDFDocument(named: "testPDF")]
+        let capturedPDFs = [GiniCaptureTestsHelper.loadPDFDocument(named: "testPDF")]
 
         let rootViewController = coordinator.start(withDocuments: capturedPDFs)
         _ = rootViewController.view
@@ -86,7 +86,7 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     
     func testNavControllerTypesAfterStartWithImageAndMultipageDisabled() {
         giniConfiguration.multipageEnabled = false
-        let capturedImages = [GiniVisionTestsHelper.loadImageDocument(named: "invoice")]
+        let capturedImages = [GiniCaptureTestsHelper.loadImageDocument(named: "invoice")]
 
         let rootViewController = coordinator.start(withDocuments: capturedImages)
         _ = rootViewController.view
@@ -97,7 +97,7 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     }
     
     func testDocumentCollectionAfterRotateImageInMultipage() {
-        let capturedImageDocument = GiniVisionTestsHelper.loadImagePage(named: "invoice")
+        let capturedImageDocument = GiniCaptureTestsHelper.loadImagePage(named: "invoice")
         coordinator.addToDocuments(new: [capturedImageDocument])
         
         (coordinator.multiPageReviewViewController
@@ -113,7 +113,7 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     }
     
     func testDocumentCollectionAfterRemoveImageInMultipage() {
-        let capturedImageDocument = GiniVisionTestsHelper.loadImagePage(named: "invoice")
+        let capturedImageDocument = GiniCaptureTestsHelper.loadImagePage(named: "invoice")
         coordinator.addToDocuments(new: [capturedImageDocument])
         
         coordinator.multipageReview(coordinator.multiPageReviewViewController,
@@ -124,8 +124,8 @@ final class GiniScreenAPICoordinatorTests: XCTestCase {
     }
     
     func testMultipageImageDocumentWhenSortingDocuments() {
-        let capturedImageDocument = [GiniVisionTestsHelper.loadImagePage(named: "invoice"),
-                                     GiniVisionTestsHelper.loadImagePage(named: "invoice")]
+        let capturedImageDocument = [GiniCaptureTestsHelper.loadImagePage(named: "invoice"),
+                                     GiniCaptureTestsHelper.loadImagePage(named: "invoice")]
         let firstItemId = capturedImageDocument.first?.document.id
         coordinator.addToDocuments(new: capturedImageDocument)
         

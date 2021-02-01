@@ -1,6 +1,6 @@
 //
 //  MultipageReviewViewControllerTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 1/30/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
@@ -20,9 +20,9 @@ final class MultipageReviewViewControllerTests: XCTestCase {
     }()
     
     var imagePages: [GiniCapturePage] = [
-        GiniVisionTestsHelper.loadImagePage(named: "invoice"),
-        GiniVisionTestsHelper.loadImagePage(named: "invoice2"),
-        GiniVisionTestsHelper.loadImagePage(named: "invoice3")
+        GiniCaptureTestsHelper.loadImagePage(named: "invoice"),
+        GiniCaptureTestsHelper.loadImagePage(named: "invoice2"),
+        GiniCaptureTestsHelper.loadImagePage(named: "invoice3")
     ]
     
     func testCollectionsItemsCount() {

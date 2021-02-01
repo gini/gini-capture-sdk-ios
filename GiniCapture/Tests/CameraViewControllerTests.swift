@@ -1,6 +1,6 @@
 //
 //  CameraViewControllerTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 10/5/17.
 //  Copyright © 2017 Gini GmbH. All rights reserved.
@@ -15,9 +15,9 @@ final class CameraViewControllerTests: XCTestCase {
     var cameraViewController: CameraViewController!
     var giniConfiguration: GiniConfiguration!
     var screenAPICoordinator: GiniScreenAPICoordinator!
-    let visionDelegateMock = GiniVisionDelegateMock()
+    let visionDelegateMock = GiniCaptureDelegateMock()
     lazy var imageData: Data = {
-        let image = GiniVisionTestsHelper.loadImage(named: "invoice")
+        let image = GiniCaptureTestsHelper.loadImage(named: "invoice")
         let imageData = image.jpegData(compressionQuality: 0.9)!
         return imageData
     }()

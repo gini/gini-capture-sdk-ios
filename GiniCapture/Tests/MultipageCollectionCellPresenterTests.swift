@@ -1,6 +1,6 @@
 //
 //  MultipageCollectionCellPresenterTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 6/4/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
@@ -13,7 +13,7 @@ final class MultipageCollectionCellPresenterTests: XCTestCase {
     
     var presenter: MultipageReviewCollectionCellPresenter!
     var giniConfiguration: GiniConfiguration!
-    var testPage = GiniVisionTestsHelper.loadImagePage(named: "invoice")
+    var testPage = GiniCaptureTestsHelper.loadImagePage(named: "invoice")
     var setUpPageCollectionCell: MultipageReviewPagesCollectionCell {
         let cell = presenter
             .setUp(.pages(MultipageReviewPagesCollectionCell(frame: .zero)),

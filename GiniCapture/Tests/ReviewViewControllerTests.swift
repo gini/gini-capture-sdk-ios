@@ -1,6 +1,6 @@
 //
 //  ReviewViewControllerTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 5/11/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
@@ -15,7 +15,7 @@ final class ReviewViewControllerTests: XCTestCase {
     var reviewViewControllerDelegateMock: ReviewViewControllerDelegateMock!
     
     func testDidReviewOnRotationWithDelegate() {
-        let document = GiniVisionTestsHelper.loadImageDocument(named: "invoice")
+        let document = GiniCaptureTestsHelper.loadImageDocument(named: "invoice")
         reviewViewController = ReviewViewController(document: document, giniConfiguration: GiniConfiguration())
         _ = reviewViewController.view
         

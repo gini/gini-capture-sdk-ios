@@ -1,6 +1,6 @@
 //
-//  GiniVisionDocumentValidatorTests.swift
-//  GiniVision_Tests
+//  GiniCaptureDocumentValidatorTests.swift
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 4/13/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import GiniCapture
 
-final class GiniVisionDocumentValidatorTests: XCTestCase {
+final class GiniCaptureDocumentValidatorTests: XCTestCase {
     
     let giniConfiguration = GiniConfiguration()
     
@@ -40,7 +40,7 @@ final class GiniVisionDocumentValidatorTests: XCTestCase {
     }
     
     func testImageValidation() {
-        let image = GiniVisionTestsHelper.loadImage(named: "invoice")
+        let image = GiniCaptureTestsHelper.loadImage(named: "invoice")
         let imageDocument = GiniImageDocument(data: image.jpegData(compressionQuality: 0.2)!, imageSource: .camera)
         
         XCTAssertNoThrow(try GiniCaptureDocumentValidator.validate(imageDocument,

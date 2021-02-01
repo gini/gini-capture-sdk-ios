@@ -1,6 +1,6 @@
 //
 //  CapturedImagesStackViewTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 5/7/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
@@ -27,7 +27,7 @@ final class CapturedImagesStackViewTests: XCTestCase {
     }
     
     func testCaptureStackVisibilityWhenOneImageCaptured() {
-        let images = [GiniVisionTestsHelper.loadImage(named: "invoice")]
+        let images = [GiniCaptureTestsHelper.loadImage(named: "invoice")]
         
         capturedImagesStackView.replaceStackImages(with: images)
         
@@ -39,8 +39,8 @@ final class CapturedImagesStackViewTests: XCTestCase {
     }
     
     func testCaptureStackVisibilityWhenTwoImageCaptured() {
-        let images = [GiniVisionTestsHelper.loadImage(named: "invoice"),
-                      GiniVisionTestsHelper.loadImage(named: "invoice2")]
+        let images = [GiniCaptureTestsHelper.loadImage(named: "invoice"),
+                      GiniCaptureTestsHelper.loadImage(named: "invoice2")]
         capturedImagesStackView.replaceStackImages(with: images)
 
         XCTAssertFalse(capturedImagesStackView.thumbnailStackBackgroundView.isHidden,
@@ -49,8 +49,8 @@ final class CapturedImagesStackViewTests: XCTestCase {
     }
     
     func testCaptureStackWhenTwoImageCaptured() {
-        let images = [GiniVisionTestsHelper.loadImage(named: "invoice"),
-                      GiniVisionTestsHelper.loadImage(named: "invoice2")]
+        let images = [GiniCaptureTestsHelper.loadImage(named: "invoice"),
+                      GiniCaptureTestsHelper.loadImage(named: "invoice2")]
         capturedImagesStackView.replaceStackImages(with: images)
 
         XCTAssertEqual(capturedImagesStackView.thumbnailButton.image(for: .normal), images[1],

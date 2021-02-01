@@ -1,6 +1,6 @@
 //
 //  ImageMetaInformationManagerTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 1/30/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
@@ -13,7 +13,7 @@ import ImageIO
 final class ImageMetaInformationManagerTests: XCTestCase {
     
     var invoiceData: Data {
-        return GiniVisionTestsHelper.fileData(named: "invoice", fileExtension: "jpg")!
+        return GiniCaptureTestsHelper.fileData(named: "invoice", fileExtension: "jpg")!
     }
     var manager: ImageMetaInformationManager {
         return ImageMetaInformationManager(imageData: invoiceData, imageSource: .camera)
@@ -59,7 +59,7 @@ final class ImageMetaInformationManagerTests: XCTestCase {
             return XCTFail("failed to retrieve mutable meta information from filtered image data")
         }
         let key = kCGImagePropertyExifUserComment as String
-        XCTAssert((mutableInformation.getMetaInformation(forKey: key) as? String)?.contains("GiniVisionVer") == true,
+        XCTAssert((mutableInformation.getMetaInformation(forKey: key) as? String)?.contains("GiniCaptureVer") == true,
                   "filtered data did not set custom fields")
     }
         

@@ -1,6 +1,6 @@
 //
 //  SupportedFormatsViewControllerTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 10/19/17.
 //  Copyright © 2017 Gini GmbH. All rights reserved.
@@ -254,7 +254,7 @@ final class SupportedFormatsViewControllerTests: XCTestCase {
         GiniConfiguration.shared = initialGiniConfiguration
     }
     
-    fileprivate func setFileImportSupportedTypes(to supportedTypes: GiniConfiguration.GiniVisionImportFileTypes) {
+    fileprivate func setFileImportSupportedTypes(to supportedTypes: GiniConfiguration.GiniCaptureImportFileTypes) {
         let giniConfiguration = GiniConfiguration()
         giniConfiguration.fileImportSupportedTypes = supportedTypes
         GiniConfiguration.shared = giniConfiguration

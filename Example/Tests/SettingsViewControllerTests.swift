@@ -1,6 +1,6 @@
 //
 //  SettingsViewControllerTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 11/16/17.
 //  Copyright © 2017 Gini GmbH. All rights reserved.

@@ -1,5 +1,5 @@
 //
-//  GiniVisionFontTests.swift
+//  GiniCaptureFontTests.swift
 //  GiniCapture-Unit-Tests
 //
 //  Created by Enrique del Pozo Gómez on 1/23/19.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import GiniCapture
 
-final class GiniVisionFontTests: XCTestCase {
+final class GiniCaptureFontTests: XCTestCase {
 
     let font = GiniCaptureFont(regular: UIFont.systemFont(ofSize: 14, weight: .regular),
                               bold: UIFont.systemFont(ofSize: 14, weight: .bold),

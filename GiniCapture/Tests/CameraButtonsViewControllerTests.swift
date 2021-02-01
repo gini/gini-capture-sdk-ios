@@ -14,10 +14,10 @@ final class CameraButtonsViewControllerTests: XCTestCase {
     var cameraButtonsViewController: CameraButtonsViewController!
     var giniConfiguration: GiniConfiguration!
     var screenAPICoordinator: GiniScreenAPICoordinator!
-    let visionDelegateMock = GiniVisionDelegateMock()
+    let visionDelegateMock = GiniCaptureDelegateMock()
     let delegateMock = CameraButtonViewControllerDelegateMock()
     lazy var imageData: Data = {
-        let image = GiniVisionTestsHelper.loadImage(named: "invoice")
+        let image = GiniCaptureTestsHelper.loadImage(named: "invoice")
         let imageData = image.jpegData(compressionQuality: 0.9)!
         return imageData
     }()

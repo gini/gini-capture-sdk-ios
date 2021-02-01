@@ -1,6 +1,6 @@
 //
 //  ImagePickerCollectionViewCellTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 5/24/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
