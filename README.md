@@ -1,4 +1,4 @@
-![Gini Capture SDK for iOS](./GiniVision_Logo.png?raw=true)
+![Gini Capture SDK for iOS](./GiniCapture_Logo.png?raw=true)
 
 # Gini Capture SDK for iOS
 
@@ -17,7 +17,7 @@ On *iPhone*, the Gini Capture SDK has been designed for portrait orientation. In
 
 ## Documentation
 
-Further documentation with installation, integration or customization guides can be found in our [website](http://developer.gini.net/gini-vision-lib-ios/docs/).
+Further documentation with installation, integration or customization guides can be found in our [website](http://developer.gini.net/gini-capture-sdk-ios/docs/).
 
 ## Example
 
@@ -43,6 +43,6 @@ Gini GmbH, hello@gini.net
 
 ## License
 
-The Gini Capture SDK for iOS is licensed under a Private License. See [the license](http://developer.gini.net/gini-vision-lib-ios/docs/license.html) for more info.
+The Gini Capture SDK for iOS is licensed under a Private License. See [the license](http://developer.gini.net/gini-capture-sdk-ios/docs/license.html) for more info.
 
 **Important:** Always make sure to ship all license notices and permissions with your application.
