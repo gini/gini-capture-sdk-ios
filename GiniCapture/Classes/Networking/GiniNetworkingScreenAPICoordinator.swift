@@ -115,14 +115,14 @@ final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
                 let documentService = self.documentService
                 
                 self.resultsDelegate?
-                    .GiniCaptureAnalysisDidFinishWith(result: result) { updatedExtractions in
+                    .giniCaptureAnalysisDidFinishWith(result: result) { updatedExtractions in
                         
                         documentService.sendFeedback(with: updatedExtractions.map { $0.value })
                         documentService.resetToInitialState()
                 }
             } else {
                 self.resultsDelegate?
-                    .GiniCaptureAnalysisDidFinishWithoutResults(analysisDelegate.tryDisplayNoResultsScreen())
+                    .giniCaptureAnalysisDidFinishWithoutResults(analysisDelegate.tryDisplayNoResultsScreen())
                 self.documentService.resetToInitialState()
             }
         }
@@ -184,7 +184,7 @@ extension GiniNetworkingScreenAPICoordinator {
 
 extension GiniNetworkingScreenAPICoordinator: GiniCaptureDelegate {
     func didCancelCapturing() {
-        resultsDelegate?.GiniCaptureDidCancelAnalysis()
+        resultsDelegate?.giniCaptureDidCancelAnalysis()
     }
 
     func didCapture(document: GiniCaptureDocument, networkDelegate: GiniCaptureNetworkDelegate) {
