@@ -1,6 +1,6 @@
 //
 //  ComponentAPICoordinator.swift
-//  GiniVision_Example
+//  GiniCapture_Example
 //
 //  Created by Enrique del Pozo Gómez on 9/25/17.
 //  Copyright © 2017 Gini. All rights reserved.
@@ -24,7 +24,7 @@ final class ComponentAPICoordinator: NSObject, Coordinator {
     }
     
     fileprivate var documentService: ComponentAPIDocumentServiceProtocol?
-    fileprivate var pages: [GiniVisionPage]
+    fileprivate var pages: [GiniCapturePage]
     // When there was an error uploading a document or analyzing it and the analysis screen
     // had not been initialized yet, both the error message and action has to be saved to show in the analysis screen.
     fileprivate var analysisErrorAndAction: (message: String, action: () -> Void)?
@@ -77,7 +77,7 @@ final class ComponentAPICoordinator: NSObject, Coordinator {
     fileprivate(set) lazy var documentPickerCoordinator =
         DocumentPickerCoordinator(giniConfiguration: giniConfiguration)
     
-    init(pages: [GiniVisionPage],
+    init(pages: [GiniCapturePage],
          configuration: GiniConfiguration,
          documentService: ComponentAPIDocumentServiceProtocol) {
         self.pages = pages
@@ -264,7 +264,7 @@ extension ComponentAPICoordinator {
         navigationController.setViewControllers(navigationStack, animated: true)
     }
     
-    fileprivate func refreshMultipageReview(with pages: [GiniVisionPage]) {
+    fileprivate func refreshMultipageReview(with pages: [GiniCapturePage]) {
         multipageReviewScreen.navigationItem
             .rightBarButtonItem?
             .isEnabled = pages.allSatisfy { $0.isUploaded }
@@ -275,7 +275,7 @@ extension ComponentAPICoordinator {
 // MARK: - Networking
 
 extension ComponentAPICoordinator {
-    fileprivate func upload(page: GiniVisionPage,
+    fileprivate func upload(page: GiniCapturePage,
                             didComplete: @escaping () -> Void,
                             didFail: @escaping ( Error) -> Void) {
         self.documentService?.upload(document: page.document) { result in
@@ -294,18 +294,18 @@ extension ComponentAPICoordinator {
         }
     }
     
-    fileprivate func uploadAndStartAnalysis(for page: GiniVisionPage) {
+    fileprivate func uploadAndStartAnalysis(for page: GiniCapturePage) {
         self.upload(page: page, didComplete: {
             self.startAnalysis()
         }, didFail: { error in
-            guard let error = error as? GiniVisionError else { return }
+            guard let error = error as? GiniCaptureError else { return }
             self.showErrorInAnalysisScreen(with: error.message) {
                 self.uploadAndStartAnalysis(for: page)
             }
         })
     }
     
-    private func process(captured page: GiniVisionPage) {
+    private func process(captured page: GiniCapturePage) {
         if !page.document.isReviewable {
             uploadAndStartAnalysis(for: page)
         } else if giniConfiguration.multipageEnabled {
@@ -340,7 +340,7 @@ extension ComponentAPICoordinator {
         })
     }
     
-    fileprivate func delete(document: GiniVisionDocument) {
+    fileprivate func delete(document: GiniCaptureDocument) {
         documentService?.remove(document: document)
     }
     
@@ -453,7 +453,7 @@ extension ComponentAPICoordinator: UINavigationControllerDelegate {
 
 extension ComponentAPICoordinator: CameraViewControllerDelegate {
     
-    func camera(_ viewController: CameraViewController, didCapture document: GiniVisionDocument) {
+    func camera(_ viewController: CameraViewController, didCapture document: GiniCaptureDocument) {
         validate([document]) { result in
             switch result {
             case .success(let validatedPages):
@@ -506,7 +506,7 @@ extension ComponentAPICoordinator: CameraViewControllerDelegate {
 
 extension ComponentAPICoordinator: DocumentPickerCoordinatorDelegate {
     
-    func documentPicker(_ coordinator: DocumentPickerCoordinator, didPick documents: [GiniVisionDocument]) {
+    func documentPicker(_ coordinator: DocumentPickerCoordinator, didPick documents: [GiniCaptureDocument]) {
         self.validate(documents) { result in
             switch result {
             case .success(let validatedPages):
@@ -555,7 +555,7 @@ extension ComponentAPICoordinator: DocumentPickerCoordinatorDelegate {
 
 extension ComponentAPICoordinator: ReviewViewControllerDelegate {
     
-    func review(_ viewController: ReviewViewController, didReview document: GiniVisionDocument) {
+    func review(_ viewController: ReviewViewController, didReview document: GiniCaptureDocument) {
         if let index = pages.index(of: document) {
             pages[index].document = document
         }
@@ -571,7 +571,7 @@ extension ComponentAPICoordinator: ReviewViewControllerDelegate {
 extension ComponentAPICoordinator: MultipageReviewViewControllerDelegate {
     
     func multipageReview(_ viewController: MultipageReviewViewController,
-                         didTapRetryUploadFor page: GiniVisionPage) {
+                         didTapRetryUploadFor page: GiniCapturePage) {
         if let index = pages.index(of: page.document) {
             pages[index].error = nil
             
@@ -583,7 +583,7 @@ extension ComponentAPICoordinator: MultipageReviewViewControllerDelegate {
         }
     }
     
-    func multipageReview(_ controller: MultipageReviewViewController, didReorder pages: [GiniVisionPage]) {
+    func multipageReview(_ controller: MultipageReviewViewController, didReorder pages: [GiniCapturePage]) {
         self.pages = pages
         
         if giniConfiguration.multipageEnabled {
@@ -591,7 +591,7 @@ extension ComponentAPICoordinator: MultipageReviewViewControllerDelegate {
         }
     }
     
-    func multipageReview(_ controller: MultipageReviewViewController, didRotate page: GiniVisionPage) {
+    func multipageReview(_ controller: MultipageReviewViewController, didRotate page: GiniCapturePage) {
         if let index = pages.index(of: page.document) {
             pages[index].document = page.document
         }
@@ -601,7 +601,7 @@ extension ComponentAPICoordinator: MultipageReviewViewControllerDelegate {
         }
     }
     
-    func multipageReview(_ controller: MultipageReviewViewController, didDelete page: GiniVisionPage) {
+    func multipageReview(_ controller: MultipageReviewViewController, didDelete page: GiniCapturePage) {
         documentService?.remove(document: page.document)
         pages.remove(page.document)
         
@@ -628,14 +628,14 @@ extension ComponentAPICoordinator: NoResultsScreenDelegate {
 
 extension ComponentAPICoordinator {
     
-    fileprivate func validate(_ documents: [GiniVisionDocument],
-                              completion: @escaping (Result<[GiniVisionPage], Error>) -> Void) {
+    fileprivate func validate(_ documents: [GiniCaptureDocument],
+                              completion: @escaping (Result<[GiniCapturePage], Error>) -> Void) {
         guard !(documents + pages.map {$0.document}).containsDifferentTypes else {
             completion(.failure(FilePickerError.mixedDocumentsUnsupported))
             return
         }
         
-        guard (documents.count + pages.count) <= GiniVisionDocumentValidator.maxPagesCount else {
+        guard (documents.count + pages.count) <= GiniCaptureDocumentValidator.maxPagesCount else {
             completion(.failure(FilePickerError.maxFilesPickedCountExceeded))
             return
         }
@@ -652,20 +652,20 @@ extension ComponentAPICoordinator {
         }
     }
     
-    private func validate(importedDocuments documents: [GiniVisionDocument],
-                          completion: @escaping ([GiniVisionPage]) -> Void) {
+    private func validate(importedDocuments documents: [GiniCaptureDocument],
+                          completion: @escaping ([GiniCapturePage]) -> Void) {
         DispatchQueue.global().async {
-            var pages: [GiniVisionPage] = []
+            var pages: [GiniCapturePage] = []
             documents.forEach { document in
                 var documentError: Error?
                 do {
-                    try GiniVisionDocumentValidator.validate(document,
+                    try GiniCaptureDocumentValidator.validate(document,
                                                              withConfig: self.giniConfiguration)
                 } catch let error {
                     documentError = error
                 }
                 
-                pages.append(GiniVisionPage(document: document, error: documentError))
+                pages.append(GiniCapturePage(document: document, error: documentError))
             }
             
             DispatchQueue.main.async {

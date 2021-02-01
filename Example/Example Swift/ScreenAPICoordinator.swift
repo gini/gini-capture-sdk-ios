@@ -1,6 +1,6 @@
 //
 //  ScreenAPICoordinator.swift
-//  GiniVision_Example
+//  GiniCapture_Example
 //
 //  Created by Enrique del Pozo Gómez on 11/10/17.
 //  Copyright © 2017 Gini GmbH. All rights reserved.
@@ -15,7 +15,7 @@ protocol ScreenAPICoordinatorDelegate: class {
     func screenAPI(coordinator: ScreenAPICoordinator, didFinish:())
 }
 
-class TrackingDelegate: GiniVisionTrackingDelegate {
+class TrackingDelegate: GiniCaptureTrackingDelegate {
     
     func onAnalysisScreenEvent(event: Event<AnalysisScreenEventType>) {
         print("✏️ Analysis: \(event.type.rawValue), info: \(event.info ?? [:])")
@@ -48,12 +48,12 @@ final class ScreenAPICoordinator: NSObject, Coordinator {
     let client: Client
     let documentMetadata: Document.Metadata?
     weak var analysisDelegate: AnalysisDelegate?
-    var visionDocuments: [GiniVisionDocument]?
+    var visionDocuments: [GiniCaptureDocument]?
     var visionConfiguration: GiniConfiguration
     var sendFeedbackBlock: (([String: Extraction]) -> Void)?
     
     init(configuration: GiniConfiguration,
-         importedDocuments documents: [GiniVisionDocument]?,
+         importedDocuments documents: [GiniCaptureDocument]?,
          client: Client,
          documentMetadata: Document.Metadata?) {
         self.visionConfiguration = configuration
@@ -129,20 +129,20 @@ extension ScreenAPICoordinator: NoResultsScreenDelegate {
     }
 }
 
-// MARK: - GiniVisionResultsDelegate
+// MARK: - GiniCaptureResultsDelegate
 
-extension ScreenAPICoordinator: GiniVisionResultsDelegate {
-    func giniVisionAnalysisDidFinishWith(result: AnalysisResult,
+extension ScreenAPICoordinator: GiniCaptureResultsDelegate {
+    func giniCaptureAnalysisDidFinishWith(result: AnalysisResult,
                                          sendFeedbackBlock: @escaping ([String: Extraction]) -> Void) {
         showResultsScreen(results: result.extractions.map { $0.value })
         self.sendFeedbackBlock = sendFeedbackBlock
     }
     
-    func giniVisionDidCancelAnalysis() {
+    func giniCaptureDidCancelAnalysis() {
         delegate?.screenAPI(coordinator: self, didFinish: ())
     }
     
-    func giniVisionAnalysisDidFinishWithoutResults(_ showingNoResultsScreen: Bool) {
+    func giniCaptureAnalysisDidFinishWithoutResults(_ showingNoResultsScreen: Bool) {
         if !showingNoResultsScreen {
             let customNoResultsScreen = (UIStoryboard(name: "Main", bundle: nil)
                 .instantiateViewController(withIdentifier: "noResultScreen") as? NoResultViewController)!

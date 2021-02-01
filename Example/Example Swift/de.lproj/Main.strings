@@ -14,8 +14,8 @@
 /* Class = "UISegmentedControl"; 3hb-V8-sDY.segmentTitles[2] = "PDF and Images"; ObjectID = "3hb-V8-sDY"; */
 "3hb-V8-sDY.segmentTitles[2]" = "PDF and Images";
 
-/* Class = "UIButton"; normalTitle = "GiniVisionVersion"; ObjectID = "40A-WQ-jHQ"; */
-"40A-WQ-jHQ.normalTitle" = "GiniVisionVersion";
+/* Class = "UIButton"; normalTitle = "GiniCaptureVersion"; ObjectID = "40A-WQ-jHQ"; */
+"40A-WQ-jHQ.normalTitle" = "GiniCaptureVersion";
 
 /* Class = "UIButton"; normalTitle = "Close"; ObjectID = "42r-Zq-01h"; */
 "42r-Zq-01h.normalTitle" = "Close";

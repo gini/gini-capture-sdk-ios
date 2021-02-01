@@ -10,14 +10,14 @@ import UIKit
 import GiniCapture
 
 protocol SelectAPIViewControllerDelegate: class {
-    func selectAPI(viewController: SelectAPIViewController, didSelectApi api: GiniVisionAPIType)
+    func selectAPI(viewController: SelectAPIViewController, didSelectApi api: GiniCaptureAPIType)
     func selectAPI(viewController: SelectAPIViewController, didTapSettings: ())
 }
 
 /**
  Integration options for Gini Capture SDK.
  */
-enum GiniVisionAPIType {
+enum GiniCaptureAPIType {
     case screen
     case component
 }

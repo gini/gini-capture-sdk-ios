@@ -1,6 +1,6 @@
 //
 //  Coordinator.swift
-//  GiniVision_Example
+//  GiniCapture_Example
 //
 //  Created by Enrique del Pozo Gómez on 11/10/17.
 //  Copyright © 2017 Gini GmbH. All rights reserved.

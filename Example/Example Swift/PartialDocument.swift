@@ -6,6 +6,7 @@
 //
 
 import GiniCapture
+import Gini
 
 struct PartialDocument {
     var info: Gini.PartialDocumentInfo
