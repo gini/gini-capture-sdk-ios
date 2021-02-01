@@ -354,7 +354,7 @@ extension CameraViewController {
 extension CameraViewController: CameraPreviewViewControllerDelegate {
     
     func cameraDidSetUp(_ viewController: CameraPreviewViewController, camera: CameraProtocol) {
-        
+        cameraButtonsViewController.toggleCaptureButtonActivation(state: true)
         cameraButtonsViewController.isFlashSupported = camera.isFlashSupported
     }
     
