@@ -148,21 +148,20 @@ final class Camera: NSObject, CameraProtocol {
     }
     
     func setupQRScanningOutput() {
-        self.session.beginConfiguration()
+        session.beginConfiguration()
         let qrOutput = AVCaptureMetadataOutput()
-        
-        if self.session.canAddOutput(qrOutput) {
-            self.session.addOutput(qrOutput)
-            qrOutput.setMetadataObjectsDelegate(self, queue: sessionQueue)
-            
-            if qrOutput.availableMetadataObjectTypes.contains(.qr) {
-                qrOutput.metadataObjectTypes = [.qr]
+
+        if !session.canAddOutput(qrOutput) {
+            for previousQrOutput in session.outputs {
+                session.removeOutput(previousQrOutput)
             }
-        } else {
-            Log(message: "Could not add metadata output to the session", event: .error)
         }
-        
-        self.session.commitConfiguration()
+        session.addOutput(qrOutput)
+        qrOutput.setMetadataObjectsDelegate(self, queue: sessionQueue)
+        if qrOutput.availableMetadataObjectTypes.contains(.qr) {
+            qrOutput.metadataObjectTypes = [.qr]
+        }
+        session.commitConfiguration()
     }
 }
 
@@ -225,22 +224,26 @@ fileprivate extension Camera {
     func setupInput() {
         // Specify that we are capturing a photo, this will reset the format to be 4:3
         self.session.sessionPreset = .photo
-        if self.session.canAddInput(self.videoDeviceInput!) {
-            self.session.addInput(self.videoDeviceInput!)
-        } else {
-            Log(message: "Could not add video device input to the session", event: .error)
+        if let input = videoDeviceInput {
+            if !session.canAddInput(input) {
+                for previousInput in session.inputs {
+                    session.removeInput(previousInput)
+                }
+            }
+            session.addInput(input)
         }
     }
     
     func setupPhotoCaptureOutput() {
         let output = AVCapturePhotoOutput()
-        
-        if self.session.canAddOutput(output) {
-            self.session.addOutput(output)
-            self.photoOutput = output
-        } else {
-            Log(message: "Could not add still image output to the session", event: .error)
+
+        if !session.canAddOutput(output) {
+            for previousOutput in session.outputs {
+                session.removeOutput(previousOutput)
+            }
         }
+        session.addOutput(output)
+        photoOutput = output
     }
 }
 
