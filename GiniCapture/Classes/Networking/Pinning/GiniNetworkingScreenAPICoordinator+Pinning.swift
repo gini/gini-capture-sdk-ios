@@ -1,6 +1,6 @@
 //
 //  GiniNetworkingScreenAPICoordinator+Pinning.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Nadya Karaban on 07.10.20.
 //
@@ -10,12 +10,12 @@ import Gini
 
 extension GiniNetworkingScreenAPICoordinator {
     convenience init(client: Client,
-                     resultsDelegate: GiniVisionResultsDelegate,
+                     resultsDelegate: GiniCaptureResultsDelegate,
                      giniConfiguration: GiniConfiguration,
                      publicKeyPinningConfig: [String: Any],
                      documentMetadata: Document.Metadata?,
                      api: APIDomain,
-                     trackingDelegate: GiniVisionTrackingDelegate?) {
+                     trackingDelegate: GiniCaptureTrackingDelegate?) {
         
         let sdk = GiniSDK
             .Builder(client: client,

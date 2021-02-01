@@ -1,6 +1,6 @@
 //
-//  GiniVision+Pinning.swift
-//  GiniVision
+//  GiniCapture+Pinning.swift
+//  GiniCapture
 //
 //  Created by Enrique del Pozo Gómez on 2/16/18.
 //
@@ -8,10 +8,10 @@
 import Foundation
 import Gini
 
-extension GiniVision {
+extension GiniCapture {
     /**
      Returns a view controller which will handle the analysis process.
-     It's the easiest way to get started with the Gini Vision Library as it comes pre-configured and handles
+     It's the easiest way to get started with the Gini Capture SDK as it comes pre-configured and handles
      all screens and transitions out of the box, including the networking.
      
      - parameter client: `GiniClient` with the information needed to enable document analysis
@@ -27,16 +27,16 @@ extension GiniVision {
      */
     
     public class func viewController(withClient client: Client,
-                                     importedDocuments: [GiniVisionDocument]? = nil,
+                                     importedDocuments: [GiniCaptureDocument]? = nil,
                                      configuration: GiniConfiguration,
-                                     resultsDelegate: GiniVisionResultsDelegate,
+                                     resultsDelegate: GiniCaptureResultsDelegate,
                                      publicKeyPinningConfig: [String: Any],
                                      documentMetadata: Document.Metadata? = nil,
                                      api: APIDomain = .default,
-                                     trackingDelegate: GiniVisionTrackingDelegate? = nil
+                                     trackingDelegate: GiniCaptureTrackingDelegate? = nil
     ) -> UIViewController {
         
-        GiniVision.setConfiguration(configuration)
+        GiniCapture.setConfiguration(configuration)
 
         let screenCoordinator = GiniNetworkingScreenAPICoordinator(client: client,
                                                                    resultsDelegate: resultsDelegate,
