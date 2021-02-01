@@ -256,19 +256,17 @@ extension Camera: AVCaptureMetadataOutputObjectsDelegate {
         if metadataObjects.isEmpty {
             return
         }
-        
+
         if let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
-            metadataObj.type == AVMetadataObject.ObjectType.qr {
-            let qrDocument = GiniQRCodeDocument(scannedString: metadataObj.stringValue!)
+           metadataObj.type == AVMetadataObject.ObjectType.qr, let metaString = metadataObj.stringValue {
+            let qrDocument = GiniQRCodeDocument(scannedString: metaString)
             do {
                 try GiniCaptureDocumentValidator.validate(qrDocument, withConfig: giniConfiguration)
                 DispatchQueue.main.async { [weak self] in
                     self?.didDetectQR?(qrDocument)
                 }
             } catch {
-                
             }
-            
         }
     }
 }
