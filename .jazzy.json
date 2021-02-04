@@ -1,17 +1,17 @@
 {
    "xcodebuild_arguments":[
       "-workspace",
-      "Example/GiniVision.xcworkspace",
+      "Example/GiniCapture.xcworkspace",
       "-scheme",
       "Example Swift"
    ],
    "author":"Gini GmbH",
    "author_url":"https://gini.net",
-   "module":"GiniVision",
+   "module":"GiniCapture",
    "readme":"Documentation/Sections/Documentation.md",
    "theme": "Documentation/jazzy-theme/",
    "output":"Documentation/Api",
-   "github_url":"https://github.com/gini/gini-vision-lib-ios",
+   "github_url":"https://github.com/gini/gini-capture-sdk-ios",
    "hide_documentation_coverage":"true",
 
    "documentation":"Documentation/source/*.md",
@@ -24,7 +24,6 @@
            "Installation",
            "Integration",
            "Integration in a Xamarin Project",
-           "Changelog",
            "License"
          ]
       },
@@ -36,14 +35,6 @@
            "Import PDFs and images guide",
            "QR Code scanning guide",
            "Event tracking guide"
-         ]
-      },
-      {
-         "name":"Migration guides",
-         "children":[
-           "Updating to 5.0",
-           "Updating to 4.0",
-           "Updating to 3.2"
          ]
       },
       {
@@ -59,9 +50,9 @@
             "GiniImageDocument",
             "GiniPDFDocument",
             "GiniQRCodeDocument",
-            "GiniVision",
-            "GiniVisionDocumentBuilder",
-            "GiniVisionDocumentValidator",
+            "GiniCapture",
+            "GiniCaptureDocumentBuilder",
+            "GiniCaptureDocumentValidator",
             "HelpMenuViewController",
             "ImageAnalysisNoResultsViewController",
             "MultipageReviewViewController",
@@ -80,7 +71,7 @@
             "DocumentSource",
             "DocumentValidationError",
             "FilePickerError",
-            "GiniVisionDocumentType",
+            "GiniCaptureDocumentType",
             "ImageAnalysisNoResultsStrings",
             "ImageAssetsStrings",
             "NoticeActionType",
@@ -107,15 +98,15 @@
             "Diffable",
             "DocumentPickerCoordinatorDelegate",
             "GiniLogger",
-            "GiniVisionDelegate",
-            "GiniVisionDocument",
-            "GiniVisionError",
-            "GiniVisionResultsDelegate",
+            "GiniCaptureDelegate",
+            "GiniCaptureDocument",
+            "GiniCaptureError",
+            "GiniCaptureResultsDelegate",
             "HelpMenuViewControllerDelegate",
             "MultipageReviewViewControllerDelegate",
             "ReviewViewControllerDelegate",
             "UploadDelegate",
-            "GiniVisionTrackingDelegate",
+            "GiniCaptureTrackingDelegate",
             "OnboardingScreenTrackingDelegate",
             "CameraScreenTrackingDelegate",
             "ReviewScreenTrackingDelegate",
@@ -125,15 +116,15 @@
       {
 	       "name":"Structs",
 	       "children":[
-	         "GiniVisionFont",
-           "GiniVisionPage",
+	         "GiniCaptureFont",
+           "GiniCapturePage",
            "Event"
 	       ]
       },
       {
          "name":"Typealiases",
          "children":[
-            "GiniVisionNetworkDelegate"
+            "GiniCaptureNetworkDelegate"
          ]
       }
    ]
