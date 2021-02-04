@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  GiniVisionExampleObjC
+//  GiniCaptureExampleObjC
 //
 //  Created by Peter Pult on 21/06/16.
 //  Copyright © 2016 Gini. All rights reserved.
@@ -10,17 +10,17 @@
 #import "AnalysisManager.h"
 #import "ResultTableViewController.h"
 #import "NoResultViewController.h"
-#import <GiniVision/GiniVision-Swift.h>
+#import <GiniCapture/GiniCapture-Swift.h>
 #import "CredentialsManager.h"
 
-@interface ScreenAPIViewController () <GiniVisionDelegate> {
+@interface ScreenAPIViewController () <GiniCaptureDelegate> {
     id<AnalysisDelegate> _analysisDelegate;
     NSData *_imageData;
 }
 @property (nonatomic, strong) NSString *errorMessage;
 @property (nonatomic, strong) AnalysisResult *result;
 @property (nonatomic, strong) GINIDocument *document;
-@property (nonatomic, strong) UIViewController *giniVisionVC;
+@property (nonatomic, strong) UIViewController *GiniCaptureVC;
 
 @end
 
@@ -40,32 +40,32 @@
 }
 
 // MARK: User actions
-- (IBAction)easyLaunchGiniVision:(id)sender {
+- (IBAction)easyLaunchGiniCapture:(id)sender {
     
     /************************************************************************
-     * CAPTURE IMAGE WITH THE SCREEN API OF THE GINI VISION LIBRARY FOR IOS *
+     * CAPTURE IMAGE WITH THE SCREEN API OF THE Gini Capture SDK FOR IOS *
      ************************************************************************/
     
     // 1. Create a custom configuration object
     GiniConfiguration *giniConfiguration = [GiniConfiguration new];
     giniConfiguration.debugModeOn = YES;
     giniConfiguration.navigationBarItemTintColor = [UIColor whiteColor];
-    giniConfiguration.fileImportSupportedTypes = GiniVisionImportFileTypesPdf_and_images;
+    giniConfiguration.fileImportSupportedTypes = GiniCaptureImportFileTypesPdf_and_images;
     giniConfiguration.openWithEnabled = YES;
     giniConfiguration.qrCodeScanningEnabled = YES;
     
-    // 2. Create the Gini Vision Library view controller, set a delegate object and pass in the configuration object
-    self.giniVisionVC = [GiniVision viewControllerWithDelegate:self
+    // 2. Create the Gini Capture SDK view controller, set a delegate object and pass in the configuration object
+    self.GiniCaptureVC = [GiniCapture viewControllerWithDelegate:self
                                              withConfiguration:giniConfiguration
                                               importedDocument:NULL];
     
-    // 3. Present the Gini Vision Library Screen API modally
-    [self presentViewController:_giniVisionVC animated:YES completion:nil];
+    // 3. Present the Gini Capture SDK Screen API modally
+    [self presentViewController:_GiniCaptureVC animated:YES completion:nil];
     
-    // 4. Handle callbacks send out via the `GINIVisionDelegate` to get results, errors or updates on other user actions
+    // 4. Handle callbacks send out via the `GiniCaptureDelegate` to get results, errors or updates on other user actions
 }
 
-- (void)giniVisionDidCancelAnalysis {
+- (void)GiniCaptureDidCancelAnalysis {
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
@@ -100,17 +100,17 @@
     });
 }
 
-// MARK: Gini Vision delegate
+// MARK: Gini Capture delegate
 
-- (void)didCaptureWithDocument:(id<GiniVisionDocument> _Nonnull)document
+- (void)didCaptureWithDocument:(id<GiniCaptureDocument> _Nonnull)document
                networkDelegate:(id<AnalysisDelegate,UploadDelegate> _Nonnull)networkDelegate {
     // When using Multipage, each document must be uploaded and notified to the networkDelegate
-    if(document.type != GiniVisionDocumentTypeImage) {
+    if(document.type != GiniCaptureDocumentTypeImage) {
         [self didReviewWithDocuments:@[document] networkDelegate:networkDelegate];
     }
 }
 
-- (void)didReviewWithDocuments:(NSArray<id<GiniVisionDocument>> * _Nonnull)documents
+- (void)didReviewWithDocuments:(NSArray<id<GiniCaptureDocument>> * _Nonnull)documents
                networkDelegate:(id<AnalysisDelegate,UploadDelegate> _Nonnull)networkDelegate {
     _analysisDelegate = networkDelegate;
     _imageData = documents[0].data;
@@ -122,7 +122,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didCancelReviewFor:(id<GiniVisionDocument> _Nonnull)document {
+- (void)didCancelReviewFor:(id<GiniCaptureDocument> _Nonnull)document {
     NSLog(@"Screen API canceled review");
     
     // Cancel analysis process to avoid unnecessary network calls.

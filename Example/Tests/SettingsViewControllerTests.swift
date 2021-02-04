@@ -1,6 +1,6 @@
 //
 //  SettingsViewControllerTests.swift
-//  GiniVision_Tests
+//  GiniCapture_Tests
 //
 //  Created by Enrique del Pozo Gómez on 11/16/17.
 //  Copyright © 2017 Gini GmbH. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import Example_Swift
-@testable import GiniVision
+@testable import GiniCapture
 
 final class SettingsViewControllerTests: XCTestCase {
     let settingsViewController = (UIStoryboard(name: "Main", bundle: nil)

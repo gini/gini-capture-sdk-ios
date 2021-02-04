@@ -1,6 +1,6 @@
 //
 //  AppCoordinator.swift
-//  GiniVision_Example
+//  GiniCapture_Example
 //
 //  Created by Enrique del Pozo Gómez on 11/10/17.
 //  Copyright © 2017 Gini GmbH. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import GiniVision
+import GiniCapture
 import Gini
 
 final class AppCoordinator: Coordinator {
@@ -57,7 +57,7 @@ final class AppCoordinator: Coordinator {
     init(window: UIWindow) {
         self.window = window
         print("------------------------------------\n\n",
-              "📸 Gini Vision Library for iOS (\(GiniVision.versionString))\n\n",
+              "📸 Gini Capture SDK for iOS (\(GiniCapture.versionString))\n\n",
             "      - Client id:  \(client.id)\n",
             "      - Client email domain:  \(client.domain)",
             "\n\n------------------------------------\n")
@@ -70,7 +70,7 @@ final class AppCoordinator: Coordinator {
     func processExternalDocument(withUrl url: URL, sourceApplication: String?) {
         
         // 1. Build the document
-        let documentBuilder = GiniVisionDocumentBuilder(documentSource: .appName(name: sourceApplication))
+        let documentBuilder = GiniCaptureDocumentBuilder(documentSource: .appName(name: sourceApplication))
         documentBuilder.importMethod = .openWith
         
         documentBuilder.build(with: url) { [weak self] (document) in
@@ -84,9 +84,9 @@ final class AppCoordinator: Coordinator {
             // 2. Validate the document
             if let document = document {
                 do {
-                    try GiniVision.validate(document,
+                    try GiniCapture.validate(document,
                                             withConfig: self.giniConfiguration)
-                    self.showOpenWithSwitchDialog(for: [GiniVisionPage(document: document, error: nil)])
+                    self.showOpenWithSwitchDialog(for: [GiniCapturePage(document: document, error: nil)])
                 } catch {
                     self.showExternalDocumentNotValidDialog()
                 }
@@ -99,7 +99,7 @@ final class AppCoordinator: Coordinator {
         self.window.makeKeyAndVisible()
     }
     
-    fileprivate func showScreenAPI(with pages: [GiniVisionPage]? = nil) {
+    fileprivate func showScreenAPI(with pages: [GiniCapturePage]? = nil) {
         documentMetadata = Document.Metadata(branchId: documentMetadataBranchId,
                                              additionalHeaders: [documentMetadataAppFlowKey: "ScreenAPI"])
         let screenAPICoordinator = ScreenAPICoordinator(configuration: giniConfiguration,
@@ -113,7 +113,7 @@ final class AppCoordinator: Coordinator {
         rootViewController.present(screenAPICoordinator.rootViewController, animated: true, completion: nil)
     }
     
-    fileprivate func showComponentAPI(with pages: [GiniVisionPage]? = nil) {
+    fileprivate func showComponentAPI(with pages: [GiniCapturePage]? = nil) {
         let componentAPICoordinator = ComponentAPICoordinator(pages: pages ?? [],
                                                               configuration: giniConfiguration,
                                                               documentService: componentAPIDocumentService())
@@ -143,7 +143,7 @@ final class AppCoordinator: Coordinator {
         rootViewController.present(settingsViewController, animated: true, completion: nil)
     }
     
-    fileprivate func showOpenWithSwitchDialog(for pages: [GiniVisionPage]) {
+    fileprivate func showOpenWithSwitchDialog(for pages: [GiniCapturePage]) {
         let alertViewController = UIAlertController(title: "Importierte Datei",
                                                     message: "Möchten Sie die importierte Datei mit dem " +
             "ScreenAPI oder ComponentAPI verwenden?",
@@ -183,7 +183,7 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: SelectAPIViewControllerDelegate {
     
-    func selectAPI(viewController: SelectAPIViewController, didSelectApi api: GiniVisionAPIType) {
+    func selectAPI(viewController: SelectAPIViewController, didSelectApi api: GiniCaptureAPIType) {
         switch api {
         case .screen:
             showScreenAPI()

@@ -1,6 +1,6 @@
 //
 //  AnalysisManager.h
-//  GiniVisionExampleObjC
+//  GiniCaptureExampleObjC
 //
 //  Created by Peter Pult on 11/08/16.
 //  Copyright © 2016 Gini. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Gini_iOS_SDK/GiniSDK.h>
-#import <GiniVision/GiniVision-Swift.h>
+#import <GiniCapture/GiniCapture-Swift.h>
 
 extern NSString * _Nonnull const GINIAnalysisManagerDidReceiveResultNotification;
 extern NSString * _Nonnull const GINIAnalysisManagerDidReceiveErrorNotification;

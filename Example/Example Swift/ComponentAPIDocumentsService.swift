@@ -1,12 +1,12 @@
 //
 //  ComponentAPIDocumentsService.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Enrique del Pozo Gómez on 2/14/18.
 //
 
 import UIKit
-import GiniVision
+import GiniCapture
 import Gini
 
 final class ComponentAPIDocumentsService: ComponentAPIDocumentServiceProtocol {
@@ -42,7 +42,7 @@ final class ComponentAPIDocumentsService: ComponentAPIDocumentServiceProtocol {
         document = nil
     }
     
-    func remove(document: GiniVisionDocument) {
+    func remove(document: GiniCaptureDocument) {
         if let index = partialDocuments.index(forKey: document.id) {
             if let document = partialDocuments[document.id]?
                 .document {
@@ -74,14 +74,14 @@ final class ComponentAPIDocumentsService: ComponentAPIDocumentServiceProtocol {
         }
     }
     
-    func sortDocuments(withSameOrderAs documents: [GiniVisionDocument]) {
+    func sortDocuments(withSameOrderAs documents: [GiniCaptureDocument]) {
         for index in 0..<documents.count {
             let id = documents[index].id
             partialDocuments[id]?.order = index
         }
     }
     
-    func upload(document: GiniVisionDocument,
+    func upload(document: GiniCaptureDocument,
                 completion: ComponentAPIUploadDocumentCompletion?) {
         self.partialDocuments[document.id] =
             PartialDocument(info: (PartialDocumentInfo(document: nil, rotationDelta: 0)),
@@ -106,7 +106,7 @@ final class ComponentAPIDocumentsService: ComponentAPIDocumentServiceProtocol {
 // MARK: - File private methods
 
 extension ComponentAPIDocumentsService {
-    fileprivate func createDocument(from document: GiniVisionDocument,
+    fileprivate func createDocument(from document: GiniCaptureDocument,
                                     fileName: String,
                                     docType: Document.DocType? = nil,
                                     completion: @escaping ComponentAPIUploadDocumentCompletion) {

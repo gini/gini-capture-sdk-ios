@@ -53,9 +53,9 @@ You can also add these by going to your target’s *Info* tab and enter the valu
 
 -   [Document types](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/DocumentInteraction_TopicsForIOS/Articles/RegisteringtheFileTypesYourAppSupports.html) from _Apple documentation_.
 
-2. Enable it inside GiniVision
+2. Enable it inside GiniCapture
 ---------------------------------
-In order to allow GiniVision library to handle files imported from other apps and to show the _Open With tutorial_ in the _Help_ menu, it is necessary to indicate it in the `GiniConfiguration`.
+In order to allow GiniCapture library to handle files imported from other apps and to show the _Open With tutorial_ in the _Help_ menu, it is necessary to indicate it in the `GiniConfiguration`.
 
 ```swift
         let giniConfiguration = GiniConfiguration()
@@ -69,11 +69,11 @@ In order to allow GiniVision library to handle files imported from other apps an
 
 When your app is requested to handle a PDF or an image your `AppDelegate`’s `application(_:open:options:)` (__Swift__) method is called. You can then use the supplied url to create a document as shown below.
 
-In some cases, in particular when the `LSSupportsOpeningDocumentsInPlace` flag is enabled in your `Info.plist` file, reading data directly from the url may fail. For that reason, `GVL` uses the asynchronous `UIDocument` API internally which handles any of the potential security requirements.
+In some cases, in particular when the `LSSupportsOpeningDocumentsInPlace` flag is enabled in your `Info.plist` file, reading data directly from the url may fail. For that reason, `Gini Capture SDK` uses the asynchronous `UIDocument` API internally which handles any of the potential security requirements.
 
 In order to determine that the file opened is valid (correct size, correct type and number of pages below the threshold on PDFs), it is necessary to validate it before using it.
 
-GVL v5
+Gini Capture SDK
 ------
 
 ```swift
@@ -82,7 +82,7 @@ func application(_ app: UIApplication,
                  options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
 
         // 1. Build the document
-        let documentBuilder = GiniVisionDocumentBuilder(documentSource: .appName(name: sourceApplication))
+        let documentBuilder = GiniCaptureDocumentBuilder(documentSource: .appName(name: sourceApplication))
         documentBuilder.importMethod = .openWith
         
         documentBuilder.build(with: url) { [weak self] (document) in
@@ -92,48 +92,9 @@ func application(_ app: UIApplication,
             // 2. Validate the document
             if let document = document {
                 do {
-                    try GiniVision.validate(document,
+                    try GiniCapture.validate(document,
                                             withConfig: self.giniConfiguration)
-                    // Load the GiniVision with the validated document
-                } catch {
-                    // Show an error pointing out that the document is invalid
-                }
-            }
-        }
-
-        return true
-}
-```
-
-GVL v4
-------
-
-```swift
-func application(_ app: UIApplication,
-                 open url: URL,
-                 options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
-
-        // 1. Read data imported from url
-        let inputDocument = InputDocument(fileURL: url)
-
-	inputDocument.open { [weak self] (success) in
-            
-            guard let self = self else { return }
-            
-            guard let data = inputDocument.data, success else { return }
-            
-            // 2. Build the document
-            let documentBuilder = GiniVisionDocumentBuilder(data: data,
-                                                            documentSource: .appName(name: sourceApplication))
-            documentBuilder.importMethod = .openWith
-            let document = documentBuilder.build()
-
-            // 3. Validate document
-            if let document = document {
-                do {
-                    try GiniVision.validate(document,
-                                            withConfig: self.giniConfiguration)
-                    // Load the GiniVision with the validated document
+                    // Load the GiniCapture with the validated document
                 } catch {
                     // Show an error pointing out that the document is invalid
                 }

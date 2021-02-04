@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Peter Pult on 05/30/2016.
 //  Copyright © 2016 Gini. All rights reserved.

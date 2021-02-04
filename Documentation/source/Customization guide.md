@@ -1,7 +1,7 @@
 Customization guide
 =============================
 
-The Gini Vision Library components can be customized either through the `GiniConfiguration`, the `Localizable.string` file or through the assets. Here you can find a complete guide with the reference to every customizable item.
+The Gini Capture SDK components can be customized either through the `GiniConfiguration`, the `Localizable.string` file or through the assets. Here you can find a complete guide with the reference to every customizable item.
 
 - [Generic components](#generic-components)
 - [Camera screen](#camera-screen)

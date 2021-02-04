@@ -28,17 +28,17 @@ pipeline {
     }
     stage('Build ObjC') {
       steps {
-        sh 'xcodebuild -workspace Example/GiniVision.xcworkspace -scheme "Example ObjC" -destination \'platform=iOS Simulator,name=iPhone 11\''
+        sh 'xcodebuild -workspace Example/GiniCapture.xcworkspace -scheme "Example ObjC" -destination \'platform=iOS Simulator,name=iPhone 11\''
       }
     }
     stage('Build') {
       steps {
-        sh 'xcodebuild -workspace Example/GiniVision.xcworkspace -scheme "Example Swift" -destination \'platform=iOS Simulator,name=iPhone 11\''
+        sh 'xcodebuild -workspace Example/GiniCapture.xcworkspace -scheme "Example Swift" -destination \'platform=iOS Simulator,name=iPhone 11\''
       }
     }
     stage('Unit tests') {
       steps {
-        sh 'xcodebuild test -workspace Example/GiniVision.xcworkspace -scheme "GiniVision-Unit-Tests" -destination \'platform=iOS Simulator,name=iPhone 11\''
+        sh 'xcodebuild test -workspace Example/GiniCapture.xcworkspace -scheme "GiniCapture-Unit-Tests" -destination \'platform=iOS Simulator,name=iPhone 11\''
       }
     }
     stage('Documentation') {
@@ -59,7 +59,7 @@ pipeline {
       }
 
       steps {
-        sh '/usr/local/bin/pod lib lint GiniVision.podspec --sources=https://github.com/gini/gini-podspecs.git,https://github.com/CocoaPods/Specs.git --allow-warnings'
+        sh '/usr/local/bin/pod lib lint GiniCapture.podspec --sources=https://github.com/gini/gini-podspecs.git,https://github.com/CocoaPods/Specs.git --allow-warnings'
       }
     }
     stage('Release Pod') {
@@ -71,7 +71,7 @@ pipeline {
         }
       }
       steps {
-        sh '/usr/local/bin/pod repo push gini-specs GiniVision.podspec --sources=https://github.com/gini/gini-podspecs.git,https://github.com/CocoaPods/Specs.git --allow-warnings'
+        sh '/usr/local/bin/pod repo push gini-specs GiniCapture.podspec --sources=https://github.com/gini/gini-podspecs.git,https://github.com/CocoaPods/Specs.git --allow-warnings'
       }
     }
   }

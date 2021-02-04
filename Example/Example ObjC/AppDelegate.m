@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  GiniVisionExampleObjC
+//  GiniCaptureExampleObjC
 //
 //  Created by Peter Pult on 21/06/16.
 //  Copyright © 2016 Gini. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CredentialsManager.h"
-#import <GiniVision/GiniVision-Swift.h>
+#import <GiniCapture/GiniCapture-Swift.h>
 
 @interface AppDelegate ()
 
@@ -22,7 +22,7 @@ NSString *kClientDomain = @"client_domain";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    NSLog(@"Gini Vision Library for iOS (%@)", [GiniVision versionString]);
+    NSLog(@"Gini Capture SDK for iOS (%@)", [GiniCapture versionString]);
     
     NSDictionary<NSString*, NSString*> *credentials = [[[CredentialsManager alloc] init]
                                                        getCredentials];

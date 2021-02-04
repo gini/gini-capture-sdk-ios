@@ -1,6 +1,6 @@
 //
 //  ResultTableViewController.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Peter Pult on 22/08/2016.
 //  Copyright © 2016 Gini. All rights reserved.

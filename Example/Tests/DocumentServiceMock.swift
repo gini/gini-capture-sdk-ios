@@ -8,7 +8,7 @@
 
 import Foundation
 @testable import Gini
-@testable import GiniVision
+@testable import GiniCapture
 @testable import Example_Swift
 
 final class DocumentServiceMock: ComponentAPIDocumentServiceProtocol {
@@ -25,7 +25,7 @@ final class DocumentServiceMock: ComponentAPIDocumentServiceProtocol {
         
     }
     
-    func remove(document: GiniVisionDocument) {
+    func remove(document: GiniCaptureDocument) {
         
     }
     
@@ -41,11 +41,11 @@ final class DocumentServiceMock: ComponentAPIDocumentServiceProtocol {
         
     }
     
-    func sortDocuments(withSameOrderAs documents: [GiniVisionDocument]) {
+    func sortDocuments(withSameOrderAs documents: [GiniCaptureDocument]) {
         
     }
     
-    func upload(document: GiniVisionDocument, completion: ComponentAPIUploadDocumentCompletion?) {
+    func upload(document: GiniCaptureDocument, completion: ComponentAPIUploadDocumentCompletion?) {
         
     }
     

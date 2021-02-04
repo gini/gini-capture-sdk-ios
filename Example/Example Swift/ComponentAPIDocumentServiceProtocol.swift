@@ -1,15 +1,15 @@
 //
 //  ComponentAPIDocumentServiceProtocol.swift
-//  GiniVision
+//  GiniCapture
 //
 //  Created by Enrique del Pozo Gómez on 3/29/18.
 //
 
 import Foundation
-import GiniVision
+import GiniCapture
 import Gini
 
-enum CustomAnalysisError: GiniVisionError {
+enum CustomAnalysisError: GiniCaptureError {
     case analysisFailed
     var message: String {
         switch self {
@@ -28,12 +28,12 @@ protocol ComponentAPIDocumentServiceProtocol: class {
     var analysisCancellationToken: CancellationToken? { get set }
     
     func cancelAnalysis()
-    func remove(document: GiniVisionDocument)
+    func remove(document: GiniCaptureDocument)
     func resetToInitialState()
     func sendFeedback(with updatedExtractions: [Extraction])
     func startAnalysis(completion: @escaping ComponentAPIAnalysisCompletion)
-    func sortDocuments(withSameOrderAs documents: [GiniVisionDocument])
-    func upload(document: GiniVisionDocument,
+    func sortDocuments(withSameOrderAs documents: [GiniCaptureDocument])
+    func upload(document: GiniCaptureDocument,
                 completion: ComponentAPIUploadDocumentCompletion?)
     func update(imageDocument: GiniImageDocument)
 }

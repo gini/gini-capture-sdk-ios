@@ -1,6 +1,6 @@
 //
 //  ViewController.h
-//  GiniVisionExampleObjC
+//  GiniCaptureExampleObjC
 //
 //  Created by Peter Pult on 21/06/16.
 //  Copyright © 2016 Gini. All rights reserved.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- *  View controller showing how to capture an image of a document using the Screen API of the Gini Vision Library for iOS
+ *  View controller showing how to capture an image of a document using the Screen API of the Gini Capture SDK for iOS
  *  and how to process it using the Gini SDK for iOS.
  */
 @interface ScreenAPIViewController : UIViewController

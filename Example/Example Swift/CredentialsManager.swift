@@ -1,6 +1,6 @@
 //
 //  CredentialsManager.swift
-//  GiniVision_Example
+//  GiniCapture_Example
 //
 //  Created by Enrique del Pozo Gómez on 2/16/18.
 //  Copyright © 2018 Gini GmbH. All rights reserved.
