@@ -9,7 +9,7 @@
 #import "AnalysisManager.h"
 #import "AppDelegate.h"
 #import <Bolts/BFCancellationTokenSource.h>
-#import <Gini/Gini-Swift.h>
+#import <GiniPayApiLib-Swift.h>
 
 NSString *const GINIAnalysisManagerDidReceiveResultNotification = @"GINIAnalysisManagerDidReceiveResultNotification";
 NSString *const GINIAnalysisManagerDidReceiveErrorNotification  = @"GINIAnalysisManagerDidReceiveErrorNotification";
@@ -153,7 +153,7 @@ NSString *const GINIAnalysisManagerDocumentUserInfoKey          = @"GINIAnalysis
                 [extractions setObject:extraction forKey:giniExtraction.name];
             }
             
-            AnalysisResult *analysisResult = [[AnalysisResult alloc] initWithExtractions:extractions images:[[NSArray alloc] init] candidates:@{}];
+            AnalysisResult *analysisResult = [[AnalysisResult alloc] initWithExtractions:extractions lineItems:[[NSArray alloc] init] images:[[NSArray alloc] init]];
             self->_result = analysisResult;
             userInfo = @{GINIAnalysisManagerResultDictionaryUserInfoKey: self->_result, GINIAnalysisManagerDocumentUserInfoKey: self->_document};
             notificationName = GINIAnalysisManagerDidReceiveResultNotification;

@@ -9,7 +9,7 @@
 import XCTest
 @testable import Example_Swift
 @testable import GiniCapture
-@testable import Gini
+@testable import GiniPayApiLib
 
 final class ScreenAPICoordinatorTests: XCTestCase {
     

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Gini
+import GiniPayApiLib
 
 final class CredentialsManager {
 

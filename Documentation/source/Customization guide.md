@@ -41,7 +41,7 @@ Some background and text colors use the `GiniColor` type with which you can set 
 - Error background &#8594;  `GiniConfiguration.noticeErrorBackgroundColor`
 - Error text color `GiniConfiguration.noticeErrorTextColor`
 
-##### 2. GVL font
+##### 2. Gini Capture font
 
 - Font &#8594;  `GiniConfiguration.customFont`
 
@@ -52,16 +52,16 @@ Some background and text colors use the `GiniColor` type with which you can set 
 </br>
 
 ##### 1. Navigation bar
-- Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.camera.title*</span> localized string
+- Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.camera.title*</span> localized string
 - Close button
   - With image and title
 	  - Image &#8594; <span style="color:#009EDF">*navigationCameraClose*</span> image asset
-	  - Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.camera.close*</span> localized string
+	  - Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.camera.close*</span> localized string
   - With title only
 	  -  Title &#8594; `GiniConfiguration.navigationBarCameraTitleCloseButton`
 - Help button
 	- Image &#8594; <span style="color:#009EDF">*navigationCameraHelp*</span> image asset
-	- Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.camera.help*</span> localized string
+	- Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.camera.help*</span> localized string
 
 ##### 2. Camera preview
 - Guides color &#8594;  `GiniConfiguration.cameraPreviewCornerGuidesColor`
@@ -87,8 +87,8 @@ Some background and text colors use the `GiniColor` type with which you can set 
 - Background color &#8594;  `GiniConfiguration.qrCodePopupBackgroundColor` using `GiniColor` with dark mode and light mode colors
 - Button color &#8594;  `GiniConfiguration.qrCodePopupButtonColor`
 - Text color &#8594;  `GiniConfiguration.qrCodePopupTextColor` using `GiniColor` with dark mode and light mode colors
-- Title &#8594; <span style="color:#009EDF">*ginivision.camera.qrCodeDetectedPopup.buttonTitle*</span> localized string
-- Message &#8594; <span style="color:#009EDF">*ginivision.camera.qrCodeDetectedPopup.message*</span> localized string
+- Title &#8594; <span style="color:#009EDF">*ginicapture.camera.qrCodeDetectedPopup.buttonTitle*</span> localized string
+- Message &#8594; <span style="color:#009EDF">*ginicapture.camera.qrCodeDetectedPopup.message*</span> localized string
 
 ## Review screen
 
@@ -97,25 +97,25 @@ Some background and text colors use the `GiniColor` type with which you can set 
 </br>
 
 ##### 1. Navigation bar
-- Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.review.title*</span> localized string
+- Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.review.title*</span> localized string
 - Back button
   - With image and title
 	  - Image &#8594; <span style="color:#009EDF">*navigationReviewBack*</span> image asset
-	  - Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.review.back*</span> localized string
+	  - Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.review.back*</span> localized string
   - With title only
 	  -  Title &#8594; `GiniConfiguration.navigationBarReviewTitleBackButton`
 - Next button
 	- Image &#8594; <span style="color:#009EDF">*navigationReviewContinue*</span> image asset
-	- Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.review.continue*</span> localized string
+	- Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.review.continue*</span> localized string
 
 ##### 2. Review top view
-- Title &#8594; <span style="color:#009EDF">*ginivision.review.top*</span> localized string
+- Title &#8594; <span style="color:#009EDF">*ginicapture.review.top*</span> localized string
 
 ##### 3. Review bottom view
 - Background color &#8594; `GiniConfiguration.reviewBottomViewBackgroundColor`
 - Rotation button image &#8594;  <span style="color:#009EDF">*reviewRotateButton*</span> image asset
 - Rotation message
-	- Text &#8594; <span style="color:#009EDF">*ginivision.review.bottom*</span> localized string
+	- Text &#8594; <span style="color:#009EDF">*ginicapture.review.bottom*</span> localized string
 	- Text color &#8594; `GiniConfiguration.reviewTextBottomColor`
 
 ## Multipage Review screen
@@ -128,12 +128,12 @@ Some background and text colors use the `GiniColor` type with which you can set 
 - Back button
   - With image and title
 	  - Image &#8594; <span style="color:#009EDF">*navigationReviewBack*</span> image asset
-	  - Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.review.back*</span> localized string
+	  - Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.review.back*</span> localized string
   - With title only
 	  -  Title &#8594; `GiniConfiguration.navigationBarReviewTitleBackButton`
 - Next button
 	- Image &#8594; <span style="color:#009EDF">*navigationReviewContinue*</span> image asset
-	- Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.review.continue*</span> localized string
+	- Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.review.continue*</span> localized string
 
 ##### 2. Main collection
 - Opaque view style (when tool tip is shown)  &#8594;  `GiniConfiguration.multipageToolTipOpaqueBackgroundStyle`
@@ -160,7 +160,7 @@ Some background and text colors use the `GiniColor` type with which you can set 
 - Cancel button
   - With image and title
 	  - Image &#8594; <span style="color:#009EDF">*navigationAnalysisBack*</span> image asset
-	  - Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.analysis.back*</span> localized string
+	  - Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.analysis.back*</span> localized string
   - With title only
 	  - Title &#8594; `GiniConfiguration.navigationBarAnalysisTitleBackButton`
 
@@ -170,7 +170,7 @@ Some background and text colors use the `GiniColor` type with which you can set 
 
 ##### 3. Loading view
 - Indicator color &#8594; `GiniConfiguration.analysisLoadingIndicatorColor` (Only with PDFs)
-- Text &#8594; <span style="color:#009EDF">*ginivision.analysis.loadingText*</span> localized string
+- Text &#8594; <span style="color:#009EDF">*ginicapture.analysis.loadingText*</span> localized string
 
 ## Supported formats screen
 
@@ -182,7 +182,7 @@ Some background and text colors use the `GiniColor` type with which you can set 
 - Back button
   - With image and title
 	  - Image &#8594; <span style="color:#009EDF">*arrowBack*</span> image asset
-	  - Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.help.backToMenu*</span> localized string
+	  - Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.help.backToMenu*</span> localized string
   - With title only
 	  - Title &#8594; `GiniConfiguration.navigationBarHelpScreenTitleBackToMenuButton`
 
@@ -200,27 +200,27 @@ Some background and text colors use the `GiniColor` type with which you can set 
 - Back button
   - With image and title
 	  - Image &#8594; <span style="color:#009EDF">*arrowBack*</span> image asset
-	  - Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.help.backToMenu*</span> localized string
+	  - Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.help.backToMenu*</span> localized string
   - With title only
 	  - Title &#8594; `GiniConfiguration.navigationBarHelpScreenTitleBackToMenuButton`
 
 ##### 1. Header
-- Text &#8594; <span style="color:#009EDF">*ginivision.help.openWithTutorial.collectionHeader*</span> localized string
+- Text &#8594; <span style="color:#009EDF">*ginicapture.help.openWithTutorial.collectionHeader*</span> localized string
 
 ##### 2. Open with steps
 - App name &#8594; `GiniConfiguration.openWithAppNameForTexts`
 - Step indicator color &#8594; `GiniConfiguration.stepIndicatorColor`
 - Step 1
-	- Title &#8594; <span style="color:#009EDF">*ginivision.help.openWithTutorial.step1.title*</span> localized string
-	- Subtitle &#8594; <span style="color:#009EDF">*ginivision.help.openWithTutorial.step1.subtitle*</span> localized string
+	- Title &#8594; <span style="color:#009EDF">*ginicapture.help.openWithTutorial.step1.title*</span> localized string
+	- Subtitle &#8594; <span style="color:#009EDF">*ginicapture.help.openWithTutorial.step1.subtitle*</span> localized string
 	- Image &#8594; <span style="color:#009EDF">*openWithTutorialStep1* (German) and *openWithTutorialStep1_en* (English)</span> image assets
 - Step 2
-	- Title &#8594; <span style="color:#009EDF">*ginivision.help.openWithTutorial.step2.title*</span> localized string
-	- Subtitle &#8594; <span style="color:#009EDF">*ginivision.help.openWithTutorial.step2.subtitle*</span> localized string
+	- Title &#8594; <span style="color:#009EDF">*ginicapture.help.openWithTutorial.step2.title*</span> localized string
+	- Subtitle &#8594; <span style="color:#009EDF">*ginicapture.help.openWithTutorial.step2.subtitle*</span> localized string
 	- Image &#8594; <span style="color:#009EDF">*openWithTutorialStep2* (German) and *openWithTutorialStep2_en* (English)</span> image assets
 - Step 3
-	- Title &#8594; <span style="color:#009EDF">*ginivision.help.openWithTutorial.step3.title*</span> localized string
-	- Subtitle &#8594; <span style="color:#009EDF">*ginivision.help.openWithTutorial.step3.subtitle*</span> localized string
+	- Title &#8594; <span style="color:#009EDF">*ginicapture.help.openWithTutorial.step3.title*</span> localized string
+	- Subtitle &#8594; <span style="color:#009EDF">*ginicapture.help.openWithTutorial.step3.subtitle*</span> localized string
 	- Image &#8594; <span style="color:#009EDF">*openWithTutorialStep3* (German) and *openWithTutorialStep3_en* (English)</span> image assets
 
 ## Capturing tips screen
@@ -282,7 +282,7 @@ Some background and text colors use the `GiniColor` type with which you can set 
 - Back button
   - With image and title
 	  - Image &#8594; <span style="color:#009EDF">*navigationHelpBack*</span> image asset
-	  - Title &#8594; <span style="color:#009EDF">*ginivision.navigationbar.help.backToCamera*</span> localized string
+	  - Title &#8594; <span style="color:#009EDF">*ginicapture.navigationbar.help.backToCamera*</span> localized string
   - With title only
 	  - Title &#8594; `GiniConfiguration.navigationBarHelpMenuTitleBackToCameraButton`
 

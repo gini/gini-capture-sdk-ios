@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Gini
+import GiniPayApiLib
 
 /**
  The GiniCaptureResultsDelegate protocol defines methods that allow you to handle the analysis result.
@@ -46,9 +46,9 @@ final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
          documentMetadata: Document.Metadata?,
          api: APIDomain,
          trackingDelegate: GiniCaptureTrackingDelegate?,
-         sdk : GiniSDK) {
+         lib : GiniApiLib) {
 
-        self.documentService = GiniNetworkingScreenAPICoordinator.documentService(with: sdk,
+        self.documentService = GiniNetworkingScreenAPICoordinator.documentService(with: lib,
                                                                                   documentMetadata: documentMetadata,
                                                                                   giniConfiguration: giniConfiguration,
                                                                                   for: api)
@@ -69,7 +69,7 @@ final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
                      userApi: UserDomain,
                      trackingDelegate: GiniCaptureTrackingDelegate?) {
         
-        let sdk = GiniSDK
+        let lib = GiniApiLib
             .Builder(client: client, api: api, userApi: userApi)
             .build()
 
@@ -79,21 +79,21 @@ final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
                   documentMetadata: documentMetadata,
                   api: api,
                   trackingDelegate: trackingDelegate,
-                  sdk: sdk)
+                  lib: lib)
     }
     
-    private static func documentService(with sdk: GiniSDK,
+    private static func documentService(with lib: GiniApiLib,
                                         documentMetadata: Document.Metadata?,
                                         giniConfiguration: GiniConfiguration,
                                         for api: APIDomain) -> DocumentServiceProtocol {
         switch api {
         case .default, .gym, .custom:
-            return DocumentService(sdk: sdk, metadata: documentMetadata)
+            return DocumentService(lib: lib, metadata: documentMetadata)
         case .accounting:
             if giniConfiguration.multipageEnabled {
                 preconditionFailure("The accounting API does not support multipage")
             }
-            return AccountingDocumentService(sdk: sdk, metadata: documentMetadata)
+            return AccountingDocumentService(lib: lib, metadata: documentMetadata)
         }
     }
     
@@ -110,14 +110,13 @@ final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
                     return (name, $0)
                 })
                 
-                let result = AnalysisResult(extractions: extractions, images: images, candidates: result.candidates)
+                
+                let result = AnalysisResult(extractions: extractions, lineItems: result.lineItems, images: images)
                 
                 let documentService = self.documentService
                 
-                self.resultsDelegate?
-                    .giniCaptureAnalysisDidFinishWith(result: result) { updatedExtractions in
-                        
-                        documentService.sendFeedback(with: updatedExtractions.map { $0.value })
+                self.resultsDelegate?.giniCaptureAnalysisDidFinishWith(result: result) { updatedExtractions in
+                            documentService.sendFeedback(with: updatedExtractions.map { $0.value })
                         documentService.resetToInitialState()
                 }
             } else {
@@ -193,13 +192,13 @@ extension GiniNetworkingScreenAPICoordinator: GiniCaptureDelegate {
         if let qrCodeDocument = document as? GiniQRCodeDocument,
             let format = qrCodeDocument.qrCodeFormat,
             case .eps4mobile = format {
-            let result = qrCodeDocument.extractedParameters.compactMap {
+            let extractions = qrCodeDocument.extractedParameters.compactMap {
                 Extraction(box: nil, candidates: nil,
                            entity: QRCodesExtractor.epsCodeUrlKey,
                            value: $0.value,
                            name: QRCodesExtractor.epsCodeUrlKey)
                 }
-            let extractionResult = ExtractionResult(extractions: result, candidates: [:])
+            let extractionResult = ExtractionResult(extractions: extractions, lineItems: [], returnReasons: [])
             
             self.deliver(result: extractionResult, analysisDelegate: networkDelegate)
             return

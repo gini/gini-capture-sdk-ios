@@ -29,13 +29,13 @@ The Gini Capture SDK for iOS provides functionality to capture documents with mo
   s.subspec 'Networking' do |networking|
     networking.source_files = 'GiniCapture/Classes/Networking/*.swift', 'GiniCapture/Classes/Networking/Extensions/*.swift'
     networking.dependency "GiniCapture/Core"
-    networking.dependency 'Gini/DocumentsAPI', '~> 0.5.2'
+    networking.dependency 'GiniPayApiLib/DocumentsAPI', '>= 1.0.1'
   end
 
   s.subspec 'Networking+Pinning' do |pinning|
     pinning.source_files = 'GiniCapture/Classes/Networking/Pinning/*'
     pinning.dependency "GiniCapture/Networking"
-    pinning.dependency 'Gini/Pinning', '~> 0.5.2'
+    pinning.dependency 'GiniPayApiLib/Pinning', '>= 1.0.1'
   end
 
   s.test_spec 'Tests' do |test_spec|

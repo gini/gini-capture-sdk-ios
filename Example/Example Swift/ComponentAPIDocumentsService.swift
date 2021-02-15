@@ -7,7 +7,7 @@
 
 import UIKit
 import GiniCapture
-import Gini
+import GiniPayApiLib
 
 final class ComponentAPIDocumentsService: ComponentAPIDocumentServiceProtocol {
     
@@ -17,9 +17,9 @@ final class ComponentAPIDocumentsService: ComponentAPIDocumentServiceProtocol {
     var metadata: Document.Metadata?
     var documentService: DefaultDocumentService
     
-    init(sdk: GiniSDK, documentMetadata: Document.Metadata?) {
+    init(lib: GiniApiLib, documentMetadata: Document.Metadata?) {
         self.metadata = documentMetadata
-        self.documentService = sdk.documentService()
+        self.documentService = lib.documentService()
     }
     
     func startAnalysis(completion: @escaping ComponentAPIAnalysisCompletion) {

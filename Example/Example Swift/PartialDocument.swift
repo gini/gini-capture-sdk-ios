@@ -6,10 +6,10 @@
 //
 
 import GiniCapture
-import Gini
+import GiniPayApiLib
 
 struct PartialDocument {
-    var info: Gini.PartialDocumentInfo
+    var info: GiniPayApiLib.PartialDocumentInfo
     var document: Document?
     var order: Int
 }

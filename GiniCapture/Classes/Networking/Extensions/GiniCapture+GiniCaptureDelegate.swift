@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Gini
+import GiniPayApiLib
 
 extension GiniCapture {
     /**
@@ -46,9 +46,9 @@ extension GiniCapture {
     }
     
     public class func removeStoredCredentials(for client: Client) throws {
-        let sdk = GiniSDK.Builder(client: client).build()
+        let lib = GiniApiLib.Builder(client: client).build()
         
-        try sdk.removeStoredCredentials()
+        try lib.removeStoredCredentials()
     }
     
 }

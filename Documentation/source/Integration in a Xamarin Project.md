@@ -1,4 +1,4 @@
-Integrate the GVL in a Xamarin project
+Integrate the Gini Capture SDK in a Xamarin project
 =============================
 
 Requirements
@@ -13,10 +13,10 @@ Requirements
 
 After cloning the **Xamapod** tool repository and installing all its dependencies, run the following command:
 ```bash
-sh build -p GiniVision -s Networking -l https://github.com/gini/gini-podspecs,https://github.com/CocoaPods/Specs.git
+sh build -p GiniCapture -s Networking -l https://github.com/gini/gini-podspecs,https://github.com/CocoaPods/Specs.git
 ```
 
-The `-l` option ensures that the tool refers to our cocoapods repository to which the GVL is deployed.
+The `-l` option ensures that the tool refers to our cocoapods repository to which the Gini Capture SDK is deployed.
 
 Check the [Integration guide](integration.html) for further information about the possible subspecs (`-s`).
 
