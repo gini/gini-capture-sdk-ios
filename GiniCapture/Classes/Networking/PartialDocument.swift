@@ -5,10 +5,10 @@
 //  Created by Enrique del Pozo Gómez on 5/3/18.
 //
 
-import Gini
+import GiniPayApiLib
 
 struct PartialDocument {
-    var info: Gini.PartialDocumentInfo
+    var info: PartialDocumentInfo
     var document: Document?
     var order: Int
 }

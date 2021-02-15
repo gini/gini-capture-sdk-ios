@@ -6,17 +6,17 @@
 //
 
 import Foundation
-import Gini
+import GiniPayApiLib
 
 final class AccountingDocumentService: DocumentServiceProtocol {
     var metadata: Document.Metadata?
     var document: Document?
     var analysisCancellationToken: CancellationToken?
-    let documentService: Gini.AccountingDocumentService
+    let documentService: GiniPayApiLib.AccountingDocumentService
     
-    init(sdk: GiniSDK, metadata: Document.Metadata?) {
+    init(lib: GiniApiLib, metadata: Document.Metadata?) {
         self.metadata = metadata
-        self.documentService = sdk.documentService()
+        self.documentService = lib.documentService()
     }
     
     func cancelAnalysis() {

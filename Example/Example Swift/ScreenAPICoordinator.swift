@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import GiniCapture
-import Gini
+import GiniPayApiLib
 
 protocol ScreenAPICoordinatorDelegate: class {
     func screenAPI(coordinator: ScreenAPICoordinator, didFinish:())

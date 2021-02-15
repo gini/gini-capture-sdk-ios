@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import GiniCapture
-import Gini
+import GiniPayApiLib
 
 final class AppCoordinator: Coordinator {
     
@@ -125,11 +125,11 @@ final class AppCoordinator: Coordinator {
     }
     
     fileprivate func componentAPIDocumentService() -> ComponentAPIDocumentServiceProtocol {
-        let sdk = GiniSDK.Builder(client: client).build()
+        let lib = GiniApiLib.Builder(client: client).build()
         
         documentMetadata = Document.Metadata(branchId: documentMetadataBranchId,
                                              additionalHeaders: [documentMetadataAppFlowKey: "ComponentAPI"])
-        return ComponentAPIDocumentsService(sdk: sdk, documentMetadata: documentMetadata)
+        return ComponentAPIDocumentsService(lib: lib, documentMetadata: documentMetadata)
     }
     
     fileprivate func showSettings() {

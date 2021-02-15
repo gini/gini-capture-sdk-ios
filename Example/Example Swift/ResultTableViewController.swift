@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Gini
+import GiniPayApiLib
 
 /**
  Presents a dictionary of results from the analysis process in a table view.

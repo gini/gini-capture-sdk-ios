@@ -19,7 +19,7 @@ giniConfiguration.qrCodeScanningEnabled = true
 Handle and process the Payment Data
 ----------------------
 
-Once the QR code has been detected and the user has tapped the button to use it, the payment data is returned and ready to be analyzed in the API. In order to handle the Payment Data from the QR code, on one hand if you are using the _Screen API_ the `GiniQRCodeDocument` is received in the delegate method `GiniVisionDelegate.didCapture(document:)`, where it must be sent to the API as though it was an image or a pdf.
+Once the QR code has been detected and the user has tapped the button to use it, the payment data is returned and ready to be analyzed in the API. In order to handle the Payment Data from the QR code, on one hand if you are using the _Screen API_ the `GiniQRCodeDocument` is received in the delegate method `GiniCaptureDelegate.didCapture(document:)`, where it must be sent to the API as though it was an image or a pdf.
 On the other hand if you are using the _Component API_, you will get the `GiniQRCodeDocument` in the `CameraScreenSuccessBlock`, where it also must be sent to the API as if it was an image or a pdf.
 
 #### Note:
@@ -34,8 +34,8 @@ It is possible to customize the text label, button and background colors with th
 - `GiniConfiguration.qrCodePopupTextColor`
 
 Additionally the text from both label and button can be customized through the following parameters in your `Localizable.strings` file:
-- _ginivision.camera.qrCodeDetectedPopup.buttonTitle_
-- _ginivision.camera.qrCodeDetectedPopup.message_
+- _ginicapture.camera.qrCodeDetectedPopup.buttonTitle_
+- _ginicapture.camera.qrCodeDetectedPopup.message_
 
 
 Supported QR codes

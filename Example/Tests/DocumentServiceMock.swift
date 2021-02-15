@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import Gini
+@testable import GiniPayApiLib
 @testable import GiniCapture
 @testable import Example_Swift
 

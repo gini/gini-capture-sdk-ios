@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Gini
+import GiniPayApiLib
 
 typealias UploadDocumentCompletion = (Result<Document, GiniError>) -> Void
 typealias AnalysisCompletion = (Result<ExtractionResult, GiniError>) -> Void

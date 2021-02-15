@@ -15,7 +15,7 @@ These are the cases for file import supported file types:
 * `pdf_and_images`
 * `none` (In case you want to disable _File import_ funcionality, including UI related. This is the _default_ value).
 
-Also if you want to add some custom validations for the imported `GiniVisionDocument`, you can specify them in the `GiniConfiguration` closure, `customDocumentValidations`. Here is an example:
+Also if you want to add some custom validations for the imported `GiniCaptureDocument`, you can specify them in the `GiniConfiguration` closure, `customDocumentValidations`. Here is an example:
 
 ```swift
 giniConfiguration.customDocumentValidations = { document in
