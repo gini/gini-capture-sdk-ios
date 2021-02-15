@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Gini
+import GiniPayApiLib
 
 extension GiniCapture {
     /**

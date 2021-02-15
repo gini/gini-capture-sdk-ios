@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Gini
+import GiniPayApiLib
 
 extension GiniNetworkingScreenAPICoordinator {
     convenience init(client: Client,
@@ -17,7 +17,7 @@ extension GiniNetworkingScreenAPICoordinator {
                      api: APIDomain,
                      trackingDelegate: GiniCaptureTrackingDelegate?) {
         
-        let sdk = GiniSDK
+        let lib = GiniApiLib
             .Builder(client: client,
                      api: api,
                      pinningConfig: publicKeyPinningConfig)
@@ -29,6 +29,6 @@ extension GiniNetworkingScreenAPICoordinator {
                   documentMetadata: documentMetadata,
                   api: api,
                   trackingDelegate: trackingDelegate,
-                  sdk: sdk)
+                  lib: lib)
     }
 }
