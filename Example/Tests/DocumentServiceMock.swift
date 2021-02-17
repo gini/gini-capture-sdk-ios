@@ -13,12 +13,12 @@ import Foundation
 
 final class DocumentServiceMock: ComponentAPIDocumentServiceProtocol {
 
-    var giniSDK: GiniSDK
+    var apiLib: GiniApiLib
     var document: Document?
     var analysisCancellationToken: CancellationToken?
     
-    init(sdk: GiniSDK, documentMetadata: Document.Metadata?) {
-        self.giniSDK = sdk
+    init(lib: GiniApiLib, documentMetadata: Document.Metadata?) {
+        self.apiLib = lib
     }
     
     func cancelAnalysis() {
@@ -57,7 +57,7 @@ final class DocumentServiceMock: ComponentAPIDocumentServiceProtocol {
 
 extension DocumentServiceMock {
     convenience init() {
-        self.init(sdk: GiniSDK.Builder(client: Client(id: "id", secret: "secret", domain: "domain")).build(),
+        self.init(lib: GiniApiLib.Builder(client: Client(id: "id", secret: "secret", domain: "domain")).build(),
                   documentMetadata: nil)
     }
 }
