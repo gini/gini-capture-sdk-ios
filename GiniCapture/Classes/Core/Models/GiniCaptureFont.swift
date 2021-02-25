@@ -21,10 +21,10 @@ import UIKit
  */
 
 public class GiniCaptureFont: NSObject {
-    var regular: UIFont
-    var bold: UIFont
-    var light: UIFont
-    var thin: UIFont
+    public var regular: UIFont
+    public var bold: UIFont
+    public var light: UIFont
+    public var thin: UIFont
     public private(set) var isEnabled: Bool
     
     public init(regular: UIFont, bold: UIFont, light: UIFont, thin: UIFont, isEnabled: Bool = true) {

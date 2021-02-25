@@ -17,7 +17,7 @@ import Foundation
 }
 
 extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
-    func camera(_ viewController: CameraViewController, didCapture document: GiniCaptureDocument) {
+    public func camera(_ viewController: CameraViewController, didCapture document: GiniCaptureDocument) {
         let loadingView = viewController.addValidationLoadingView()
         
         validate([document]) { result in
@@ -46,7 +46,7 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
         }
     }
     
-    func camera(_ viewController: CameraViewController, didSelect documentPicker: DocumentPickerType) {
+    public func camera(_ viewController: CameraViewController, didSelect documentPicker: DocumentPickerType) {
         switch documentPicker {
         case .gallery:
             documentPickerCoordinator.showGalleryPicker(from: viewController)
@@ -56,7 +56,7 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
         }
     }
     
-    func cameraDidAppear(_ viewController: CameraViewController) {
+    public func cameraDidAppear(_ viewController: CameraViewController) {
                 
         if shouldShowOnBoarding() {
             showOnboardingScreen {
@@ -67,7 +67,7 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
         }
     }
     
-    func cameraDidTapMultipageReviewButton(_ viewController: CameraViewController) {
+    public func cameraDidTapMultipageReviewButton(_ viewController: CameraViewController) {
         showMultipageReview()
     }
     
@@ -177,7 +177,7 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
 
 extension GiniScreenAPICoordinator: DocumentPickerCoordinatorDelegate {
     
-    func documentPicker(_ coordinator: DocumentPickerCoordinator,
+    public func documentPicker(_ coordinator: DocumentPickerCoordinator,
                         didPick documents: [GiniCaptureDocument]) {
         
         self.validate(documents) { result in
@@ -283,14 +283,14 @@ extension GiniScreenAPICoordinator {
 // MARK: - UploadDelegate
 
 extension GiniScreenAPICoordinator: UploadDelegate {
-    func uploadDidComplete(for document: GiniCaptureDocument) {
+    public func uploadDidComplete(for document: GiniCaptureDocument) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.update(document, withError: nil, isUploaded: true)
         }
     }
     
-    func uploadDidFail(for document: GiniCaptureDocument, with error: Error) {
+    public func uploadDidFail(for document: GiniCaptureDocument, with error: Error) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.update(document, withError: error, isUploaded: false)

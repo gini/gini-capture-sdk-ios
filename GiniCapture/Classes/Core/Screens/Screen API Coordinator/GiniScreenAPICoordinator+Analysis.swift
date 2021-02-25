@@ -58,7 +58,7 @@ extension GiniScreenAPICoordinator {
 // MARK: - AnalysisDelegate
 
 extension GiniScreenAPICoordinator: AnalysisDelegate {
-    func displayError(withMessage message: String?, andAction action: (() -> Void)?) {
+    public func displayError(withMessage message: String?, andAction action: (() -> Void)?) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self,
                 let message = message,
@@ -77,7 +77,7 @@ extension GiniScreenAPICoordinator: AnalysisDelegate {
         }
     }
     
-    func tryDisplayNoResultsScreen() -> Bool {
+    public func tryDisplayNoResultsScreen() -> Bool {
         if pages.type == .image {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }

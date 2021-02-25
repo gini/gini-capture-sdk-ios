@@ -15,7 +15,7 @@ import UIKit
  
  - returns: Image if found with name.
  */
-func UIImageNamedPreferred(named name: String) -> UIImage? {
+public func UIImageNamedPreferred(named name: String) -> UIImage? {
     if let clientImage = UIImage(named: name) {
         return clientImage
     }
@@ -31,7 +31,7 @@ func UIImageNamedPreferred(named name: String) -> UIImage? {
  
  - returns: String resource for the given key.
  */
-func NSLocalizedStringPreferredFormat(_ key: String,
+public func NSLocalizedStringPreferredFormat(_ key: String,
                                       fallbackKey: String = "",
                                       comment: String,
                                       isCustomizable: Bool = true) -> String {
@@ -62,7 +62,7 @@ struct AnimationDuration {
     static var fast = 0.3
 }
 
-class Constraints {
+public class Constraints {
     
     enum Position {
         case top, bottom, right, left
@@ -123,21 +123,21 @@ class Constraints {
     
 }
 
-struct Colors {
+public struct Colors {
     
-    struct Gini {
+    public struct Gini {
         
-        static var blue = UIColor.from(hex: 0x009edc)
-        static var bluishGreen = UIColor.from(hex: 0x007c99)
-        static var crimson = UIColor.from(hex: 0xFF4F65)
-        static var lightBlue = UIColor.from(hex: 0x74d1f5)
-        static var grey = UIColor.from(hex: 0xAFB2B3)
-        static var raspberry = UIColor.from(hex: 0xe30b5d)
-        static var rose = UIColor.from(hex: 0xFC6B7E)
-        static var pearl = UIColor.from(hex: 0xF2F2F2)
+        public static var blue = UIColor.from(hex: 0x009edc)
+        public static var bluishGreen = UIColor.from(hex: 0x007c99)
+        public static var crimson = UIColor.from(hex: 0xFF4F65)
+        public static var lightBlue = UIColor.from(hex: 0x74d1f5)
+        public static var grey = UIColor.from(hex: 0xAFB2B3)
+        public static var raspberry = UIColor.from(hex: 0xe30b5d)
+        public static var rose = UIColor.from(hex: 0xFC6B7E)
+        public static var pearl = UIColor.from(hex: 0xF2F2F2)
         
         @available(iOS 13.0, *)
-        static var dynamicPearl = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+        public static var dynamicPearl = UIColor { (traitCollection: UITraitCollection) -> UIColor in
             
             if traitCollection.userInterfaceStyle == .dark {
                 return UIColor.from(hex: 0x1C1C1C)
@@ -146,12 +146,12 @@ struct Colors {
             }
         }
         
-        static var paleGreen = UIColor.from(hex: 0xB8E986)
-        static var springGreen = UIColor.from(hex: 0x00FA9A)
-        static var veryLightGray = UIColor.from(hex: 0xD8D8D8)
+        public static var paleGreen = UIColor.from(hex: 0xB8E986)
+        public static var springGreen = UIColor.from(hex: 0x00FA9A)
+        public static var veryLightGray = UIColor.from(hex: 0xD8D8D8)
         
         @available(iOS 13.0, *)
-        static var dynamicVeryLightGray = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+        public static var dynamicVeryLightGray = UIColor { (traitCollection: UITraitCollection) -> UIColor in
             
             if traitCollection.userInterfaceStyle == .dark {
                 return UIColor.from(hex: 0x3A3A3A)
@@ -161,7 +161,7 @@ struct Colors {
         }
         
         @available(iOS 13.0, *)
-        static var shadowColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+        public static var shadowColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
             
             if traitCollection.userInterfaceStyle == .dark {
                 return .white

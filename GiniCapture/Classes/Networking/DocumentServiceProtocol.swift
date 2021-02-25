@@ -8,10 +8,10 @@
 import Foundation
 import GiniPayApiLib
 
-typealias UploadDocumentCompletion = (Result<Document, GiniError>) -> Void
-typealias AnalysisCompletion = (Result<ExtractionResult, GiniError>) -> Void
+public typealias UploadDocumentCompletion = (Result<Document, GiniError>) -> Void
+public typealias AnalysisCompletion = (Result<ExtractionResult, GiniError>) -> Void
 
-protocol DocumentServiceProtocol: class {
+public protocol DocumentServiceProtocol: class {
     
     var document: Document? { get set }
     var metadata: Document.Metadata? { get }

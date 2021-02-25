@@ -16,7 +16,7 @@ extension String {
         return lines
     }
     
-    static func localized<T: LocalizableStringResource>(resource: T, args: CVarArg...) -> String {
+    public static func localized<T: LocalizableStringResource>(resource: T, args: CVarArg...) -> String {
         if args.isEmpty {
             return resource.localizedFormat
         } else {

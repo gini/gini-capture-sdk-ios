@@ -35,10 +35,10 @@ import GiniPayApiLib
     func giniCaptureDidCancelAnalysis()
 }
 
-final class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
+ public class GiniNetworkingScreenAPICoordinator: GiniScreenAPICoordinator {
     
-    weak var resultsDelegate: GiniCaptureResultsDelegate?
-    private let documentService: DocumentServiceProtocol
+    public weak var resultsDelegate: GiniCaptureResultsDelegate?
+    public let documentService: DocumentServiceProtocol
     
     init(client: Client,
          resultsDelegate: GiniCaptureResultsDelegate,
@@ -182,11 +182,11 @@ extension GiniNetworkingScreenAPICoordinator {
 // MARK: - GiniCaptureDelegate
 
 extension GiniNetworkingScreenAPICoordinator: GiniCaptureDelegate {
-    func didCancelCapturing() {
+    public func didCancelCapturing() {
         resultsDelegate?.giniCaptureDidCancelAnalysis()
     }
 
-    func didCapture(document: GiniCaptureDocument, networkDelegate: GiniCaptureNetworkDelegate) {
+    public func didCapture(document: GiniCaptureDocument, networkDelegate: GiniCaptureNetworkDelegate) {
         // The EPS QR codes are a special case, since they don0t have to be analyzed by the Gini API and therefore,
         // they are ready to be delivered after capturing them.
         if let qrCodeDocument = document as? GiniQRCodeDocument,
@@ -220,7 +220,7 @@ extension GiniNetworkingScreenAPICoordinator: GiniCaptureDelegate {
         }
     }
 
-    func didReview(documents: [GiniCaptureDocument], networkDelegate: GiniCaptureNetworkDelegate) {
+    public func didReview(documents: [GiniCaptureDocument], networkDelegate: GiniCaptureNetworkDelegate) {
         // It is necessary to check the order when using multipage before
         // creating the composite document
         if giniConfiguration.multipageEnabled {
@@ -244,11 +244,11 @@ extension GiniNetworkingScreenAPICoordinator: GiniCaptureDelegate {
         }
     }
 
-    func didCancelReview(for document: GiniCaptureDocument) {
+    public func didCancelReview(for document: GiniCaptureDocument) {
         documentService.remove(document: document)
     }
 
-    func didCancelAnalysis() {
+    public func didCancelAnalysis() {
         // Cancel analysis process to avoid unnecessary network calls.
         if pages.type == .image {
             documentService.cancelAnalysis()

@@ -11,7 +11,7 @@ import Foundation
 
 extension GiniScreenAPICoordinator: ReviewViewControllerDelegate {
     
-    func review(_ viewController: ReviewViewController, didReview document: GiniCaptureDocument) {
+    public func review(_ viewController: ReviewViewController, didReview document: GiniCaptureDocument) {
         updateDocument(for: document)
     }
     
@@ -39,12 +39,12 @@ extension GiniScreenAPICoordinator: ReviewViewControllerDelegate {
 // MARK: - Multipage Review screen
 
 extension GiniScreenAPICoordinator: MultipageReviewViewControllerDelegate {
-    func multipageReview(_ controller: MultipageReviewViewController,
+    public func multipageReview(_ controller: MultipageReviewViewController,
                          didRotate page: GiniCapturePage) {
         updateDocument(for: page.document)
     }
     
-    func multipageReview(_ controller: MultipageReviewViewController,
+    public func multipageReview(_ controller: MultipageReviewViewController,
                          didDelete page: GiniCapturePage) {
         removeFromDocuments(document: page.document)
         visionDelegate?.didCancelReview(for: page.document)
@@ -54,18 +54,18 @@ extension GiniScreenAPICoordinator: MultipageReviewViewControllerDelegate {
         }
     }
     
-    func multipageReview(_ controller: MultipageReviewViewController,
+    public func multipageReview(_ controller: MultipageReviewViewController,
                          didReorder pages: [GiniCapturePage]) {
         replaceDocuments(with: pages)
     }
     
-    func multipageReview(_ viewController: MultipageReviewViewController,
+    public func multipageReview(_ viewController: MultipageReviewViewController,
                          didTapRetryUploadFor page: GiniCapturePage) {
         update(page.document, withError: nil, isUploaded: false)
         visionDelegate?.didCapture(document: page.document, networkDelegate: self)
     }
     
-    func multipageReviewDidTapAddImage(_ controller: MultipageReviewViewController) {
+    public func multipageReviewDidTapAddImage(_ controller: MultipageReviewViewController) {
         closeMultipageScreen()
     }
 

@@ -12,13 +12,13 @@ protocol Coordinator: class {
     var rootViewController: UIViewController { get }
 }
 
-class GiniScreenAPICoordinator: NSObject, Coordinator {
+public class GiniScreenAPICoordinator: NSObject, Coordinator {
     
     var rootViewController: UIViewController {
         return screenAPINavigationController
     }
     
-    fileprivate(set) lazy var screenAPINavigationController: UINavigationController = {
+    public lazy var screenAPINavigationController: UINavigationController = {
         let navigationController = UINavigationController()
         navigationController.delegate = self
         navigationController.applyStyle(withConfiguration: self.giniConfiguration)
@@ -282,7 +282,7 @@ extension GiniScreenAPICoordinator {
 // MARK: - Navigation delegate
 
 extension GiniScreenAPICoordinator: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController,
+    public func navigationController(_ navigationController: UINavigationController,
                               animationControllerFor operation: UINavigationController.Operation,
                               from fromVC: UIViewController,
                               to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -321,7 +321,7 @@ extension GiniScreenAPICoordinator: UINavigationControllerDelegate {
 // MARK: - HelpMenuViewControllerDelegate
 
 extension GiniScreenAPICoordinator: HelpMenuViewControllerDelegate {
-    func help(_ menuViewController: HelpMenuViewController, didSelect item: HelpMenuViewController.Item) {
+    public func help(_ menuViewController: HelpMenuViewController, didSelect item: HelpMenuViewController.Item) {
         screenAPINavigationController.pushViewController(helpItemViewController(for: item),
                                                          animated: true)
     }
