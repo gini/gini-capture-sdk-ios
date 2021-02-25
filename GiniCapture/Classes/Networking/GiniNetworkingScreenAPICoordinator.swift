@@ -97,7 +97,7 @@ import GiniPayApiLib
         }
     }
     
-    func deliver(result: ExtractionResult, analysisDelegate: AnalysisDelegate) {
+    public func deliver(result: ExtractionResult, analysisDelegate: AnalysisDelegate) {
         let hasExtactions = result.extractions.count > 0
         
         DispatchQueue.main.async { [weak self] in

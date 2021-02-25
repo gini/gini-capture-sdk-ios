@@ -68,7 +68,7 @@ public class Constraints {
         case top, bottom, right, left
     }
     
-    class func active(item view1: Any!,
+    public class func active(item view1: Any!,
                       attr attr1: NSLayoutConstraint.Attribute,
                       relatedBy relation: NSLayoutConstraint.Relation,
                       to view2: Any?,
