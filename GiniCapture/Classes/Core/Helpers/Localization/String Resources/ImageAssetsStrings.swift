@@ -11,11 +11,11 @@ public enum ImageAssetsStrings: LocalizableStringResource {
     
     case openWithTutorialStep1, openWithTutorialStep2, openWithTutorialStep3
     
-    var tableName: String {
+    public var tableName: String {
         return "images"
     }
     
-    var tableEntry: LocalizationEntry {
+    public var tableEntry: LocalizationEntry {
         switch self {
         case .openWithTutorialStep1:
             return ("openWithTutorialStep1", "Firs step image name")
@@ -26,11 +26,11 @@ public enum ImageAssetsStrings: LocalizableStringResource {
         }
     }
     
-    var isCustomizable: Bool {
+    public var isCustomizable: Bool {
         return true
     }
     
-    var fallbackTableEntry: String {
+    public var fallbackTableEntry: String {
         return ""
     }
 }

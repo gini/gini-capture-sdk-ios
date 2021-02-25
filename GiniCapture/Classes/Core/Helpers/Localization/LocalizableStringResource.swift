@@ -11,10 +11,10 @@ import UIKit
 public typealias LocalizationEntry = (value: String, description: String)
 
 public protocol LocalizableStringResource {
-    public var tableName: String { get }
-    public var tableEntry: LocalizationEntry { get }
-    public var fallbackTableEntry: String { get }
-    public var isCustomizable: Bool { get }
+    var tableName: String { get }
+    var tableEntry: LocalizationEntry { get }
+    var fallbackTableEntry: String { get }
+    var isCustomizable: Bool { get }
 }
 
 extension LocalizableStringResource {

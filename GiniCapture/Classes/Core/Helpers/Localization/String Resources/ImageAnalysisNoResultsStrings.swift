@@ -11,11 +11,11 @@ public enum ImageAnalysisNoResultsStrings: LocalizableStringResource {
     
     case collectionHeaderText, goToCameraButton, titleText, warningText, warningHelpMenuText
     
-    var tableName: String {
+    public var tableName: String {
         return "noresults"
     }
     
-    var tableEntry: LocalizationEntry {
+    public var tableEntry: LocalizationEntry {
         switch self {
         case .collectionHeaderText:
             return ("collection.header", "no results suggestions collection header title")
@@ -32,14 +32,14 @@ public enum ImageAnalysisNoResultsStrings: LocalizableStringResource {
         }
     }
     
-    var isCustomizable: Bool {
+    public var isCustomizable: Bool {
         switch self {
         case .collectionHeaderText, .goToCameraButton, .titleText, .warningText, .warningHelpMenuText:
             return false
         }
     }
     
-    var fallbackTableEntry: String {
+    public var fallbackTableEntry: String {
         switch self {
         default:
             return ""
