@@ -527,6 +527,13 @@
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/GiniCaptureUtils.swift",
+      "line": 71,
+      "symbol": "Constraints.active(item:attr:relatedBy:to:attr:multiplier:constant:priority:identifier:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/GiniCaptureUtils.swift",
       "line": 126,
       "symbol": "Colors",
       "symbol_kind": "source.lang.swift.decl.struct",
@@ -2707,6 +2714,13 @@
       "line": 41,
       "symbol": "GiniNetworkingScreenAPICoordinator.documentService",
       "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Networking/GiniNetworkingScreenAPICoordinator.swift",
+      "line": 100,
+      "symbol": "GiniNetworkingScreenAPICoordinator.deliver(result:analysisDelegate:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {

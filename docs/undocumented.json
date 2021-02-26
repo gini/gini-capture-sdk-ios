@@ -778,6 +778,125 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 10,
+      "symbol": "AnalysisStrings",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 12,
+      "symbol": "AnalysisStrings.analysisErrorMessage",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 12,
+      "symbol": "AnalysisStrings.cancelledMessage",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 12,
+      "symbol": "AnalysisStrings.documentCreationErrorMessage",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 12,
+      "symbol": "AnalysisStrings.loadingText",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 12,
+      "symbol": "AnalysisStrings.pdfPages",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 13,
+      "symbol": "AnalysisStrings.suggestion1Text",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 13,
+      "symbol": "AnalysisStrings.suggestion2Text",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 13,
+      "symbol": "AnalysisStrings.suggestion3Text",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 13,
+      "symbol": "AnalysisStrings.suggestion4Text",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 13,
+      "symbol": "AnalysisStrings.suggestion5Text",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 13,
+      "symbol": "AnalysisStrings.suggestionHeader",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 14,
+      "symbol": "AnalysisStrings.defaultPdfDokumentTitle",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 16,
+      "symbol": "AnalysisStrings.tableName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 20,
+      "symbol": "AnalysisStrings.tableEntry",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 51,
+      "symbol": "AnalysisStrings.isCustomizable",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/AnalysisStrings.swift",
+      "line": 62,
+      "symbol": "AnalysisStrings.fallbackTableEntry",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/ImageAnalysisNoResultsStrings.swift",
       "line": 10,
       "symbol": "ImageAnalysisNoResultsStrings",
