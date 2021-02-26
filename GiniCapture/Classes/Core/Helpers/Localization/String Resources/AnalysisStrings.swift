@@ -7,17 +7,17 @@
 
 import Foundation
 
-enum AnalysisStrings: LocalizableStringResource {
+public enum AnalysisStrings: LocalizableStringResource {
     
     case analysisErrorMessage, documentCreationErrorMessage, cancelledMessage, loadingText, pdfPages,
     suggestion1Text, suggestion2Text, suggestion3Text, suggestion4Text, suggestion5Text, suggestionHeader,
     defaultPdfDokumentTitle
     
-    var tableName: String {
+    public var tableName: String {
         return "analysis"
     }
     
-    var tableEntry: LocalizationEntry {
+    public var tableEntry: LocalizationEntry {
         switch self {
         case .analysisErrorMessage:
             return ("error.analysis", "This message is shown when there is an error analyzing the document")
@@ -48,7 +48,7 @@ enum AnalysisStrings: LocalizableStringResource {
         }
     }
     
-    var isCustomizable: Bool {
+    public var isCustomizable: Bool {
         switch self {
         case .cancelledMessage, .documentCreationErrorMessage, .loadingText, .pdfPages, .defaultPdfDokumentTitle,
              .suggestion1Text, .suggestion2Text, .suggestion3Text, .suggestion4Text, .suggestion5Text,
@@ -59,7 +59,7 @@ enum AnalysisStrings: LocalizableStringResource {
         }
     }
     
-    var fallbackTableEntry: String {
+    public var fallbackTableEntry: String {
         switch self {
         default:
             return ""
