@@ -12,7 +12,7 @@ protocol Coordinator: class {
     var rootViewController: UIViewController { get }
 }
 
-public class GiniScreenAPICoordinator: NSObject, Coordinator {
+open class GiniScreenAPICoordinator: NSObject, Coordinator {
     
     var rootViewController: UIViewController {
         return screenAPINavigationController

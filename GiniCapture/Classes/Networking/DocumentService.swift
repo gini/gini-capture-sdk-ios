@@ -16,7 +16,7 @@ public final class DocumentService: DocumentServiceProtocol {
     public var metadata: Document.Metadata?
     var documentService: DefaultDocumentService
     
-    init(lib: GiniApiLib, metadata: Document.Metadata?) {
+    public init(lib: GiniApiLib, metadata: Document.Metadata?) {
         self.metadata = metadata
         self.documentService = lib.documentService()
     }

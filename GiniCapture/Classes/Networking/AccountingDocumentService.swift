@@ -14,7 +14,7 @@ public final class AccountingDocumentService: DocumentServiceProtocol {
     public var analysisCancellationToken: CancellationToken?
     let documentService: GiniPayApiLib.AccountingDocumentService
     
-    init(lib: GiniApiLib, metadata: Document.Metadata?) {
+    public init(lib: GiniApiLib, metadata: Document.Metadata?) {
         self.metadata = metadata
         self.documentService = lib.documentService()
     }
