@@ -8,10 +8,10 @@
 import Foundation
 import GiniPayApiLib
 
-final class AccountingDocumentService: DocumentServiceProtocol {
-    var metadata: Document.Metadata?
-    var document: Document?
-    var analysisCancellationToken: CancellationToken?
+public final class AccountingDocumentService: DocumentServiceProtocol {
+    public var metadata: Document.Metadata?
+    public var document: Document?
+    public var analysisCancellationToken: CancellationToken?
     let documentService: GiniPayApiLib.AccountingDocumentService
     
     init(lib: GiniApiLib, metadata: Document.Metadata?) {
@@ -19,7 +19,7 @@ final class AccountingDocumentService: DocumentServiceProtocol {
         self.documentService = lib.documentService()
     }
     
-    func cancelAnalysis() {
+    public func cancelAnalysis() {
         if let document = document {
             delete(document)
         }
@@ -28,19 +28,19 @@ final class AccountingDocumentService: DocumentServiceProtocol {
         resetToInitialState()
     }
     
-    func remove(document: GiniCaptureDocument) {
+    public func remove(document: GiniCaptureDocument) {
         // You can only remove the current document, since multipage is not supported
         if let document = self.document {
             delete(document)
         }
     }
     
-    func resetToInitialState() {
+    public func resetToInitialState() {
         analysisCancellationToken = nil
         document = nil
     }
     
-    func sendFeedback(with updatedExtractions: [Extraction]) {
+    public func sendFeedback(with updatedExtractions: [Extraction]) {
         guard let document = document else { return }
         documentService.submitFeedback(for: document, with: updatedExtractions) { result in
             switch result {
@@ -54,15 +54,15 @@ final class AccountingDocumentService: DocumentServiceProtocol {
         }
     }
     
-    func startAnalysis(completion: @escaping AnalysisCompletion) {
+    public func startAnalysis(completion: @escaping AnalysisCompletion) {
         fetchExtractions(completion: completion)
     }
     
-    func sortDocuments(withSameOrderAs documents: [GiniCaptureDocument]) {
+    public func sortDocuments(withSameOrderAs documents: [GiniCaptureDocument]) {
         // No need to sort documents since there is only one
     }
     
-    func upload(document: GiniCaptureDocument, completion: UploadDocumentCompletion?) {
+    public func upload(document: GiniCaptureDocument, completion: UploadDocumentCompletion?) {
         let fileName = "Document-\(NSDate().timeIntervalSince1970)"
         
         createDocument(from: document,
@@ -76,7 +76,7 @@ final class AccountingDocumentService: DocumentServiceProtocol {
         }
     }
     
-    func update(imageDocument: GiniImageDocument) {
+    public func update(imageDocument: GiniImageDocument) {
         // Nothing must be updated.
     }
     

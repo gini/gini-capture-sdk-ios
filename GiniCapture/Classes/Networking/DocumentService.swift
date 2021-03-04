@@ -8,12 +8,12 @@
 import UIKit
 import GiniPayApiLib
 
-final class DocumentService: DocumentServiceProtocol {
+public final class DocumentService: DocumentServiceProtocol {
     
     var partialDocuments: [String: PartialDocument] = [:]
-    var document: Document?
-    var analysisCancellationToken: CancellationToken?
-    var metadata: Document.Metadata?
+    public var document: Document?
+    public var analysisCancellationToken: CancellationToken?
+    public var metadata: Document.Metadata?
     var documentService: DefaultDocumentService
     
     init(lib: GiniApiLib, metadata: Document.Metadata?) {
@@ -21,7 +21,7 @@ final class DocumentService: DocumentServiceProtocol {
         self.documentService = lib.documentService()
     }
     
-    func startAnalysis(completion: @escaping AnalysisCompletion) {
+    public func startAnalysis(completion: @escaping AnalysisCompletion) {
         let partialDocumentsInfoSorted = partialDocuments
             .lazy
             .map { $0.value }
@@ -31,7 +31,7 @@ final class DocumentService: DocumentServiceProtocol {
         self.fetchExtractions(for: partialDocumentsInfoSorted, completion: completion)
     }
     
-    func cancelAnalysis() {
+    public func cancelAnalysis() {
         if let compositeDocument = document {
             delete(compositeDocument)
         }
@@ -41,7 +41,7 @@ final class DocumentService: DocumentServiceProtocol {
         document = nil
     }
     
-    func remove(document: GiniCaptureDocument) {
+    public func remove(document: GiniCaptureDocument) {
         if let index = partialDocuments.index(forKey: document.id) {
             if let document = partialDocuments[document.id]?
                 .document {
@@ -51,17 +51,17 @@ final class DocumentService: DocumentServiceProtocol {
         }
     }
     
-    func resetToInitialState() {
+    public func resetToInitialState() {
         partialDocuments.removeAll()
         analysisCancellationToken = nil
         document = nil
     }
     
-    func update(imageDocument: GiniImageDocument) {
+    public func update(imageDocument: GiniImageDocument) {
         partialDocuments[imageDocument.id]?.info.rotationDelta = imageDocument.rotationDelta
     }
     
-    func sendFeedback(with updatedExtractions: [Extraction]) {
+    public func sendFeedback(with updatedExtractions: [Extraction]) {
         Log(message: "Sending feedback", event: "💬")
         guard let document = document else {
             Log(message: "Cannot send feedback: no document", event: .error)
@@ -80,14 +80,14 @@ final class DocumentService: DocumentServiceProtocol {
         }
     }
     
-    func sortDocuments(withSameOrderAs documents: [GiniCaptureDocument]) {
+    public func sortDocuments(withSameOrderAs documents: [GiniCaptureDocument]) {
         for index in 0..<documents.count {
             let id = documents[index].id
             partialDocuments[id]?.order = index
         }
     }
     
-    func upload(document: GiniCaptureDocument,
+    public func upload(document: GiniCaptureDocument,
                 completion: UploadDocumentCompletion?) {
         self.partialDocuments[document.id] =
             PartialDocument(info: (PartialDocumentInfo(document: nil, rotationDelta: 0)),

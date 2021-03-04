@@ -38,7 +38,7 @@ import Foundation
     lazy var extractedParameters: [String: String] = QRCodesExtractor
         .extractParameters(from: self.scannedString, withFormat: self.qrCodeFormat)
     fileprivate let epc06912LinesCount = 12
-    lazy var qrCodeFormat: QRCodesFormat? = {
+    public lazy var qrCodeFormat: QRCodesFormat? = {
         if self.scannedString.starts(with: "bank://") {
             return .bezahl
         } else if self.scannedString.starts(with: "epspayment://") {

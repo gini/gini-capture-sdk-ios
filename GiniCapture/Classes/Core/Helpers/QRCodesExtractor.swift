@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum QRCodesFormat {
+public enum QRCodesFormat {
     case epc06912
     case eps4mobile
     case bezahl
 }
 
-final class QRCodesExtractor {
+public final class QRCodesExtractor {
     
     static let epsCodeUrlKey = "epsPaymentQRCodeUrl"
     

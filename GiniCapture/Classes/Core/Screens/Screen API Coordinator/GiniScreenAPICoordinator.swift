@@ -26,7 +26,7 @@ public class GiniScreenAPICoordinator: NSObject, Coordinator {
     }()
     
     // Tracking
-    weak var trackingDelegate: GiniCaptureTrackingDelegate?
+    public weak var trackingDelegate: GiniCaptureTrackingDelegate?
     
     // Screens
     var analysisViewController: AnalysisViewController?
@@ -41,9 +41,9 @@ public class GiniScreenAPICoordinator: NSObject, Coordinator {
     }()
     
     // Properties
-    fileprivate(set) var giniConfiguration: GiniConfiguration
-    fileprivate(set) var pages: [GiniCapturePage] = []
-    weak var visionDelegate: GiniCaptureDelegate?
+    public var giniConfiguration: GiniConfiguration
+    public var pages: [GiniCapturePage] = []
+    public weak var visionDelegate: GiniCaptureDelegate?
     
     // When there was an error uploading a document or analyzing it and the analysis screen
     // had not been initialized yet, both the error message and action has to be saved to show in the analysis screen.
@@ -92,14 +92,14 @@ public class GiniScreenAPICoordinator: NSObject, Coordinator {
                                     comment: "Button title in the navigation bar for the back button on the help screen",
                                     configEntry: self.giniConfiguration.navigationBarHelpScreenTitleBackToMenuButton)
     
-    init(withDelegate delegate: GiniCaptureDelegate?,
+    public init(withDelegate delegate: GiniCaptureDelegate?,
          giniConfiguration: GiniConfiguration) {
         self.visionDelegate = delegate
         self.giniConfiguration = giniConfiguration
         super.init()
     }
     
-    func start(withDocuments documents: [GiniCaptureDocument]?) -> UIViewController {
+    public func start(withDocuments documents: [GiniCaptureDocument]?) -> UIViewController {
         let viewControllers: [UIViewController]
         
         if let documents = documents, !documents.isEmpty {
