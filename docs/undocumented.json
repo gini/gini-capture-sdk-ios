@@ -1079,6 +1079,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/QRCodesExtractor.swift",
+      "line": 18,
+      "symbol": "QRCodesExtractor.epsCodeUrlKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Logger.swift",
       "line": 33,
       "symbol": "GiniLogger",
@@ -1537,6 +1544,13 @@
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Models/GiniQRCodeDocument.swift",
       "line": 30,
       "symbol": "GiniQRCodeDocument.isImported",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Models/GiniQRCodeDocument.swift",
+      "line": 38,
+      "symbol": "GiniQRCodeDocument.extractedParameters",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -2781,6 +2795,13 @@
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Networking/AccountingDocumentService.swift",
+      "line": 17,
+      "symbol": "AccountingDocumentService.init(lib:metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Networking/AccountingDocumentService.swift",
       "line": 22,
       "symbol": "AccountingDocumentService.cancelAnalysis()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
@@ -2889,6 +2910,13 @@
       "line": 16,
       "symbol": "DocumentService.metadata",
       "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Networking/DocumentService.swift",
+      "line": 19,
+      "symbol": "DocumentService.init(lib:metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
