@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIDevice {
+public extension UIDevice {
     var isIpad: Bool {
         return self.userInterfaceIdiom == .pad
     }
