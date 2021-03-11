@@ -1023,6 +1023,76 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 10,
+      "symbol": "OnboardingStrings",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 12,
+      "symbol": "OnboardingStrings.onboardingFirstPageText",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 12,
+      "symbol": "OnboardingStrings.onboardingFourthPageText",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 12,
+      "symbol": "OnboardingStrings.onboardingSecondPageText",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 12,
+      "symbol": "OnboardingStrings.onboardingThirdPageText",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 13,
+      "symbol": "OnboardingStrings.onboardingFifthPageText",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 15,
+      "symbol": "OnboardingStrings.tableName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 19,
+      "symbol": "OnboardingStrings.tableEntry",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 34,
+      "symbol": "OnboardingStrings.isCustomizable",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/Localization/String Resources/OnboardingStrings.swift",
+      "line": 42,
+      "symbol": "OnboardingStrings.fallbackTableEntry",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Helpers/PreferredButtonResource.swift",
       "line": 12,
       "symbol": "PreferredButtonResource",
@@ -1090,6 +1160,13 @@
       "line": 33,
       "symbol": "GiniLogger",
       "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Logger.swift",
+      "line": 44,
+      "symbol": "DefaultLogger",
+      "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
