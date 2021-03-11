@@ -41,9 +41,9 @@ func Log(message: String,
     func log(message: String)
 }
 
-final class DefaultLogger: GiniLogger {
+public final class DefaultLogger: GiniLogger {
     
-    func log(message: String) {
+    public func log(message: String) {
         let prefix = "[ GiniCapture ]"
         
         // When having the `OS_ACTIVITY_MODE` disabled, NSLog messages are not printed

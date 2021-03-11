@@ -7,16 +7,16 @@
 
 import Foundation
 
-enum OnboardingStrings: LocalizableStringResource {
+public enum OnboardingStrings: LocalizableStringResource {
     
     case onboardingFirstPageText, onboardingSecondPageText, onboardingThirdPageText, onboardingFourthPageText,
     onboardingFifthPageText
     
-    var tableName: String {
+    public var tableName: String {
         return "onboarding"
     }
     
-    var tableEntry: LocalizationEntry {
+    public var tableEntry: LocalizationEntry {
         switch self {
         case .onboardingFirstPageText:
             return ("firstPage", "Text on the first page of the onboarding screen")
@@ -31,7 +31,7 @@ enum OnboardingStrings: LocalizableStringResource {
         }
     }
     
-    var isCustomizable: Bool {
+    public var isCustomizable: Bool {
         switch self {
         case .onboardingFirstPageText, .onboardingSecondPageText, .onboardingThirdPageText, .onboardingFourthPageText,
              .onboardingFifthPageText:
@@ -39,7 +39,7 @@ enum OnboardingStrings: LocalizableStringResource {
         }
     }
     
-    var fallbackTableEntry: String {
+    public var fallbackTableEntry: String {
         switch self {
         default:
             return ""
