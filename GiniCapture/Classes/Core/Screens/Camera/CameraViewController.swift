@@ -154,7 +154,8 @@ import AVFoundation
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setStatusBarStyle(to: giniConfiguration.statusBarStyle)
-        self.cameraButtonsViewController.captureButton.isEnabled = true
+        cameraButtonsViewController.captureButton.isEnabled = true
+        cameraButtonsViewController.captureButton.isUserInteractionEnabled = true
     }
     
     public override func viewDidAppear(_ animated: Bool) {
