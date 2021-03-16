@@ -154,6 +154,8 @@ import AVFoundation
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setStatusBarStyle(to: giniConfiguration.statusBarStyle)
+        cameraButtonsViewController.captureButton.isEnabled = true
+        cameraButtonsViewController.captureButton.isUserInteractionEnabled = true
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -277,6 +279,8 @@ extension CameraViewController {
                 completion?()
             })
         })
+        cameraButtonsViewController.captureButton.isEnabled = true
+        cameraButtonsViewController.captureButton.isUserInteractionEnabled = true
     }
     
     /**
@@ -344,6 +348,7 @@ extension CameraViewController {
         imageView.layer.shadowOffset = CGSize(width: -2, height: 2)
         imageView.layer.shadowRadius = 4
         imageView.layer.shadowOpacity = 0.3
+        imageView.layer.shadowPath = UIBezierPath(rect: imageView.bounds).cgPath
         
         return imageView
     }
@@ -458,6 +463,7 @@ extension CameraViewController {
             guard let self = self else { return }
             self.opaqueView?.removeFromSuperview()
             self.cameraButtonsViewController.captureButton.isEnabled = true
+            self.cameraButtonsViewController.captureButton.isUserInteractionEnabled = true
         }
     }
 }
