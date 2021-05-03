@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'GiniCapture'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'Computer Vision Library for scanning documents.'
 
   s.description      = <<-DESC
@@ -17,7 +17,7 @@ The Gini Capture SDK for iOS provides functionality to capture documents with mo
   s.source           = { :git => 'https://github.com/gini/gini-capture-sdk-ios.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/gini'
   s.swift_version    = '5.0'
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '10.2'
   
   s.default_subspec = 'Core'
 
