@@ -11,7 +11,7 @@ import GiniPayApiLib
 public typealias UploadDocumentCompletion = (Result<Document, GiniError>) -> Void
 public typealias AnalysisCompletion = (Result<ExtractionResult, GiniError>) -> Void
 
-public protocol DocumentServiceProtocol: class {
+public protocol DocumentServiceProtocol: AnyObject {
     
     var document: Document? { get set }
     var metadata: Document.Metadata? { get }
