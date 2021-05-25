@@ -10,7 +10,7 @@ import Foundation
 import GiniCapture
 import GiniPayApiLib
 
-protocol ComponentAPICoordinatorDelegate: class {
+protocol ComponentAPICoordinatorDelegate: AnyObject {
     func componentAPI(coordinator: ComponentAPICoordinator, didFinish:())
 }
 

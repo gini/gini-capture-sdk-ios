@@ -11,7 +11,7 @@ import GiniPayApiLib
 /**
  The GiniCaptureResultsDelegate protocol defines methods that allow you to handle the analysis result.
  */
-@objc public protocol GiniCaptureResultsDelegate: class {
+@objc public protocol GiniCaptureResultsDelegate: AnyObject {
     
     /**
      Called when the analysis finished with results

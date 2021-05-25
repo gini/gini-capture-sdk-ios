@@ -1,4 +1,6 @@
-![Gini Capture SDK for iOS](img/GiniCapture_Logo.png)
+<p align="center">
+<img src="img/logo.png" width="250">
+</p>
 
 # Gini Capture SDK for iOS
 
