@@ -12,7 +12,7 @@ import Foundation
  * Document processed by the _GiniCapture_ library.
  */
 
-@objc public protocol GiniCaptureDocument: class {
+@objc public protocol GiniCaptureDocument: AnyObject {
     var type: GiniCaptureDocumentType { get }
     var data: Data { get }
     var id: String { get }

@@ -11,7 +11,7 @@ import UIKit
 import GiniCapture
 import GiniPayApiLib
 
-protocol ScreenAPICoordinatorDelegate: class {
+protocol ScreenAPICoordinatorDelegate: AnyObject {
     func screenAPI(coordinator: ScreenAPICoordinator, didFinish:())
 }
 

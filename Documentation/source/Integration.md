@@ -3,7 +3,7 @@ Integration
 
 The Gini Capture SDK provides two integration options. A [Screen API](#screen-api) that is easy to implement and a more complex, but also more flexible [Component API](#component-api). Both APIs can access the complete functionality of the SDK.
 
-**Note**: Irrespective of the option you choose if you want to support **iOS 10** you need to specify the `NSCameraUsageDescription` key in your `Info.plist` file. This key is mandatory for all apps since iOS 10 when using the `Camera` framework. Also if you're using the [Gini iOS SDK](https://github.com/gini/gini-sdk-ios) you need to add support for "Keychain Sharing" in your entitlements by adding a `keychain-access-groups` value to your entitlements file. For more information see the [Integration Guide](http://developer.gini.net/gini-sdk-ios/docs/guides/getting-started.html#integrating-the-gini-sdk) of the Gini iOS SDK.
+**Note**: Irrespective of the option you choose if you want to support **iOS 10** you need to specify the `NSCameraUsageDescription` key in your `Info.plist` file. This key is mandatory for all apps since iOS 10 when using the `Camera` framework. Also if you're using the [Gini Pay Api Library](https://github.com/gini/gini-pay-api-lib-ios) you need to add support for "Keychain Sharing" in your entitlements by adding a `keychain-access-groups` value to your entitlements file. For more information see the [Integration Guide](https://developer.gini.net/gini-pay-api-lib-ios/docs/getting-started.html) of the Gini Pay Api Library.
 
 ## Screen API
 
@@ -11,7 +11,7 @@ The Screen API provides a custom `UIViewController` object, which can be present
 The Screen API, in turn, offers two different ways of implementation:
 
 #### UI with Networking (Recommended)
-Using this method you don't need to care about handling the analysis process with the [Gini API SDK](https://github.com/gini/gini-sdk-ios), you only need to provide your API credentials and a delegate to get the analysis results.
+Using this method you don't need to care about handling the analysis process with the [Gini Pay Api Library](https://github.com/gini/gini-pay-api-lib-ios), you only need to provide your API credentials and a delegate to get the analysis results.
 
 ```swift
 let viewController = GiniCapture.viewController(withClient: client,
@@ -21,7 +21,7 @@ let viewController = GiniCapture.viewController(withClient: client,
 present(viewController, animated: true, completion:nil)
 ```
 
-Optionally if you want to use _Certificate pinning_, provide metadata for the upload process or use the [Accounting API](https://accounting-api.gini.net/documentation/), you can pass both your public key pinning configuration (see [TrustKit repo](https://github.com/datatheorem/TrustKit) for more information), the metadata information and the _API type_ (the [Gini API](http://developer.gini.net/gini-api/html/index.html) is used by default) as follows:
+Optionally if you want to use _Certificate pinning_, provide metadata for the upload process, you can pass both your public key pinning configuration (see [TrustKit repo](https://github.com/datatheorem/TrustKit) for more information), the metadata information and the _API type_ (the [Gini Pay API](https://pay-api.gini.net/documentation/#gini-pay-api-documentation-v1-0) is used by default) as follows:
 
 ```swift
 import TrustKit
@@ -49,7 +49,7 @@ let viewController = GiniCapture.viewController(withClient: client,
                                                resultsDelegate: resultsDelegate,
                                                publicKeyPinningConfig: yourPublicPinningConfig,
                                                documentMetadata: documentMetadata,
-                                               api: .accounting)
+                                               api: .default)
 
 present(viewController, animated: true, completion:nil)
 ```
@@ -57,12 +57,12 @@ present(viewController, animated: true, completion:nil)
 
 > ⚠️  **Important**
 > - The document metadata for the upload process is intended to be used for reporting.
-> - The multipage is supported only by the `.default` api, not the `.accounting` api. The `GiniConfiguration.multipageEnabled` property must not be `true` if you use the `.accounting` api.
+> - The multipage is supported only by the `.default` api.
 
 
 #### Only UI
 
-In case that you decide to use only the UI and to handle all the analysis process (either using the [Gini API SDK](https://github.com/gini/gini-sdk-ios) or with your own implementation of the API), just get the `UIViewController` as follows:
+In case that you decide to use only the UI and to handle all the analysis process (either using the [Gini Pay Api Library](https://github.com/gini/gini-pay-api-lib-ios) or with your own implementation of the API), just get the `UIViewController` as follows:
 
 ```swift
 let viewController = GiniCapture.viewController(withDelegate: self,
