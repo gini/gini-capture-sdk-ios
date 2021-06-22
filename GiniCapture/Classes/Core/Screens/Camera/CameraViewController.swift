@@ -235,28 +235,6 @@ extension CameraViewController {
     public func hideFileImportTip() {
         self.toolTipView?.alpha = 0
     }
-    
-    /**
-     Show the QR code Tip. Should be called when fileImportTip is dismissed.
-     */
-    public func showQrCodeTip() {
-        if ToolTipView.shouldShowQRCodeToolTip {
-            createQRCodeTip(giniConfiguration: giniConfiguration)
-            self.toolTipView?.show {
-                self.opaqueView?.alpha = 1
-                self.cameraButtonsViewController.captureButton.isEnabled = false
-            }
-            ToolTipView.shouldShowQRCodeToolTip = false
-        }
-    }
-    
-    /**
-     Hide the QR code Tip. Should be called when onboarding is presented.
-     */
-    public func hideQrCodeTip() {
-        self.toolTipView?.alpha = 0
-    }
-    
 }
 
 // MARK: - Image capture
