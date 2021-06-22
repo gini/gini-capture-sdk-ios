@@ -38,6 +38,7 @@
 "ginicapture.camera.fileImportButtonLabel" = "Importieren";
 "ginicapture.camera.capturedImagesStackLabel" = "Erfasste Dokumente";
 "ginicapture.camera.qrCodeDetectedPopup.message" = "QR verwenden?";
+"ginicapture.camera.unsupportedQrCodeDetectedPopup.message" = "Dieser QR-Code enthält keine Bezahlinformationen.";
 "ginicapture.camera.qrCodeDetectedPopup.buttonTitle" = "Hier geht’s weiter.";
 "ginicapture.camera.mixedarrayspopup.cancel" = "Abbrechen";
 "ginicapture.camera.mixedarrayspopup.usePhotos" = "Benutze Photos";
