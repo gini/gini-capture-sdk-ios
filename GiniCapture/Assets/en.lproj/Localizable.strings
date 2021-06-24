@@ -36,6 +36,7 @@
 "ginicapture.camera.documentValidationError.wrongFormat" = "Only files of the formats jpg, png, gif or pdf can be analysed";
 "ginicapture.camera.fileImportTip" = "Now documents can be conveniently uploaded for analysis.";
 "ginicapture.camera.fileImportButtonLabel" = "Import";
+"ginicapture.camera.qrCodeTip" = "Have you checked out the QR code scan yet?";
 "ginicapture.camera.capturedImagesStackLabel" = "Captured documents";
 "ginicapture.camera.qrCodeDetectedPopup.message" = "Use QR code?";
 "ginicapture.camera.unsupportedQrCodeDetectedPopup.message" = "This QR Code does not contain any payment information.";
@@ -99,6 +100,7 @@
 "ginicapture.help.supportedFormats.section.1.item.1" = "Computer-generated invoices and remittance slips";
 "ginicapture.help.supportedFormats.section.1.item.2" = "1-sided photos of format jpeg, png or gif";
 "ginicapture.help.supportedFormats.section.1.item.3" = "PDF documents of up to 10 pages";
+"ginicapture.help.supportedFormats.section.1.item.4" = "Supports QR Code Scan";
 "ginicapture.help.supportedFormats.section.2.title" = "What is not supported:";
 "ginicapture.help.supportedFormats.section.2.item.1" = "Handwriting";
 "ginicapture.help.supportedFormats.section.2.item.2" = "Photos of monitors or screens";
