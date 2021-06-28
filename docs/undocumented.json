@@ -1759,105 +1759,105 @@
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 143,
+      "line": 158,
       "symbol": "CameraViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 164,
+      "line": 163,
       "symbol": "CameraViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 171,
+      "line": 172,
       "symbol": "CameraViewController.viewDidAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 176,
+      "line": 177,
       "symbol": "CameraViewController.viewDidLayoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 183,
+      "line": 184,
       "symbol": "CameraViewController.viewWillTransition(to:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 197,
+      "line": 198,
       "symbol": "CameraViewController.setupCamera()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 204,
+      "line": 205,
       "symbol": "CameraViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 297,
+      "line": 301,
       "symbol": "CameraViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 430,
+      "line": 436,
       "symbol": "CameraViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 432,
+      "line": 438,
       "symbol": "CameraViewController.cameraDidSetUp(_:camera:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 439,
+      "line": 448,
       "symbol": "CameraViewController.cameraPreview(_:didDetect:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 455,
+      "line": 464,
       "symbol": "CameraViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 456,
+      "line": 465,
       "symbol": "CameraViewController.cameraButtons(_:didTapOn:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 493,
+      "line": 502,
       "symbol": "CameraViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Camera/CameraViewController.swift",
-      "line": 494,
+      "line": 503,
       "symbol": "CameraViewController.addValidationLoadingView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -2536,21 +2536,21 @@
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Screen API Coordinator/GiniScreenAPICoordinator+Camera.swift",
-      "line": 154,
+      "line": 160,
       "symbol": "GiniScreenAPICoordinator.showNextScreenAfterPicking(pages:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Screen API Coordinator/GiniScreenAPICoordinator+Camera.swift",
-      "line": 287,
+      "line": 293,
       "symbol": "GiniScreenAPICoordinator.uploadDidComplete(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Screen API Coordinator/GiniScreenAPICoordinator+Camera.swift",
-      "line": 294,
+      "line": 300,
       "symbol": "GiniScreenAPICoordinator.uploadDidFail(for:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -2718,16 +2718,16 @@
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Screen API Coordinator/GiniScreenAPICoordinator.swift",
-      "line": 179,
-      "symbol": "GiniScreenAPICoordinator",
-      "symbol_kind": "source.lang.swift.decl.extension",
+      "line": 184,
+      "symbol": "GiniScreenAPICoordinator.update(_:withError:isUploaded:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Screen API Coordinator/GiniScreenAPICoordinator.swift",
-      "line": 184,
-      "symbol": "GiniScreenAPICoordinator.update(_:withError:isUploaded:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "line": 185,
+      "symbol": "GiniScreenAPICoordinator",
+      "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
@@ -2802,7 +2802,7 @@
     },
     {
       "file": "/Users/mobilecd/.jenkins/workspace/gini_gini-capture-sdk-ios_master/GiniCapture/Classes/Core/Screens/Screen API Coordinator/GiniScreenAPICoordinator.swift",
-      "line": 286,
+      "line": 292,
       "symbol": "GiniScreenAPICoordinator",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
