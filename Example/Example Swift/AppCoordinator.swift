@@ -46,6 +46,9 @@ final class AppCoordinator: Coordinator {
             }
             return CustomDocumentValidationResult.success()
         }
+        giniConfiguration.hasCustomMenuItems = true
+        
+        giniConfiguration.customMenuItems = [HelpMenuViewController.MenuItem(title: "Custom menu item", viewController: CustomMenuItemViewController())]
         return giniConfiguration
     }()
     
