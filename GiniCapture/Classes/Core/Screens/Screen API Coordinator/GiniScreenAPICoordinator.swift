@@ -238,9 +238,9 @@ extension GiniScreenAPICoordinator {
                                                    selector: #selector(back),
                                                    position: .left,
                                                    target: self)
-        if helpMenuViewController.items.count == 1 {
+        if helpMenuViewController.menuItems.count == 1 {
             screenAPINavigationController
-                .pushViewController(helpItemViewController(for: helpMenuViewController.items[0]),
+                .pushViewController(helpItemViewController(for: helpMenuViewController.menuItems[0]),
                                     animated: true)
         } else {
             screenAPINavigationController
@@ -321,26 +321,26 @@ extension GiniScreenAPICoordinator: UINavigationControllerDelegate {
 // MARK: - HelpMenuViewControllerDelegate
 
 extension GiniScreenAPICoordinator: HelpMenuViewControllerDelegate {
-    public func help(_ menuViewController: HelpMenuViewController, didSelect item: HelpMenuViewController.Item) {
+    public func help(_ menuViewController: HelpMenuViewController, didSelect item: HelpMenuViewController.MenuItem) {
         screenAPINavigationController.pushViewController(helpItemViewController(for: item),
                                                          animated: true)
     }
     
-    func helpItemViewController(for item: HelpMenuViewController.Item) -> UIViewController {
+    func helpItemViewController(for item: HelpMenuViewController.MenuItem) -> UIViewController {
         var viewController: UIViewController
-        switch item {
-        case .noResultsTips:
+        if item.presentationMode == .noResultsTips {
+
             let imageNoResultViewController = item.viewController as? ImageAnalysisNoResultsViewController
             imageNoResultViewController?.didTapBottomButton = { [weak self] in
                 guard let self = self, let cameraViewController = self.cameraViewController else { return }
                 self.screenAPINavigationController.popToViewController(cameraViewController, animated: true)
             }
-            
             viewController = imageNoResultViewController!
-        case .openWithTutorial, .supportedFormats:
+
+        } else {
             viewController = item.viewController
         }
-        
+
         viewController.setupNavigationItem(usingResources: backToHelpMenuButtonResource,
                                            selector: #selector(back),
                                            position: .left,

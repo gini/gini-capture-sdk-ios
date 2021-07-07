@@ -623,6 +623,16 @@ import UIKit
      */
     @objc public var shouldShowDragAndDropTutorial = true
     
+    /**
+     Sets if the custom help menu items should be added on the help menu screen
+     */
+    @objc public var hasCustomMenuItems = false
+
+    /**
+     Set an array of additional custom help menu items . Those items will be presented as table view cells on the help menu screen. By selecting the cell the user will be redirected to the page, which represented by viewController provided by customer during the  `HelpMenuViewController.MenuItem` initialization.
+    */
+    @objc public var customMenuItems: [HelpMenuViewController.MenuItem] = []
+    
     // Undocumented--Xamarin only
     @objc public var closeButtonResource: PreferredButtonResource?
     @objc public var helpButtonResource: PreferredButtonResource?
