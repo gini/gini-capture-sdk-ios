@@ -303,3 +303,8 @@ Some background and text colors use the `GiniColor` type with which you can set 
 ##### 3. Background
 
 - Background color &#8594; `GiniConfiguration.helpScreenBackgroundColor` using `GiniColor` with dark mode and light mode colors
+
+##### 4. Additional help menu items
+
+- Custom help menu items &#8594; `GiniConfiguration.customMenuItems` an array of `MenuItem` objects
+**Note**: Custom help menu items will be added to the help menu screen only if `GiniConfiguration.hasCustomMenuItems` set  `true`.
