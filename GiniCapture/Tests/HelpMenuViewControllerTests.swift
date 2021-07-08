@@ -34,6 +34,12 @@ final class HelpMenuViewControllerTests: XCTestCase {
                                             comment: "help menu second item text"), 2))
         }
         
+        if GiniConfiguration.shared.customMenuItems.count > 0 {
+            for customItem in GiniConfiguration.shared.customMenuItems{
+                items.append((customItem.title, 0))
+            }
+        }
+        
         return items
     }
     
@@ -54,7 +60,7 @@ final class HelpMenuViewControllerTests: XCTestCase {
         _ = helpMenuViewController.view
         
         let itemsCount = items.count
-        let tableRowsCount = helpMenuViewController.tableView.numberOfRows(inSection: 0)
+        let tableRowsCount = helpMenuViewController.menuItems.count
         
         XCTAssertEqual(itemsCount, tableRowsCount, "items count should be equal to the datasource items count")
     }
@@ -66,7 +72,7 @@ final class HelpMenuViewControllerTests: XCTestCase {
         _ = helpMenuViewController.view
         
         let itemsCount = items.count
-        let tableRowsCount = helpMenuViewController.tableView.numberOfRows(inSection: 0)
+        let tableRowsCount = helpMenuViewController.menuItems.count
         
         XCTAssertEqual(itemsCount, tableRowsCount, "items count should be equal to the datasource items count")
     }
@@ -78,14 +84,14 @@ final class HelpMenuViewControllerTests: XCTestCase {
         _ = helpMenuViewController.view
         
         let itemsCount = items.count
-        let tableRowsCount = helpMenuViewController.tableView.numberOfRows(inSection: 0)
+        let tableRowsCount = helpMenuViewController.menuItems.count
         
         XCTAssertEqual(itemsCount, tableRowsCount, "items count should be equal to the datasource items count")
     }
     
     func testCellContent() {
         let indexPath = IndexPath(row: 0, section: 0)
-        let itemText = helpMenuViewController.items[indexPath.row].title
+        let itemText = helpMenuViewController.menuItems[indexPath.row].title
         let cellAccesoryType = UITableViewCell.AccessoryType.disclosureIndicator
         
         let cell = helpMenuViewController.tableView(helpMenuViewController.tableView, cellForRowAt: indexPath)
