@@ -16,8 +16,6 @@ The Gini Capture SDK components can be customized either through the `GiniConfig
 - [Help screen](#help-screen)
 
 
-Customizable assets can be found in [the Assets repo](https://github.com/gini/gini-vision-lib-assets).
-
 ## Supporting dark mode
 
 Some background and text colors use the `GiniColor` type with which you can set colors for dark and light modes. Please make sure to set contrasting images to the background colors in your `.xcassets` for the Gini Vision Library images you override (e.g. `onboardingPage1`). The text colors should also be set in contrast to the background colors.
