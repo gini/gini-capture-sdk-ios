@@ -238,9 +238,9 @@ extension GiniScreenAPICoordinator {
                                                    selector: #selector(back),
                                                    position: .left,
                                                    target: self)
-        if helpMenuViewController.items.count == 1 {
+        if helpMenuViewController.menuItems.count == 1 {
             screenAPINavigationController
-                .pushViewController(helpItemViewController(for: helpMenuViewController.items[0]),
+                .pushViewController(helpItemViewController(for: helpMenuViewController.menuItems[0]),
                                     animated: true)
         } else {
             screenAPINavigationController
@@ -339,6 +339,8 @@ extension GiniScreenAPICoordinator: HelpMenuViewControllerDelegate {
             viewController = imageNoResultViewController!
         case .openWithTutorial, .supportedFormats:
             viewController = item.viewController
+        case .custom(_, let customViewController):
+            viewController = customViewController
         }
         
         viewController.setupNavigationItem(usingResources: backToHelpMenuButtonResource,

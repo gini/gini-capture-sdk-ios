@@ -34,6 +34,7 @@ final public class HelpMenuViewController: UITableViewController {
         case noResultsTips
         case openWithTutorial
         case supportedFormats
+        case custom(String, UIViewController)
         
         var title: String {
             switch self {
@@ -43,6 +44,8 @@ final public class HelpMenuViewController: UITableViewController {
                 return .localized(resource: HelpStrings.menuSecondItemText)
             case .supportedFormats:
                 return .localized(resource: HelpStrings.menuThirdItemText)
+            case .custom(let title, _):
+                return title
             }
         }
         
@@ -60,25 +63,27 @@ final public class HelpMenuViewController: UITableViewController {
                 viewController = OpenWithTutorialViewController()
             case .supportedFormats:
                 viewController = SupportedFormatsViewController()
+            case .custom(_, let customViewController):
+                viewController = customViewController
             }
-            
             return viewController
             
         }
     }
-    
-    lazy var items: [Item] = {
-        var items: [Item] = [ .noResultsTips]
+    lazy var menuItems: [Item] = []
+
+    lazy var defaultItems: [Item] = {
+        var defaultItems: [Item] = [ .noResultsTips]
         
         if giniConfiguration.shouldShowSupportedFormatsScreen {
-            items.append(.supportedFormats)
+            defaultItems.append(.supportedFormats)
         }
         
         if giniConfiguration.openWithEnabled {
-            items.append(.openWithTutorial)
+            defaultItems.append(.openWithTutorial)
         }
         
-        return items
+        return defaultItems
     }()
     
     public init(giniConfiguration: GiniConfiguration) {
@@ -90,10 +95,12 @@ final public class HelpMenuViewController: UITableViewController {
         fatalError("init(giniConfiguration:) has not been implemented")
     }
     
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        
-        title = .localized(resource: HelpStrings.menuTitle)
+    func configureMenuItems() {
+        menuItems.append(contentsOf: defaultItems)
+        menuItems.append(contentsOf: giniConfiguration.customMenuItems)
+    }
+    
+    fileprivate func configureTableView() {
         tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: helpMenuCellIdentifier)
         tableView.rowHeight = tableRowHeight
@@ -104,6 +111,18 @@ final public class HelpMenuViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
+    }
+    
+    fileprivate func configureMainView() {
+        title = .localized(resource: HelpStrings.menuTitle)
+    }
+    
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureMainView()
+        configureTableView()
+        configureMenuItems()
     }
     
     @objc func back() {
@@ -120,13 +139,13 @@ extension HelpMenuViewController {
     }
     
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return menuItems.count
     }
     
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: helpMenuCellIdentifier, for: indexPath)
         cell.backgroundColor = UIColor.from(giniColor: giniConfiguration.helpScreenCellsBackgroundColor)
-        cell.textLabel?.text = items[indexPath.row].title
+        cell.textLabel?.text = menuItems[indexPath.row].title
         cell.textLabel?.font = giniConfiguration.customFont.with(weight: .regular, size: 14, style: .body)
         cell.accessoryType = .disclosureIndicator
         
@@ -134,7 +153,7 @@ extension HelpMenuViewController {
     }
     
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
+        let item = menuItems[indexPath.row]
         
         guard delegate == nil else {
             delegate?.help(self, didSelect: item)
