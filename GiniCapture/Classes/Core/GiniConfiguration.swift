@@ -628,6 +628,11 @@ import UIKit
     */
     public var customMenuItems: [HelpMenuViewController.Item] = []
     
+    /**
+     Sets if the default error logging implementation is on
+     */
+    @objc public var giniErrorLoggerIsOn = true
+            
     // Undocumented--Xamarin only
     @objc public var closeButtonResource: PreferredButtonResource?
     @objc public var helpButtonResource: PreferredButtonResource?
