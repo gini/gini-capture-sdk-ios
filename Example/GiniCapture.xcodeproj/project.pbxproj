@@ -938,7 +938,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 1.0.5;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = net.gini.ios.ginicapture.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1209,7 +1209,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 1.0.5;
 				MODULE_NAME = ExampleApp;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = net.gini.ios.ginicapture.dev;
@@ -1237,7 +1237,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 1.0.5;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.gini.ios.ginicapture.in-house";
 				PRODUCT_NAME = "$(TARGET_NAME)";
