@@ -8,17 +8,25 @@
 import UIKit
 import GiniPayApiLib
 
-public final class DocumentService: DocumentServiceProtocol {
+public final class DocumentService: DocumentServiceProtocol, GiniCaptureErrorLoggerDelegate {
+    
+    public func postGiniErrorLog(error: ErrorLog) {
+        print("Error logged: \(error)")
+    }
+    
     
     var partialDocuments: [String: PartialDocument] = [:]
     public var document: Document?
     public var analysisCancellationToken: CancellationToken?
     public var metadata: Document.Metadata?
     var documentService: DefaultDocumentService
+    private var errorLoggerDelegate : GiniCaptureErrorLoggerDelegate?
+
     
     public init(lib: GiniApiLib, metadata: Document.Metadata?) {
         self.metadata = metadata
         self.documentService = lib.documentService()
+        self.errorLoggerDelegate = self
     }
     
     public func startAnalysis(completion: @escaping AnalysisCompletion) {
@@ -64,7 +72,12 @@ public final class DocumentService: DocumentServiceProtocol {
     public func sendFeedback(with updatedExtractions: [Extraction]) {
         Log(message: "Sending feedback", event: "💬")
         guard let document = document else {
-            Log(message: "Cannot send feedback: no document", event: .error)
+            let message = "Cannot send feedback: no document"
+            Log(message: message, event: .error)
+            if GiniConfiguration.shared.giniErrorLoggerIsOn {
+                let errorLog = ErrorLog(description: message)
+                self.errorLoggerDelegate?.postGiniErrorLog(error: errorLog)
+            }
             return
         }
         documentService.submitFeedback(for: document, with: updatedExtractions) { result in
@@ -75,8 +88,11 @@ public final class DocumentService: DocumentServiceProtocol {
             case .failure(let error):
                 let message = "Error sending feedback for document with id: \(document.id) error: \(error)"
                 Log(message: message, event: .error)
+                if GiniConfiguration.shared.giniErrorLoggerIsOn {
+                    let errorLog = ErrorLog(description: message)
+                    self.errorLoggerDelegate?.postGiniErrorLog(error: errorLog)
+                }
             }
-            
         }
     }
     
@@ -104,6 +120,10 @@ public final class DocumentService: DocumentServiceProtocol {
                 completion?(.success(createdDocument))
             case .failure(let error):
                 completion?(.failure(error))
+                if GiniConfiguration.shared.giniErrorLoggerIsOn {
+                    let errorLog = ErrorLog(description: "Upload was failed for document \(document.id) with error: \(error.localizedDescription)")
+                    self.errorLoggerDelegate?.postGiniErrorLog(error: errorLog)
+                }
             }
         }
     }
@@ -116,24 +136,27 @@ fileprivate extension DocumentService {
                         fileName: String,
                         docType: Document.DocType? = nil,
                         completion: @escaping UploadDocumentCompletion) {
-        Log(message: "Creating document...", event: "📝")
-        
-        documentService.createDocument(fileName: fileName,
-                                       docType: docType,
-                                       type: .partial(document.data),
-                                       metadata: metadata) { result in
-                                        switch result {
-                                        case .success(let createdDocument):
-                                            Log(message: "Created document with id: \(createdDocument.id) " +
-                                                "for vision document \(document.id)", event: "📄")
-                                            completion(.success(createdDocument))
-                                        case .failure(let error):
-                                            Log(message: "Document creation failed", event: .error)
-                                            
-                                            completion(.failure(error))
-                                        }
-                                        
-        }
+                            Log(message: "Creating document...", event: "📝")
+
+                            documentService.createDocument(fileName: fileName,
+                                                           docType: docType,
+                                                           type: .partial(document.data),
+                                                           metadata: metadata) { result in
+                                switch result {
+                                case let .success(createdDocument):
+                                    Log(message: "Created document with id: \(createdDocument.id) " +
+                                        "for vision document \(document.id)", event: "📄")
+                                    completion(.success(createdDocument))
+                                case let .failure(error):
+                                    Log(message: "Document creation failed", event: .error)
+
+                                    completion(.failure(error))
+                                    if GiniConfiguration.shared.giniErrorLoggerIsOn {
+                                        let errorLog = ErrorLog(description: "Document creation failed with error: \(error.localizedDescription)")
+                                        self.errorLoggerDelegate?.postGiniErrorLog(error: errorLog)
+                                    }
+                                }
+                            }
     }
     
     func delete(_ document: Document) {
@@ -142,10 +165,15 @@ fileprivate extension DocumentService {
             case .success:
                 Log(message: "Deleted \(document.sourceClassification.rawValue) document with id: \(document.id)",
                     event: "🗑")
-            case .failure:
+            case .failure(let error):
                 Log(message: "Error deleting \(document.sourceClassification.rawValue) document with" +
                     " id: \(document.id)",
                     event: .error)
+                if GiniConfiguration.shared.giniErrorLoggerIsOn {
+                    let errorLog = ErrorLog(description: "Deleting \(document.sourceClassification.rawValue) document with id \(document.id) finisher with error \(error.localizedDescription)")
+                    self.errorLoggerDelegate?.postGiniErrorLog(error: errorLog)
+                }
+                
             }
         }
     }
@@ -174,6 +202,10 @@ fileprivate extension DocumentService {
                                 case .failure(let error):
                                     Log(message: "Composite document creation failed", event: .error)
                                     completion(.failure(error))
+                                    if GiniConfiguration.shared.giniErrorLoggerIsOn {
+                                        let errorLog = ErrorLog(description: "Composite document creation failed with error: \(error.localizedDescription)")
+                                        self.errorLoggerDelegate?.postGiniErrorLog(error: errorLog)
+                                    }
                                 }
         }
         
