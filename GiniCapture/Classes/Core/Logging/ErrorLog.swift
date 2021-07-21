@@ -9,11 +9,11 @@ import Foundation
 import GiniPayApiLib
 public struct ErrorLog {
     
-    public var deviceModel: String = UIDevice.current.localizedModel
+    public var deviceModel: String = UIDevice.current.model
     public var osName: String = UIDevice.current.systemName
     public var osVersion: String = UIDevice.current.systemVersion
     public var captureVersion: String = GiniCapture.versionString
-    public var apiLibVersion: String = GiniPayApiLib.Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+    public var apiLibVersion: String = Bundle(identifier: "org.cocoapods.GiniPayApiLib")?.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     public var description: String
     
     enum CodingKeys: String, CodingKey {
