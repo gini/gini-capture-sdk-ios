@@ -193,7 +193,8 @@ public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
                                                          giniConfiguration: GiniConfiguration.shared)
         screenCoordinator.trackingDelegate = trackingDelegate
         if GiniConfiguration.shared.giniErrorLoggerIsOn {
-            screenCoordinator.errorLoggerDelegate = errorLoggerDelegate
+            let customDelegate = GiniConfiguration.shared.customGiniErrorLoggerDelegate
+            screenCoordinator.errorLoggerDelegate = (customDelegate != nil) ? customDelegate : errorLoggerDelegate
         }
         return screenCoordinator.start(withDocuments: importedDocuments)
     }
