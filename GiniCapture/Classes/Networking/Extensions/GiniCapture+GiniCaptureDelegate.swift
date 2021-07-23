@@ -21,7 +21,8 @@ extension GiniCapture {
      - parameter api: The Gini backend API to use. Supply .custom("domain") in order to specify a custom domain.
      - parameter userApi: The Gini user backend API to use. Supply .custom("domain") in order to specify a custom domain.
      - parameter trackingDelegate: A delegate object to receive user events
-     
+     - parameter errorLoggerDelegate: A delegate object to log the errors
+
      - note: Screen API only.
 
      - returns: A presentable view controller.
@@ -33,7 +34,8 @@ extension GiniCapture {
                                      documentMetadata: Document.Metadata? = nil,
                                      api: APIDomain = .default,
                                      userApi: UserDomain = .default,
-                                     trackingDelegate: GiniCaptureTrackingDelegate? = nil) -> UIViewController {
+                                     trackingDelegate: GiniCaptureTrackingDelegate? = nil,
+                                     errorLoggerDelegate: GiniCaptureErrorLoggerDelegate? = nil) -> UIViewController {
         GiniCapture.setConfiguration(configuration)
         let screenCoordinator = GiniNetworkingScreenAPICoordinator(client: client,
                                                          resultsDelegate: resultsDelegate,
@@ -41,7 +43,8 @@ extension GiniCapture {
                                                          documentMetadata: documentMetadata,
                                                          api: api,
                                                          userApi: userApi,
-                                                         trackingDelegate: trackingDelegate)
+                                                         trackingDelegate: trackingDelegate,
+                                                         errorLoggerDelegate: errorLoggerDelegate)
         return screenCoordinator.start(withDocuments: importedDocuments)
     }
     
