@@ -632,7 +632,12 @@ import UIKit
      Sets if the default error logging implementation is on
      */
     @objc public var giniErrorLoggerIsOn = true
-            
+    
+    /**
+     Should sets if the custom error logging is implemented
+     */
+    public var customGiniErrorLoggerDelegate : GiniCaptureErrorLoggerDelegate?
+    
     // Undocumented--Xamarin only
     @objc public var closeButtonResource: PreferredButtonResource?
     @objc public var helpButtonResource: PreferredButtonResource?
