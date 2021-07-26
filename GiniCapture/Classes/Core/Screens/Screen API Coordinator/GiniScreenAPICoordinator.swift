@@ -288,6 +288,7 @@ extension GiniScreenAPICoordinator {
             visionDelegate?.didReview(documents: pages.map { $0.document }, networkDelegate: self)
         }
         analysisViewController = createAnalysisScreen(withDocument: firstDocument)
+        analysisViewController?.errorLoggerDelegate = self
         analysisViewController?.trackingDelegate = trackingDelegate
         
         if let (message, action) = analysisErrorAndAction {
