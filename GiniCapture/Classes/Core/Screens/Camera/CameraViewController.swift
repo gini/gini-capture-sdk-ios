@@ -68,7 +68,8 @@ import AVFoundation
      */
     public weak var delegate: CameraViewControllerDelegate?
     public weak var trackingDelegate: CameraScreenTrackingDelegate?
-    
+    public weak var errorLoggerDelegate: GiniCaptureErrorLoggerDelegate?
+
     var opaqueView: UIView?
     var fileImportToolTipView: ToolTipView?
     var qrCodeToolTipView: ToolTipView?
@@ -404,6 +405,10 @@ extension CameraViewController {
     private func cameraDidCapture(imageData: Data?, error: CameraError?) {
         guard let imageData = imageData,
             error == nil else {
+            if let errorDelegate = errorLoggerDelegate {
+                let errorLog = ErrorLog(description: "There was an error while capturing a picture: \(String(describing: error?.message))")
+                errorDelegate.postGiniErrorLog(error: errorLog)
+            }
                 assertionFailure("There was an error while capturing a picture")
                 return
         }
