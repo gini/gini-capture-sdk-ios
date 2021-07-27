@@ -181,21 +181,15 @@ public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
      - parameter importedDocuments: Documents that come from a source different than `CameraViewController`.
      There should be either images or one PDF, and they should be validated before calling this method.
      - parameter trackingDelegate: A delegate object to receive user events
-     - parameter errorLoggerDelegate: A delegate object to log the errors
 
      - returns: A presentable view controller.
      */
     public class func viewController(withDelegate delegate: GiniCaptureDelegate,
                                            importedDocuments: [GiniCaptureDocument]? = nil,
-                                           trackingDelegate: GiniCaptureTrackingDelegate? = nil,
-                                           errorLoggerDelegate: GiniCaptureErrorLoggerDelegate? = nil) -> UIViewController {
+                                           trackingDelegate: GiniCaptureTrackingDelegate? = nil) -> UIViewController {
         let screenCoordinator = GiniScreenAPICoordinator(withDelegate: delegate,
                                                          giniConfiguration: GiniConfiguration.shared)
         screenCoordinator.trackingDelegate = trackingDelegate
-        if GiniConfiguration.shared.giniErrorLoggerIsOn {
-            let customDelegate = GiniConfiguration.shared.customGiniErrorLoggerDelegate
-            screenCoordinator.errorLoggerDelegate = (customDelegate != nil) ? customDelegate : errorLoggerDelegate
-        }
         return screenCoordinator.start(withDocuments: importedDocuments)
     }
     
@@ -230,20 +224,18 @@ public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
      - parameter importedDocument: Documents that come from a source different than CameraViewController.
      There should be either images or one PDF, and they should be validated before calling this method.
      - parameter trackingDelegate: A delegate object to receive user events
-     - parameter errorLoggerDelegate: A delegate object to log the errors
 
      - returns: A presentable view controller.
      */
     public class func viewController(withDelegate delegate: GiniCaptureDelegate,
                                            importedDocument: GiniCaptureDocument? = nil,
-                                           trackingDelegate: GiniCaptureTrackingDelegate? = nil,
-                                           errorLoggerDelegate: GiniCaptureErrorLoggerDelegate? = nil) -> UIViewController {
+                                           trackingDelegate: GiniCaptureTrackingDelegate? = nil) -> UIViewController {
         var documents: [GiniCaptureDocument]?
         if let importedDocument = importedDocument {
             documents = [importedDocument]
         }
         
-        return viewController(withDelegate: delegate, importedDocuments: documents, trackingDelegate: trackingDelegate, errorLoggerDelegate: errorLoggerDelegate)
+        return viewController(withDelegate: delegate, importedDocuments: documents, trackingDelegate: trackingDelegate)
     }
     
     /**
@@ -277,17 +269,15 @@ public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
      - parameter importedDocument: Documents that come from a source different than CameraViewController.
      There should be either images or one PDF, and they should be validated before calling this method.
      - parameter trackingDelegate: A delegate object to receive user events
-     - parameter errorLoggerDelegate: A delegate object to log the errors
 
      - returns: A presentable view controller.
      */
     public class func viewController(withDelegate delegate: GiniCaptureDelegate,
                                            withConfiguration configuration: GiniConfiguration,
                                            importedDocument: GiniCaptureDocument? = nil,
-                                           trackingDelegate: GiniCaptureTrackingDelegate? = nil,
-                                           errorLoggerDelegate: GiniCaptureErrorLoggerDelegate? = nil) -> UIViewController {
+                                           trackingDelegate: GiniCaptureTrackingDelegate? = nil) -> UIViewController {
         setConfiguration(configuration)
-        return viewController(withDelegate: delegate, importedDocument: importedDocument, trackingDelegate: trackingDelegate,errorLoggerDelegate: errorLoggerDelegate)
+        return viewController(withDelegate: delegate, importedDocument: importedDocument, trackingDelegate: trackingDelegate)
     }
     
     /**

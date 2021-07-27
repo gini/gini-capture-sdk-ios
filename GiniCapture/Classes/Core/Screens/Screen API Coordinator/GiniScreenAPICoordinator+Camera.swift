@@ -36,7 +36,7 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
                     self.showNextScreenAfterPicking(pages: [validatedPage])
                 }
             case .failure(let error):
-                var errorMessage = error.localizedDescription
+                var errorMessage = String(describing: error)
 
                 if let error = error as? FilePickerError,
                     (error == .maxFilesPickedCountExceeded || error == .mixedDocumentsUnsupported) {
@@ -45,10 +45,9 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
                         self.showMultipageReview()
                     }
                 }
-                if let errorDelegate = self.errorLoggerDelegate {
-                    let errorLog = ErrorLog(description: errorMessage)
-                    errorDelegate.postGiniErrorLog(error: errorLog)
-                }
+                
+                let errorLog = ErrorLog(description: errorMessage)
+                self.giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
             }
         }
     }
@@ -82,7 +81,6 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
         let cameraViewController = CameraViewController(giniConfiguration: giniConfiguration)
         cameraViewController.delegate = self
         cameraViewController.trackingDelegate = trackingDelegate
-        cameraViewController.errorLoggerDelegate = errorLoggerDelegate
         cameraViewController.title = .localized(resource: NavigationBarStrings.cameraTitle)
         
         cameraViewController.setupNavigationItem(usingResources: closeButtonResource,
@@ -306,23 +304,24 @@ extension GiniScreenAPICoordinator: UploadDelegate {
     }
     
     public func uploadDidFail(for document: GiniCaptureDocument, with error: Error) {
-        var errorMessage = error.localizedDescription
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.update(document, withError: error, isUploaded: false)
             
             if document.type != .image || !self.giniConfiguration.multipageEnabled {
-                guard let error = error as? GiniCaptureError else { return }
-                self.displayError(withMessage: error.message, andAction: { [weak self] in
-                    guard let self = self else { return }
-                    self.didCaptureAndValidate(document)
-                })
-                errorMessage = error.message
+                var errorMessage = String(describing: error)
+                
+                if let error = error as? GiniCaptureError {
+                    errorMessage = error.message
+                    self.displayError(withMessage: error.message, andAction: { [weak self] in
+                        guard let self = self else { return }
+                        self.didCaptureAndValidate(document)
+                    })
+                }
+                
+                let errorLog = ErrorLog(description: errorMessage)
+                self.giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
             }
-        }
-        if let errorDelegate = self.errorLoggerDelegate {
-            let errorLog = ErrorLog(description: errorMessage)
-            errorDelegate.postGiniErrorLog(error: errorLog)
         }
     }
 }
