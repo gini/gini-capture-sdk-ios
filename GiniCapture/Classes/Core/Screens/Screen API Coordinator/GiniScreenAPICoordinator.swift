@@ -12,11 +12,7 @@ protocol Coordinator: AnyObject {
     var rootViewController: UIViewController { get }
 }
 
-open class GiniScreenAPICoordinator: NSObject, Coordinator, GiniCaptureErrorLoggerDelegate {
-    public func postGiniErrorLog(error: ErrorLog) {
-        print("GiniScreenAPICoordinator : Error logged to Gini: \(error)")
-    }
-    
+open class GiniScreenAPICoordinator: NSObject, Coordinator {
     
     var rootViewController: UIViewController {
         return screenAPINavigationController
@@ -107,22 +103,15 @@ open class GiniScreenAPICoordinator: NSObject, Coordinator, GiniCaptureErrorLogg
     }
     
     public func start(withDocuments documents: [GiniCaptureDocument]?) -> UIViewController {
-        // Check if error logging is on
-        if GiniConfiguration.shared.giniErrorLoggerIsOn {
-            if let customErrorLoggerDelegate = GiniConfiguration.shared.customGiniErrorLoggerDelegate {
-                errorLoggerDelegate = customErrorLoggerDelegate
-            } else {
-                errorLoggerDelegate = self
-            }
-        }
-
         var viewControllers: [UIViewController] = []
 
         if let documents = documents, !documents.isEmpty {
-            var errorMessage = ""
+            var errorMessage: String? = nil
+            
             if documents.count > 1, !giniConfiguration.multipageEnabled {
                 errorMessage = "You are trying to import several files from other app when the Multipage feature is not " +
                     "enabled. To enable it just set `multipageEnabled` to `true` in the `GiniConfiguration`"
+                
             }
 
             if !documents.containsDifferentTypes {
@@ -140,13 +129,14 @@ open class GiniScreenAPICoordinator: NSObject, Coordinator, GiniCaptureErrorLogg
                     "For now it is only possible to import either images or one PDF"
             }
             
-            if let errorDelegate = errorLoggerDelegate {
-                let errorLog = ErrorLog(description: errorMessage)
-                errorDelegate.postGiniErrorLog(error: errorLog)
-            } else {
-                fatalError(errorMessage)
+            if let errorMessage = errorMessage {
+                if let errorLogDelegate = errorLoggerDelegate {
+                    let errorLog = ErrorLog(description: errorMessage)
+                    errorLogDelegate.postGiniErrorLog(error: errorLog)
+                } else {
+                    fatalError(errorMessage)
+                }
             }
-            
         } else {
             self.cameraViewController = self.createCameraViewController()
             viewControllers = [self.cameraViewController!]
