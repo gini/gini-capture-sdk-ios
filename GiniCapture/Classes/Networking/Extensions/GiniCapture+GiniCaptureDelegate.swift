@@ -43,8 +43,7 @@ extension GiniCapture {
                                                          documentMetadata: documentMetadata,
                                                          api: api,
                                                          userApi: userApi,
-                                                         trackingDelegate: trackingDelegate,
-                                                         errorLoggerDelegate: errorLoggerDelegate)
+                                                         trackingDelegate: trackingDelegate)
         return screenCoordinator.start(withDocuments: importedDocuments)
     }
     

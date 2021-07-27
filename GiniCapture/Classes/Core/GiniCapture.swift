@@ -190,7 +190,6 @@ public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
         let screenCoordinator = GiniScreenAPICoordinator(withDelegate: delegate,
                                                          giniConfiguration: GiniConfiguration.shared)
         screenCoordinator.trackingDelegate = trackingDelegate
-        screenCoordinator.errorLoggerDelegate = GiniConfiguration.shared.errorLogger
         return screenCoordinator.start(withDocuments: importedDocuments)
     }
     

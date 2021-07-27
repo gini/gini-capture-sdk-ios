@@ -28,9 +28,6 @@ open class GiniScreenAPICoordinator: NSObject, Coordinator {
     // Tracking
     public weak var trackingDelegate: GiniCaptureTrackingDelegate?
     
-    // Error logging
-    public weak var errorLoggerDelegate: GiniCaptureErrorLoggerDelegate?
-    
     // Screens
     var analysisViewController: AnalysisViewController?
     var cameraViewController: CameraViewController?
@@ -130,12 +127,9 @@ open class GiniScreenAPICoordinator: NSObject, Coordinator {
             }
             
             if let errorMessage = errorMessage {
-                if let errorLogDelegate = errorLoggerDelegate {
-                    let errorLog = ErrorLog(description: errorMessage)
-                    errorLogDelegate.postGiniErrorLog(error: errorLog)
-                } else {
-                    fatalError(errorMessage)
-                }
+                let errorLog = ErrorLog(description: errorMessage)
+                giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
+                fatalError(errorMessage)
             }
         } else {
             self.cameraViewController = self.createCameraViewController()
@@ -278,16 +272,13 @@ extension GiniScreenAPICoordinator {
             visionDelegate?.didReview(documents: pages.map { $0.document }, networkDelegate: self)
         }
         analysisViewController = createAnalysisScreen(withDocument: firstDocument)
-        analysisViewController?.errorLoggerDelegate = errorLoggerDelegate
         analysisViewController?.trackingDelegate = trackingDelegate
         
         if let (message, action) = analysisErrorAndAction {
             
             displayError(withMessage: message, andAction: action)
-            if let errorDelegate = errorLoggerDelegate {
-                let errorLog = ErrorLog(description: message)
-                errorDelegate.postGiniErrorLog(error: errorLog)
-            }
+            let errorLog = ErrorLog(description: message)
+            giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
         }
         
         self.screenAPINavigationController.pushViewController(analysisViewController!, animated: true)

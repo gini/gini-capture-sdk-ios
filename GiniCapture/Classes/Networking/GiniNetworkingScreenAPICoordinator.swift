@@ -46,7 +46,6 @@ import GiniPayApiLib
          documentMetadata: Document.Metadata?,
          api: APIDomain,
          trackingDelegate: GiniCaptureTrackingDelegate?,
-         errorLoggerDelegate: GiniCaptureErrorLoggerDelegate?,
          lib : GiniApiLib) {
 
         self.documentService = GiniNetworkingScreenAPICoordinator.documentService(with: lib,
@@ -59,7 +58,6 @@ import GiniPayApiLib
         self.visionDelegate = self
         self.resultsDelegate = resultsDelegate
         self.trackingDelegate = trackingDelegate
-        self.errorLoggerDelegate = errorLoggerDelegate
     }
     
     convenience init(client: Client,
@@ -68,8 +66,7 @@ import GiniPayApiLib
                      documentMetadata: Document.Metadata?,
                      api: APIDomain,
                      userApi: UserDomain,
-                     trackingDelegate: GiniCaptureTrackingDelegate?,
-                     errorLoggerDelegate: GiniCaptureErrorLoggerDelegate?) {
+                     trackingDelegate: GiniCaptureTrackingDelegate?) {
         
         let lib = GiniApiLib
             .Builder(client: client, api: api, userApi: userApi)
@@ -81,7 +78,6 @@ import GiniPayApiLib
                   documentMetadata: documentMetadata,
                   api: api,
                   trackingDelegate: trackingDelegate,
-                  errorLoggerDelegate: errorLoggerDelegate,
                   lib: lib)
     }
     
