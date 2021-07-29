@@ -47,6 +47,7 @@ import UIKit
     fileprivate static let loadingIndicatorContainerHeight: CGFloat = 60
     
     public weak var trackingDelegate: AnalysisScreenTrackingDelegate?
+
     
     // User interface
     fileprivate var imageView: UIImageView = {
@@ -189,6 +190,9 @@ import UIKit
     public func showError(with message: String, action: @escaping () -> Void ) {
         
         trackingDelegate?.onAnalysisScreenEvent(event: Event(type: .error, info: ["message" : message]))
+        
+        let errorLog = ErrorLog(description: message)
+        giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
         
         errorView.textLabel.text = message
         errorView.userAction = NoticeAction(title: NoticeActionType.retry.title, action: { [weak self] in
