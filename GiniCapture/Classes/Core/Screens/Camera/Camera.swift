@@ -50,7 +50,7 @@ final class Camera: NSObject, CameraProtocol {
     }()
     
     fileprivate let application: UIApplication
-    fileprivate lazy var sessionQueue: DispatchQueue = DispatchQueue(label: "session queue",
+    fileprivate let sessionQueue = DispatchQueue(label: "session queue",
                                                                      attributes: [])
     
     init(application: UIApplication = UIApplication.shared,
@@ -59,6 +59,13 @@ final class Camera: NSObject, CameraProtocol {
         self.giniConfiguration = giniConfiguration
         self.isFlashOn = giniConfiguration.flashOnByDefault
         super.init()
+    }
+    
+    fileprivate func configureSession() {
+        self.session.beginConfiguration()
+        self.setupInput()
+        self.setupPhotoCaptureOutput()
+        self.session.commitConfiguration()
     }
     
     func setup(completion: @escaping ((CameraError?) -> Void)) {
@@ -80,10 +87,9 @@ final class Camera: NSObject, CameraProtocol {
                     completion(.notAuthorizedToUseDevice) // shouldn't happen
                 }
                 
-                self.session.beginConfiguration()
-                self.setupInput()
-                self.setupPhotoCaptureOutput()
-                self.session.commitConfiguration()
+                self.sessionQueue.async {
+                    self.configureSession()
+                }
                 
                 completion(nil)
             }
@@ -153,6 +159,12 @@ final class Camera: NSObject, CameraProtocol {
     }
     
     func setupQRScanningOutput() {
+        sessionQueue.async {
+            self.configureQROutput()
+        }
+    }
+
+    private func configureQROutput() {
         session.beginConfiguration()
         let qrOutput = AVCaptureMetadataOutput()
 
