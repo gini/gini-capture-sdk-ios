@@ -102,7 +102,7 @@ final class CameraPreviewViewController: UIViewController {
         super.viewWillAppear(animated)
         camera.start()
         addLoadingIndicator()
-        startLoading()
+        startLoadingIndicator()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -186,15 +186,16 @@ final class CameraPreviewViewController: UIViewController {
             self.spinner.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
             self.spinner.hidesWhenStopped = true
             self.view.addSubview(self.spinner)
+        }
     }
     
-    func startLoading(){
+    func startLoadingIndicator(){
         DispatchQueue.main.async {
             self.spinner.startAnimating()
         }
     }
     
-    func stopLoading(){
+    func stopLoadingIndicator(){
         DispatchQueue.main.async {
             self.spinner.stopAnimating()
         }
