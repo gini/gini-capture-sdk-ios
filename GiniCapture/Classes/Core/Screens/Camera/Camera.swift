@@ -50,8 +50,7 @@ final class Camera: NSObject, CameraProtocol {
     }()
     
     fileprivate let application: UIApplication
-    fileprivate let sessionQueue = DispatchQueue(label: "session queue",
-                                                                     attributes: [])
+    fileprivate let sessionQueue = DispatchQueue(label: "session queue")
     
     init(application: UIApplication = UIApplication.shared,
          giniConfiguration: GiniConfiguration) {
