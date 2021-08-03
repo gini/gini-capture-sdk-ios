@@ -27,6 +27,7 @@ final class CameraPreviewViewController: UIViewController {
         }
     }
     
+    private var spinner: UIActivityIndicatorView!
     fileprivate let giniConfiguration: GiniConfiguration
     fileprivate typealias FocusIndicator = UIImageView
     fileprivate var camera: CameraProtocol
@@ -100,6 +101,8 @@ final class CameraPreviewViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         camera.start()
+        addLoadingIndicator()
+        startLoading()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -175,6 +178,28 @@ final class CameraPreviewViewController: UIViewController {
             }
         }
     }
+    
+    func addLoadingIndicator(){
+        DispatchQueue.main.async {
+            self.spinner = UIActivityIndicatorView(style: .whiteLarge)
+            self.spinner.color = self.giniConfiguration.cameraSetupLoadingIndicatorColor
+            self.spinner.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
+            self.spinner.hidesWhenStopped = true
+            self.view.addSubview(self.spinner)
+    }
+    
+    func startLoading(){
+        DispatchQueue.main.async {
+            self.spinner.startAnimating()
+        }
+    }
+    
+    func stopLoading(){
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+        }
+    }
+
 }
 
 // MARK: - Fileprivate
