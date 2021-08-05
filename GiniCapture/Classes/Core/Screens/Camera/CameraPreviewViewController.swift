@@ -167,6 +167,7 @@ final class CameraPreviewViewController: UIViewController {
                 }
             } else {
                 self.delegate?.cameraDidSetUp(self, camera: self.camera)
+                self.stopLoadingIndicator()
             }
         }
         
