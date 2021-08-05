@@ -64,6 +64,9 @@ final class Camera: NSObject, CameraProtocol {
         self.session.beginConfiguration()
         self.setupInput()
         self.setupPhotoCaptureOutput()
+        if giniConfiguration.qrCodeScanningEnabled {
+            self.setupQRScanningOutput()
+        }
         self.session.commitConfiguration()
     }
     

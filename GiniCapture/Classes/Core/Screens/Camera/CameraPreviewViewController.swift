@@ -172,7 +172,6 @@ final class CameraPreviewViewController: UIViewController {
         }
         
         if giniConfiguration.qrCodeScanningEnabled {
-            camera.setupQRScanningOutput()
             camera.didDetectQR = { [weak self] qrDocument in
                 guard let self = self else { return }
                 self.delegate?.cameraPreview(self, didDetect: qrDocument)
