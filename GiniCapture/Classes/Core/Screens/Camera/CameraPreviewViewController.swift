@@ -197,7 +197,9 @@ final class CameraPreviewViewController: UIViewController {
     
     func stopLoadingIndicator(){
         DispatchQueue.main.async {
-            self.spinner.stopAnimating()
+            if (self.spinner != nil){
+                self.spinner.stopAnimating()
+            }
         }
     }
 
