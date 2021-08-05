@@ -186,8 +186,15 @@ final class Camera: NSObject, CameraProtocol {
 fileprivate extension Camera {
     
     var captureSettings: AVCapturePhotoSettings {
-        let captureSettings = AVCapturePhotoSettings()
-        
+        var captureSettings: AVCapturePhotoSettings
+        if #available(iOS 11.0, *) {
+            captureSettings = AVCapturePhotoSettings(rawPixelFormatType: 0,
+                                                         rawFileType: nil,
+                                                         processedFormat: nil,
+                                                         processedFileType: AVFileType.jpg)
+        } else {
+            captureSettings = AVCapturePhotoSettings()
+        }
         guard let device = self.videoDeviceInput?.device else { return captureSettings }
         
         #if !targetEnvironment(simulator)
