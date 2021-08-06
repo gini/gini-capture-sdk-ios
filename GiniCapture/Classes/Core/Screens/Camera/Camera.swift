@@ -50,8 +50,7 @@ final class Camera: NSObject, CameraProtocol {
     }()
     
     fileprivate let application: UIApplication
-    fileprivate lazy var sessionQueue: DispatchQueue = DispatchQueue(label: "session queue",
-                                                                     attributes: [])
+    fileprivate let sessionQueue = DispatchQueue(label: "session queue")
     
     init(application: UIApplication = UIApplication.shared,
          giniConfiguration: GiniConfiguration) {
@@ -59,6 +58,16 @@ final class Camera: NSObject, CameraProtocol {
         self.giniConfiguration = giniConfiguration
         self.isFlashOn = giniConfiguration.flashOnByDefault
         super.init()
+    }
+    
+    fileprivate func configureSession() {
+        self.session.beginConfiguration()
+        self.setupInput()
+        self.setupPhotoCaptureOutput()
+        if giniConfiguration.qrCodeScanningEnabled {
+            self.setupQRScanningOutput()
+        }
+        self.session.commitConfiguration()
     }
     
     func setup(completion: @escaping ((CameraError?) -> Void)) {
@@ -80,10 +89,9 @@ final class Camera: NSObject, CameraProtocol {
                     completion(.notAuthorizedToUseDevice) // shouldn't happen
                 }
                 
-                self.session.beginConfiguration()
-                self.setupInput()
-                self.setupPhotoCaptureOutput()
-                self.session.commitConfiguration()
+                self.sessionQueue.async {
+                    self.configureSession()
+                }
                 
                 completion(nil)
             }
@@ -153,6 +161,12 @@ final class Camera: NSObject, CameraProtocol {
     }
     
     func setupQRScanningOutput() {
+        sessionQueue.async {
+            self.configureQROutput()
+        }
+    }
+
+    private func configureQROutput() {
         session.beginConfiguration()
         let qrOutput = AVCaptureMetadataOutput()
 
@@ -175,8 +189,15 @@ final class Camera: NSObject, CameraProtocol {
 fileprivate extension Camera {
     
     var captureSettings: AVCapturePhotoSettings {
-        let captureSettings = AVCapturePhotoSettings()
-        
+        var captureSettings: AVCapturePhotoSettings
+        if #available(iOS 11.0, *) {
+            captureSettings = AVCapturePhotoSettings(rawPixelFormatType: 0,
+                                                         rawFileType: nil,
+                                                         processedFormat: nil,
+                                                         processedFileType: AVFileType.jpg)
+        } else {
+            captureSettings = AVCapturePhotoSettings()
+        }
         guard let device = self.videoDeviceInput?.device else { return captureSettings }
         
         #if !targetEnvironment(simulator)
@@ -300,4 +321,16 @@ extension Camera: AVCapturePhotoCaptureDelegate {
         
         didCaptureImageHandler?(imageData, nil)
     }
+    
+    @available(iOS 11.0, *)
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?){
+        if error != nil {
+            didCaptureImageHandler?(nil, .captureFailed)
+            return
+        } else {
+            let photoData = photo.fileDataRepresentation()
+            didCaptureImageHandler?(photoData, nil)
+        }
+    }
+
 }
