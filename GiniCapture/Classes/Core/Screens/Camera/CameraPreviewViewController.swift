@@ -27,7 +27,13 @@ final class CameraPreviewViewController: UIViewController {
         }
     }
     
-    private var spinner: UIActivityIndicatorView!
+    private lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .whiteLarge)
+        spinner.color = self.giniConfiguration.cameraSetupLoadingIndicatorColor
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     fileprivate let giniConfiguration: GiniConfiguration
     fileprivate typealias FocusIndicator = UIImageView
     fileprivate var camera: CameraProtocol
@@ -91,6 +97,7 @@ final class CameraPreviewViewController: UIViewController {
         
         view.insertSubview(previewView, at: 0)
         Constraints.pin(view: previewView, toSuperView: view)
+        addLoadingIndicator()
     }
 
     override func viewDidLoad() {
@@ -101,7 +108,6 @@ final class CameraPreviewViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         camera.start()
-        addLoadingIndicator()
         startLoadingIndicator()
     }
     
@@ -116,6 +122,11 @@ final class CameraPreviewViewController: UIViewController {
         coordinator.animate(alongsideTransition: { [weak self] _ in
             self?.updatePreviewViewOrientation()
         })
+    }
+    
+    public override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        spinner.center = previewView.center
     }
     
     func captureImage(completion: @escaping (Data?, CameraError?) -> Void) {
@@ -180,27 +191,15 @@ final class CameraPreviewViewController: UIViewController {
     }
     
     func addLoadingIndicator(){
-        DispatchQueue.main.async {
-            self.spinner = UIActivityIndicatorView(style: .whiteLarge)
-            self.spinner.color = self.giniConfiguration.cameraSetupLoadingIndicatorColor
-            self.spinner.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
-            self.spinner.hidesWhenStopped = true
-            self.view.addSubview(self.spinner)
-        }
+        view.addSubview(spinner)
     }
     
     func startLoadingIndicator(){
-        DispatchQueue.main.async {
-            self.spinner.startAnimating()
-        }
+        spinner.startAnimating()
     }
     
     func stopLoadingIndicator(){
-        DispatchQueue.main.async {
-            if (self.spinner != nil){
-                self.spinner.stopAnimating()
-            }
-        }
+        spinner.stopAnimating()
     }
 
 }
