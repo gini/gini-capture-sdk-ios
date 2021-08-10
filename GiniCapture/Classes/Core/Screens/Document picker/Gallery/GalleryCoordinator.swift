@@ -7,6 +7,7 @@
 
 import Foundation
 import Photos
+import PhotosUI
 
 protocol GalleryCoordinatorDelegate: AnyObject {
     func gallery(_ coordinator: GalleryCoordinator,
@@ -15,10 +16,10 @@ protocol GalleryCoordinatorDelegate: AnyObject {
 }
 
 final class GalleryCoordinator: NSObject, Coordinator {
-    
+        
     weak var delegate: GalleryCoordinatorDelegate?
     fileprivate let giniConfiguration: GiniConfiguration
-    fileprivate let galleryManager: GalleryManagerProtocol
+    let galleryManager: GalleryManagerProtocol
     fileprivate(set) var selectedImageDocuments: [(assetId: String, imageDocument: GiniImageDocument)] = [] {
         didSet {
             currentImagePickerViewController?
@@ -148,35 +149,72 @@ final class GalleryCoordinator: NSObject, Coordinator {
     // MARK: Photo library permission
     
     func checkGalleryAccessPermission(deniedHandler: @escaping (_ error: GiniCaptureError) -> Void,
-                                      authorizedHandler: @escaping (() -> Void)) {
-        
-        switch PHPhotoLibrary.authorizationStatus() {
-        case .authorized:
-            authorizedHandler()
-        #if swift(>=5.3) // Xcode 12 iOS 14 support
-            case .limited:
-                authorizedHandler()
-        #endif
-        case .denied, .restricted:
-            deniedHandler(FilePickerError.photoLibraryAccessDenied)
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization { [weak self] status in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    if status == PHAuthorizationStatus.authorized {
-                        self.galleryManager.reloadAlbums()
-                        self.start()
-                        authorizedHandler()
-                    } else {
-                        deniedHandler(FilePickerError.photoLibraryAccessDenied)
+                                      authorizedHandler: @escaping () -> Void,
+                                      limitedAccessHandler: @escaping () -> Void) {
+        if #available(iOS 14.0, *) {
+            let accessLevel: PHAccessLevel = .readWrite
+            let phStatus = PHPhotoLibrary.authorizationStatus(for: accessLevel)
+            if phStatus == .limited {
+                PHPhotoLibrary.requestAuthorization(for: accessLevel) {
+                    [weak self] newStatus in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        switch newStatus {
+                        case .limited:
+                            limitedAccessHandler()
+                        case .notDetermined:
+                            PHPhotoLibrary.requestAuthorization { [weak self] status in
+                                guard let self = self else { return }
+                                DispatchQueue.main.async {
+                                    if status == PHAuthorizationStatus.authorized {
+                                        self.galleryManager.reloadAlbums()
+                                        self.start()
+                                        authorizedHandler()
+                                    } else {
+                                        deniedHandler(FilePickerError.photoLibraryAccessDenied)
+                                    }
+                                }
+                            }
+                        case .restricted:
+                            deniedHandler(FilePickerError.photoLibraryAccessDenied)
+                        case .denied:
+                            deniedHandler(FilePickerError.photoLibraryAccessDenied)
+                        case .authorized:
+                            authorizedHandler()
+                        @unknown default:
+                            break
+                        }
                     }
                 }
             }
-        @unknown default:
-            break
+        } else {
+            switch PHPhotoLibrary.authorizationStatus() {
+            case .authorized:
+                authorizedHandler()
+            #if swift(>=5.3) // Xcode 12 iOS 14 support
+                case .limited:
+                    authorizedHandler()
+            #endif
+            case .denied, .restricted:
+                deniedHandler(FilePickerError.photoLibraryAccessDenied)
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization { [weak self] status in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        if status == PHAuthorizationStatus.authorized {
+                            self.galleryManager.reloadAlbums()
+                            self.start()
+                            authorizedHandler()
+                        } else {
+                            deniedHandler(FilePickerError.photoLibraryAccessDenied)
+                        }
+                    }
+                }
+            @unknown default:
+                break
+            }
         }
     }
-    
 }
 
 // MARK: UINavigationControllerDelegate
