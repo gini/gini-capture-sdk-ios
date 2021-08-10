@@ -6,18 +6,20 @@
 //
 
 import Foundation
+import PhotosUI
 
 protocol AlbumsPickerViewControllerDelegate: AnyObject {
     func albumsPicker(_ viewController: AlbumsPickerViewController,
                       didSelectAlbum album: Album)
 }
 
-final class AlbumsPickerViewController: UIViewController {
+final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeObserver {
     
     weak var delegate: AlbumsPickerViewControllerDelegate?
     fileprivate let galleryManager: GalleryManagerProtocol
     fileprivate let giniConfiguration: GiniConfiguration
-    
+    fileprivate let library = PHPhotoLibrary.shared()
+
     // MARK: - Views
 
     lazy var albumsTableView: UITableView = {
@@ -32,7 +34,6 @@ final class AlbumsPickerViewController: UIViewController {
         } else {
             tableView.backgroundColor = Colors.Gini.pearl
         }
-        
         tableView.register(AlbumsPickerTableViewCell.self,
                            forCellReuseIdentifier: AlbumsPickerTableViewCell.identifier)
         return tableView
@@ -64,6 +65,28 @@ final class AlbumsPickerViewController: UIViewController {
         albumsTableView.reloadData()
     }
     
+    @objc func selectButtonTapped(sender: UIButton) {
+        if #available(iOS 14.0, *) {
+            library.presentLimitedLibraryPicker(from: self)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        library.register(self)
+    }
+    
+    public func photoLibraryDidChange(_ changeInstance: PHChange) {
+        DispatchQueue.main.async {
+            self.galleryManager.reloadAlbums()
+            self.reloadAlbums()
+        }
+    }
+    
+    deinit {
+        library.unregisterChangeObserver(self)
+    }
+
 }
 
 // MARK: UITableViewDataSource
@@ -82,10 +105,28 @@ extension AlbumsPickerViewController: UITableViewDataSource {
                     galleryManager: galleryManager)
         return cell!
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let frame: CGRect = tableView.frame
+
+        let selectButton = UIButton(frame: CGRect(x: frame.size.width - 250, y: 0, width: 250, height: 50))
+        selectButton.setTitle("Select more photos", for: .normal)
+        selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
+        selectButton.setTitleColor(giniConfiguration.navigationBarTintColor, for: .normal)
+        let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+        headerView.addSubview(selectButton)
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
 }
 
 // MARK: UITableViewDelegate
