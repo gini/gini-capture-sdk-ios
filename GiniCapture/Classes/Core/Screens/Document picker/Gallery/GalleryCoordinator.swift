@@ -153,8 +153,6 @@ final class GalleryCoordinator: NSObject, Coordinator {
                                       limitedAccessHandler: @escaping () -> Void) {
         if #available(iOS 14.0, *) {
             let accessLevel: PHAccessLevel = .readWrite
-            let phStatus = PHPhotoLibrary.authorizationStatus(for: accessLevel)
-            if phStatus == .limited {
                 PHPhotoLibrary.requestAuthorization(for: accessLevel) {
                     [weak self] newStatus in
                     guard let self = self else { return }
@@ -186,7 +184,6 @@ final class GalleryCoordinator: NSObject, Coordinator {
                         }
                     }
                 }
-            }
         } else {
             switch PHPhotoLibrary.authorizationStatus() {
             case .authorized:
