@@ -107,15 +107,21 @@ extension AlbumsPickerViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let frame: CGRect = tableView.frame
-
-        let selectButton = UIButton(frame: CGRect(x: frame.size.width - 250, y: 0, width: 250, height: 50))
-        selectButton.setTitle("Select more photos", for: .normal)
-        selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
-        selectButton.setTitleColor(giniConfiguration.navigationBarTintColor, for: .normal)
-        let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        headerView.addSubview(selectButton)
-        return headerView
+        if #available(iOS 14.0, *) {
+            let frame: CGRect = tableView.frame
+            let buttonTitle = NSLocalizedString("ginicapture.albums.selectMorePhotosButton",
+                                            bundle: Bundle(for: GiniCapture.self),
+                                            comment: "cancel button title")
+            let selectButton = UIButton(frame: CGRect(x: frame.size.width - 250, y: 0, width: 250, height: 50))
+            selectButton.setTitle(buttonTitle, for: .normal)
+            selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
+            selectButton.setTitleColor(giniConfiguration.navigationBarTintColor, for: .normal)
+            let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+            headerView.addSubview(selectButton)
+            return headerView
+        } else {
+            return nil
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
