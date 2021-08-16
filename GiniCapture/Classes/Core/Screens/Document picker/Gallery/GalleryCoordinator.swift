@@ -149,8 +149,7 @@ final class GalleryCoordinator: NSObject, Coordinator {
     // MARK: Photo library permission
     
     func checkGalleryAccessPermission(deniedHandler: @escaping (_ error: GiniCaptureError) -> Void,
-                                      authorizedHandler: @escaping () -> Void,
-                                      limitedAccessHandler: @escaping () -> Void) {
+                                      authorizedHandler: @escaping () -> Void) {
         if #available(iOS 14.0, *) {
             let accessLevel: PHAccessLevel = .readWrite
                 PHPhotoLibrary.requestAuthorization(for: accessLevel) {
@@ -159,7 +158,8 @@ final class GalleryCoordinator: NSObject, Coordinator {
                     DispatchQueue.main.async {
                         switch newStatus {
                         case .limited:
-                            limitedAccessHandler()
+                            // used authorizedHandler because showing showin limited photopicker didn't require any permissions
+                            authorizedHandler()
                         case .notDetermined:
                             PHPhotoLibrary.requestAuthorization { [weak self] status in
                                 guard let self = self else { return }
