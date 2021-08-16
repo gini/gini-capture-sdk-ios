@@ -98,9 +98,12 @@ final class GalleryCoordinator: NSObject, Coordinator {
         DispatchQueue.global().async {
             if let firstAlbum = self.galleryManager.albums.first {                
                 DispatchQueue.main.async {
-                    self.galleryManager.startCachingImages(for: firstAlbum)
-                    self.currentImagePickerViewController = self.createImagePicker(with: firstAlbum)
-                    self.galleryNavigator.pushViewController(self.currentImagePickerViewController!, animated: false)
+                    if #available(iOS 14.0, *) {
+                    } else {
+                        self.galleryManager.startCachingImages(for: firstAlbum)
+                        self.currentImagePickerViewController = self.createImagePicker(with: firstAlbum)
+                        self.galleryNavigator.pushViewController(self.currentImagePickerViewController!, animated: false)
+                    }
                 }
             }
         }
