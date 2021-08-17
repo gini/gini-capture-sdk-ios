@@ -19,9 +19,9 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
     fileprivate let galleryManager: GalleryManagerProtocol
     fileprivate let giniConfiguration: GiniConfiguration
     fileprivate let library = PHPhotoLibrary.shared()
-    fileprivate let headerHeight = 50.0
-    fileprivate let footerHeight = 50.0
-    fileprivate let selectButtonWidth = 250.0
+    fileprivate let headerHeight: CGFloat = 50.0
+    fileprivate let footerHeight: CGFloat = 50.0
+    fileprivate let selectButtonWidth: CGFloat = 250.0
 
     // MARK: - Views
 
