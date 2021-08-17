@@ -178,8 +178,8 @@ final class CameraPreviewViewController: UIViewController {
                 }
             } else {
                 self.delegate?.cameraDidSetUp(self, camera: self.camera)
-                self.stopLoadingIndicator()
             }
+            self.stopLoadingIndicator()
         }
         
         if giniConfiguration.qrCodeScanningEnabled {
