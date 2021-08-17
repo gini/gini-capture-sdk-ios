@@ -20,5 +20,7 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>235</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Um Bilder auf deinem Gerät zu wählen, erlaube den Zugriff auf deine Fotos  🏞 -&gt; 📄 -&gt; 🎉</string>
 </dict>
 </plist>
