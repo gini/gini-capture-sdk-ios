@@ -19,6 +19,8 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
     fileprivate let galleryManager: GalleryManagerProtocol
     fileprivate let giniConfiguration: GiniConfiguration
     fileprivate let library = PHPhotoLibrary.shared()
+    fileprivate let headerHeight = 50.0
+    fileprivate let footerHeight = 50.0
 
     // MARK: - Views
 
@@ -56,6 +58,10 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
     override func loadView() {
         super.loadView()
         title = .localized(resource: GalleryStrings.albumsTitle)
+        setupTableView()
+    }
+    
+    func setupTableView() {
         view.addSubview(albumsTableView)
         Constraints.pin(view: albumsTableView, toSuperView: view)
     }
@@ -111,7 +117,7 @@ extension AlbumsPickerViewController: UITableViewDataSource {
                 let frame: CGRect = tableView.frame
                 let buttonTitle = NSLocalizedStringPreferredFormat("ginicapture.albums.selectMorePhotosButton",
                                                                    comment: "Title for select more photos button")
-                let selectButton = UIButton(frame: CGRect(x: frame.size.width - 250, y: 0, width: 250, height: 50))
+                let selectButton = UIButton(frame: CGRect(x: frame.size.width - 250, y: 0, width: 250, height: headerHeight))
                 selectButton.setTitle(buttonTitle, for: .normal)
                 selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
                 selectButton.setTitleColor(giniConfiguration.navigationBarTintColor, for: .normal)
@@ -128,7 +134,7 @@ extension AlbumsPickerViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if #available(iOS 14.0, *) {
-            return galleryManager.isGalleryAccessLimited && section == 0 ? 50.0 : 0.0
+            return galleryManager.isGalleryAccessLimited && section == 0 ? headerHeight : 0.0
         } else {
             return 0.0
         }
@@ -140,7 +146,7 @@ extension AlbumsPickerViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if #available(iOS 14.0, *) {
-            return galleryManager.isGalleryAccessLimited && section == 0 ? 50.0 : 0.0
+            return galleryManager.isGalleryAccessLimited && section == 0 ? footerHeight : 0.0
         } else {
             return 0.0
         }
@@ -150,14 +156,19 @@ extension AlbumsPickerViewController: UITableViewDataSource {
         if #available(iOS 14.0, *) {
             if galleryManager.isGalleryAccessLimited && section == 0 {
                 let label = UILabel()
+                let footerWidth = albumsTableView.frame.size.width - 20.0
+                label.frame =  CGRect(x: 10, y: 0, width: footerWidth, height: footerHeight)
                 label.numberOfLines = 0
                 label.text = NSLocalizedStringPreferredFormat("ginicapture.albums.footer",
                                                               comment: "Albums footer message")
                 label.font = giniConfiguration.customFont.with(weight: .regular, size: 12, style: .footnote)
-                label.textColor = UIColor.black
-                label.textAlignment = .center
+                label.textColor = UIColor.label
+                label.textAlignment = NSTextAlignment.center
+                label.lineBreakMode = NSLineBreakMode.byWordWrapping
                 label.backgroundColor = UIColor.clear
-                return label
+                let footerView = UIView(frame: CGRect(x: 0, y: 0, width: albumsTableView.frame.size.width, height: footerHeight))
+                footerView.addSubview(label)
+                return footerView
             } else {
                 return nil
             }
