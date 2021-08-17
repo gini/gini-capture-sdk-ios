@@ -54,22 +54,24 @@ final class GalleryCoordinatorTests: XCTestCase {
     func testOpenImages() {
         let delegate = GalleryCoordinatorDelegateMock()
         coordinator.delegate = delegate
-        
+
         selectImage(at: IndexPath(row: 0, section: 0), in: galleryManager.albums[2]) { _ in
-            self.selectImage(at: IndexPath(row: 1, section: 0), in: self.galleryManager.albums[2]) { _ in
-                let innerButton = self.coordinator.openImagesButton.customView as? UIButton
-                innerButton?.sendActions(for: .touchUpInside)
-                
-                let expect = self.expectation(for: NSPredicate(value: true),
-                                              evaluatedWith: delegate.didOpenImages,
-                                              handler: nil)
-                self.wait(for: [expect], timeout: 2)
-                XCTAssertTrue(delegate.didOpenImages,
-                              "gallery images picked should be processed after tapping open images button")
-                XCTAssertEqual(delegate.openedImageDocuments.count, 2,
-                              "delegate opened image documents should be 2")
-                XCTAssertTrue(self.coordinator.selectedImageDocuments.isEmpty,
-                              "selected image documents collection should be empty after opening them")
+            DispatchQueue.main.async {
+                self.selectImage(at: IndexPath(row: 1, section: 0), in: self.galleryManager.albums[2]) { _ in
+                    let innerButton = self.coordinator.openImagesButton.customView as? UIButton
+                    innerButton?.sendActions(for: .touchUpInside)
+
+                    let expect = self.expectation(for: NSPredicate(value: true),
+                                                  evaluatedWith: delegate.didOpenImages,
+                                                  handler: nil)
+                    self.wait(for: [expect], timeout: 10)
+                    XCTAssertTrue(delegate.didOpenImages,
+                                  "gallery images picked should be processed after tapping open images button")
+                    XCTAssertEqual(delegate.openedImageDocuments.count, 2,
+                                   "delegate opened image documents should be 2")
+                    XCTAssertTrue(self.coordinator.selectedImageDocuments.isEmpty,
+                                  "selected image documents collection should be empty after opening them")
+                }
             }
         }
     }
