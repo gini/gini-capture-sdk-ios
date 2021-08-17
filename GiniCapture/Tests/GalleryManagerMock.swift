@@ -11,6 +11,8 @@ import Photos
 @testable import GiniCapture
 
 final class GalleryManagerMock: GalleryManagerProtocol {
+    var isGalleryAccessLimited: Bool = false
+    
     
     var albums: [Album] = [Album(assets: [Asset(identifier: "Asset 1")],
                                  title: "Album 1",
