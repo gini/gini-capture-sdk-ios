@@ -27,7 +27,6 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.tableFooterView = UIView()
         
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = Colors.Gini.dynamicPearl
@@ -95,7 +94,7 @@ extension AlbumsPickerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return galleryManager.albums.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:
             AlbumsPickerTableViewCell.identifier) as? AlbumsPickerTableViewCell
@@ -108,7 +107,7 @@ extension AlbumsPickerViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if #available(iOS 14.0, *) {
-            if galleryManager.isGalleryAccessLimited {
+            if galleryManager.isGalleryAccessLimited && section == 0 {
                 let frame: CGRect = tableView.frame
                 let buttonTitle = NSLocalizedStringPreferredFormat("ginicapture.albums.selectMorePhotosButton",
                                                                    comment: "Title for select more photos button")
@@ -129,16 +128,43 @@ extension AlbumsPickerViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if #available(iOS 14.0, *) {
-            return galleryManager.isGalleryAccessLimited ? 50.0 : 0.0
+            return galleryManager.isGalleryAccessLimited && section == 0 ? 50.0 : 0.0
         } else {
             return 0.0
         }
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if #available(iOS 14.0, *) {
+            return galleryManager.isGalleryAccessLimited && section == 0 ? 50.0 : 0.0
+        } else {
+            return 0.0
+        }
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if #available(iOS 14.0, *) {
+            if galleryManager.isGalleryAccessLimited && section == 0 {
+                let label = UILabel()
+                label.numberOfLines = 0
+                label.text = NSLocalizedStringPreferredFormat("ginicapture.albums.footer",
+                                                              comment: "Albums footer message")
+                label.font = giniConfiguration.customFont.with(weight: .regular, size: 12, style: .footnote)
+                label.textColor = UIColor.black
+                label.textAlignment = .center
+                label.backgroundColor = UIColor.clear
+                return label
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
 }
 
 // MARK: UITableViewDelegate

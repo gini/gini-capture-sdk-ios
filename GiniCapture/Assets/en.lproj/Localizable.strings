@@ -124,3 +124,4 @@
 "ginicapture.images.openWithTutorialStep2" = "openWithTutorialStep2_en";
 "ginicapture.images.openWithTutorialStep3" = "openWithTutorialStep3_en";
 "ginicapture.albums.selectMorePhotosButton" = "Select more photos";
+"ginicapture.albums.footer" = "Use \"Select more photos\" button to select more photos or deselect to remove access.";
