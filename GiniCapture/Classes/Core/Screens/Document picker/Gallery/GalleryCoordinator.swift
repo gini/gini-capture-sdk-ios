@@ -96,11 +96,11 @@ final class GalleryCoordinator: NSObject, Coordinator {
     
     func start() {
         DispatchQueue.global().async {
-            if let firstAlbum = self.galleryManager.albums.first {                
+            if let firstAlbum = self.galleryManager.albums.first {
                 DispatchQueue.main.async {
+                    self.galleryManager.startCachingImages(for: firstAlbum)
                     if #available(iOS 14.0, *) {
                     } else {
-                        self.galleryManager.startCachingImages(for: firstAlbum)
                         self.currentImagePickerViewController = self.createImagePicker(with: firstAlbum)
                         self.galleryNavigator.pushViewController(self.currentImagePickerViewController!, animated: false)
                     }
@@ -155,38 +155,37 @@ final class GalleryCoordinator: NSObject, Coordinator {
                                       authorizedHandler: @escaping () -> Void) {
         if #available(iOS 14.0, *) {
             let accessLevel: PHAccessLevel = .readWrite
-                PHPhotoLibrary.requestAuthorization(for: accessLevel) {
-                    [weak self] newStatus in
-                    guard let self = self else { return }
-                    DispatchQueue.main.async {
-                        switch newStatus {
-                        case .limited:
-                            // used authorizedHandler because showing showin limited photopicker didn't require any permissions
-                            authorizedHandler()
-                        case .notDetermined:
-                            PHPhotoLibrary.requestAuthorization { [weak self] status in
-                                guard let self = self else { return }
-                                DispatchQueue.main.async {
-                                    if status == PHAuthorizationStatus.authorized {
-                                        self.galleryManager.reloadAlbums()
-                                        self.start()
-                                        authorizedHandler()
-                                    } else {
-                                        deniedHandler(FilePickerError.photoLibraryAccessDenied)
-                                    }
+            PHPhotoLibrary.requestAuthorization(for: accessLevel) {
+                [weak self] newStatus in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    switch newStatus {
+                    case .limited:
+                        // used authorizedHandler because showing limited photo picker didn't require any permissions
+                        self.galleryManager.isGalleryAccessLimited = true
+                        authorizedHandler()
+                    case .notDetermined:
+                        PHPhotoLibrary.requestAuthorization { [weak self] status in
+                            guard let self = self else { return }
+                            DispatchQueue.main.async {
+                                if status == PHAuthorizationStatus.authorized {
+                                    self.galleryManager.reloadAlbums()
+                                    self.start()
+                                    authorizedHandler()
+                                } else {
+                                    deniedHandler(FilePickerError.photoLibraryAccessDenied)
                                 }
                             }
-                        case .restricted:
-                            deniedHandler(FilePickerError.photoLibraryAccessDenied)
-                        case .denied:
-                            deniedHandler(FilePickerError.photoLibraryAccessDenied)
-                        case .authorized:
-                            authorizedHandler()
-                        @unknown default:
-                            break
                         }
+                    case .restricted, .denied:
+                        deniedHandler(FilePickerError.photoLibraryAccessDenied)
+                    case .authorized:
+                        authorizedHandler()
+                    @unknown default:
+                        break
                     }
                 }
+            }
         } else {
             switch PHPhotoLibrary.authorizationStatus() {
             case .authorized:

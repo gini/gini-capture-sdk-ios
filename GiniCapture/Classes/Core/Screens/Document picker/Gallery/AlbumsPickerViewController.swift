@@ -108,26 +108,32 @@ extension AlbumsPickerViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if #available(iOS 14.0, *) {
-            let frame: CGRect = tableView.frame
-            let buttonTitle = NSLocalizedString("ginicapture.albums.selectMorePhotosButton",
-                                            bundle: Bundle(for: GiniCapture.self),
-                                            comment: "cancel button title")
-            let selectButton = UIButton(frame: CGRect(x: frame.size.width - 250, y: 0, width: 250, height: 50))
-            selectButton.setTitle(buttonTitle, for: .normal)
-            selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
-            selectButton.setTitleColor(giniConfiguration.navigationBarTintColor, for: .normal)
-            let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-            headerView.addSubview(selectButton)
-            return headerView
+            if galleryManager.isGalleryAccessLimited {
+                let frame: CGRect = tableView.frame
+                let buttonTitle = NSLocalizedStringPreferredFormat("ginicapture.albums.selectMorePhotosButton",
+                                                                   comment: "Title for select more photos button")
+                let selectButton = UIButton(frame: CGRect(x: frame.size.width - 250, y: 0, width: 250, height: 50))
+                selectButton.setTitle(buttonTitle, for: .normal)
+                selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
+                selectButton.setTitleColor(giniConfiguration.navigationBarTintColor, for: .normal)
+                let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+                headerView.addSubview(selectButton)
+                return headerView
+            } else {
+                return nil
+            }
         } else {
             return nil
         }
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        if #available(iOS 14.0, *) {
+            return galleryManager.isGalleryAccessLimited ? 50.0 : 0.0
+        } else {
+            return 0.0
+        }
     }
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
