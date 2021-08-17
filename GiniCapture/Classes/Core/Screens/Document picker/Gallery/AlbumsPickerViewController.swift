@@ -21,6 +21,7 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
     fileprivate let library = PHPhotoLibrary.shared()
     fileprivate let headerHeight = 50.0
     fileprivate let footerHeight = 50.0
+    fileprivate let selectButtonWidth = 250.0
 
     // MARK: - Views
 
@@ -117,7 +118,7 @@ extension AlbumsPickerViewController: UITableViewDataSource {
                 let frame: CGRect = tableView.frame
                 let buttonTitle = NSLocalizedStringPreferredFormat("ginicapture.albums.selectMorePhotosButton",
                                                                    comment: "Title for select more photos button")
-                let selectButton = UIButton(frame: CGRect(x: frame.size.width - 250, y: 0, width: 250, height: headerHeight))
+                let selectButton = UIButton(frame: CGRect(x: frame.size.width - selectButtonWidth, y: 0, width: selectButtonWidth, height: headerHeight))
                 selectButton.setTitle(buttonTitle, for: .normal)
                 selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
                 selectButton.setTitleColor(giniConfiguration.navigationBarTintColor, for: .normal)
