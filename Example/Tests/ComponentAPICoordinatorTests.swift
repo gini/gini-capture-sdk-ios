@@ -77,7 +77,7 @@ final class ComponentAPICoordinatorTests: XCTestCase {
         XCTAssertNil(componentAPICoordinator?.reviewScreen,
                      "review screen should be nil when a pdf is imported")
         XCTAssertNil(componentAPICoordinator?.cameraScreen,
-                     "camera screen should be nil when a pdfpdf is imported")
+                     "camera screen should be nil when a pdf is imported")
         
         XCTAssertEqual(componentAPICoordinator?.analysisScreen?.navigationItem.leftBarButtonItem?.title,
                        "Schließen")
