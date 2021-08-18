@@ -21,7 +21,7 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
     fileprivate let library = PHPhotoLibrary.shared()
     fileprivate let headerHeight: CGFloat = 50.0
     fileprivate let footerHeight: CGFloat = 50.0
-    fileprivate let selectButtonWidth: CGFloat = 250.0
+    fileprivate let headerIdentifier = "AlbumsHeaderView"
 
     // MARK: - Views
 
@@ -71,7 +71,7 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
         albumsTableView.reloadData()
     }
     
-    @objc func selectButtonTapped(sender: UIButton) {
+   func showLimitedLibraryPicker() {
         if #available(iOS 14.0, *) {
             library.presentLimitedLibraryPicker(from: self)
         }
@@ -80,6 +80,8 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
     override func viewDidLoad() {
         super.viewDidLoad()
         library.register(self)
+        let nib = UINib(nibName: headerIdentifier, bundle: Bundle(for: GiniCapture.self))
+        albumsTableView.register(nib, forHeaderFooterViewReuseIdentifier: headerIdentifier)
     }
     
     public func photoLibraryDidChange(_ changeInstance: PHChange) {
@@ -115,15 +117,10 @@ extension AlbumsPickerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if #available(iOS 14.0, *) {
             if galleryManager.isGalleryAccessLimited && section == 0 {
-                let frame: CGRect = tableView.frame
-                let buttonTitle = NSLocalizedStringPreferredFormat("ginicapture.albums.selectMorePhotosButton",
-                                                                   comment: "Title for select more photos button")
-                let selectButton = UIButton(frame: CGRect(x: frame.size.width - selectButtonWidth, y: 0, width: selectButtonWidth, height: headerHeight))
-                selectButton.setTitle(buttonTitle, for: .normal)
-                selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
-                selectButton.setTitleColor(giniConfiguration.navigationBarTintColor, for: .normal)
-                let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-                headerView.addSubview(selectButton)
+                let headerView = self.albumsTableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier) as! AlbumsHeaderView
+                headerView.didTapSelectButton = {
+                    self.showLimitedLibraryPicker()
+                }
                 return headerView
             } else {
                 return nil
@@ -189,5 +186,35 @@ extension AlbumsPickerViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return AlbumsPickerTableViewCell.height
+    }
+}
+
+class AlbumsHeaderView: UITableViewHeaderFooterView {
+    var didTapSelectButton: (() -> Void) = {}
+    @IBOutlet weak var selectPhotosButton: UIButton!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.configureView()
+    }
+
+    fileprivate func configureView() {
+        let configuration = GiniConfiguration.shared
+        let buttonTitle = NSLocalizedStringPreferredFormat("ginicapture.albums.selectMorePhotosButton",
+                                                           comment: "Title for select more photos button")
+        selectPhotosButton.setTitle(buttonTitle, for: .normal)
+        selectPhotosButton.setTitleColor(configuration.navigationBarTintColor, for: .normal)
+        selectPhotosButton.sizeToFit()
+    }
+
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    @IBAction func selectMorePhotosTapped(_ sender: Any) {
+        didTapSelectButton()
     }
 }
