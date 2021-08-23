@@ -1,1 +1,1 @@
-let GiniCaptureVersion = "1.0.5"
+let GiniCaptureVersion = "1.0.6"
