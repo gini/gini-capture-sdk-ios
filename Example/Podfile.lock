@@ -11,7 +11,7 @@ PODS:
     - GiniCapture/Core
     - GiniPayApiLib/DocumentsAPI (>= 1.0.2)
   - GiniCapture/Tests (1.0.5)
-  - GiniPayApiLib/DocumentsAPI (1.0.8)
+  - GiniPayApiLib/DocumentsAPI (1.0.9)
 
 DEPENDENCIES:
   - Gini-iOS-SDK (~> 1.4)
@@ -34,7 +34,7 @@ SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Gini-iOS-SDK: 270169987acb2ebd83d1e11d029daa81b6f89682
   GiniCapture: 124b3cece7a295991dda6f59b6bf6a136aa656bc
-  GiniPayApiLib: 5fc8b6b4fa0448e9e1e226618ea7f2d1658ff20c
+  GiniPayApiLib: 8c668c4c8f4b9a424a950f9cbe6907dca6eb8c78
 
 PODFILE CHECKSUM: 4388413edb9a8300e79cf2b4ad755c81370a6ec0
 
