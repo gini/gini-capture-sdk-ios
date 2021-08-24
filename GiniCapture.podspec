@@ -42,6 +42,9 @@ The Gini Capture SDK for iOS provides functionality to capture documents with mo
     test_spec.source_files = 'GiniCapture/Tests/*.swift'
     test_spec.resources = 'GiniCapture/Tests/Assets/*'
     test_spec.requires_app_host = true
+    test_spec.info_plist = {
+        'NSPhotoLibraryUsageDescription' => 'For scanning pictures of documents.'
+    }
   end
 
 end
