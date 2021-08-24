@@ -10,7 +10,7 @@ import Foundation
 public class GiniCaptureErrorLogger: GiniCaptureErrorLoggerDelegate  {
     var isGiniLoggingOn = true
     var customErrorLogger: GiniCaptureErrorLoggerDelegate? = nil
-    public func postGiniErrorLog(error: ErrorLog, apiLibVersion: String?) {
+    public func postGiniErrorLog(error: ErrorLog, apiLibVersion: String? = "") {
         if isGiniLoggingOn {
             print("GiniScreenAPICoordinator : Error logged to Gini: \(error)")
         }
