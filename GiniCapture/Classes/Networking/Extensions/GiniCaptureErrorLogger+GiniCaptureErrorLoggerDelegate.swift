@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension GiniCaptureErrorLogger: GiniCaptureErrorLoggerDelegate {
+extension GiniCaptureErrorLogger {
     public func postGiniErrorLog(error: ErrorLog, apiLibVersion: String? = "") {
         if isGiniLoggingOn {
             print("GiniScreenAPICoordinator : Error logged to Gini: \(error)")
