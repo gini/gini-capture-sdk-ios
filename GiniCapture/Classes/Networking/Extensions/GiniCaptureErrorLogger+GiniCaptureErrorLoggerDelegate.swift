@@ -8,17 +8,14 @@
 import Foundation
 
 class GiniCaptureErrorLogger: GiniCaptureErrorLoggerDelegate {
-    
     var isGiniLoggingOn = true
     var customErrorLogger: GiniCaptureErrorLoggerDelegate? = nil
-    
-    func postGiniErrorLog(error: ErrorLog) {
+    func postGiniErrorLog(error: ErrorLog, apiLibVersion: String? = "") {
         if isGiniLoggingOn {
             print("GiniScreenAPICoordinator : Error logged to Gini: \(error)")
         }
         if let customErrorLogger = customErrorLogger {
-            customErrorLogger.postGiniErrorLog(error: error)
+            customErrorLogger.postGiniErrorLog(error: error, apiLibVersion: error.apiLibVerion())
         }
     }
-    
 }
