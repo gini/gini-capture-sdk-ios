@@ -8,7 +8,7 @@
 import Foundation
 
 class GiniErrorLogger: GiniCaptureErrorLoggerDelegate {
-    public func postGiniErrorLog(error: ErrorLog) {
+    public func handleErrorLog(error: ErrorLog) {
        print("GiniScreenAPICoordinator : Error logged to Gini: \(error) with api lib version \(error.apiLibVerion())")
     }
 }

@@ -11,12 +11,12 @@ public class GiniCaptureErrorLogger: GiniCaptureErrorLoggerDelegate {
     var isGiniLoggingOn = true
     var customErrorLogger: GiniCaptureErrorLoggerDelegate? = nil
     var giniErrorLogger: GiniCaptureErrorLoggerDelegate? = nil
-    public func postGiniErrorLog(error: ErrorLog) {
+    public func handleErrorLog(error: ErrorLog) {
         if isGiniLoggingOn {
-            giniErrorLogger?.postGiniErrorLog(error: error)
+            giniErrorLogger?.handleErrorLog(error: error)
         }
         if let customErrorLogger = customErrorLogger {
-            customErrorLogger.postGiniErrorLog(error: error)
+            customErrorLogger.handleErrorLog(error: error)
         }
     }
 }

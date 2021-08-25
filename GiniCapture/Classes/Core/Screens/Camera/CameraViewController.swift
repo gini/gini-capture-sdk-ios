@@ -406,7 +406,7 @@ extension CameraViewController {
             error == nil else {
             let errorMessage = error?.message ?? "Image data was nil"
             let errorLog = ErrorLog(description: "There was an error while capturing a picture: \(String(describing: errorMessage))")
-            giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
+            giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
             assertionFailure("There was an error while capturing a picture")
             return
         }

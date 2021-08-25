@@ -192,7 +192,7 @@ import UIKit
         trackingDelegate?.onAnalysisScreenEvent(event: Event(type: .error, info: ["message" : message]))
         
         let errorLog = ErrorLog(description: message)
-        giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
+        giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
         
         errorView.textLabel.text = message
         errorView.userAction = NoticeAction(title: NoticeActionType.retry.title, action: { [weak self] in
