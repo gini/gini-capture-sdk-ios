@@ -633,6 +633,20 @@ import UIKit
     */
     public var customMenuItems: [HelpMenuViewController.Item] = []
     
+    /**
+     Sets the default error logger. It is only used when giniErrorLoggerIsOn is true.
+     
+     - note: Internal usage only.
+     */
+    internal var giniErrorLogger: GiniCaptureErrorLoggerDelegate? {
+        get {
+            return errorLogger.giniErrorLogger
+        }
+        set {
+            errorLogger.giniErrorLogger = newValue
+        }
+    }
+    
     let errorLogger = GiniCaptureErrorLogger()
     
     /**

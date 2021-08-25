@@ -76,7 +76,7 @@ public final class DocumentService: DocumentServiceProtocol {
                 let message = "Error sending feedback for document with id: \(document.id) error: \(error)"
                 Log(message: message, event: .error)
                 let errorLog = ErrorLog(description: message)
-                GiniConfiguration.shared.errorLogger.postGiniErrorLog(error: errorLog)
+                GiniConfiguration.shared.errorLogger.handleErrorLog(error: errorLog)
             }
             
         }
@@ -133,7 +133,7 @@ fileprivate extension DocumentService {
                                             let message = "Document creation failed"
                                             Log(message: message, event: .error)
                                             let errorLog = ErrorLog(description: message)
-                                            GiniConfiguration.shared.errorLogger.postGiniErrorLog(error: errorLog)
+                                            GiniConfiguration.shared.errorLogger.handleErrorLog(error: errorLog)
                                             completion(.failure(error))
                                         }
         }
@@ -150,7 +150,7 @@ fileprivate extension DocumentService {
                     " id: \(document.id)"
                 Log(message: message,event: .error)
                 let errorLog = ErrorLog(description: message)
-                GiniConfiguration.shared.errorLogger.postGiniErrorLog(error: errorLog)
+                GiniConfiguration.shared.errorLogger.handleErrorLog(error: errorLog)
             }
         }
     }
@@ -180,7 +180,7 @@ fileprivate extension DocumentService {
                                     let message = "Composite document creation failed"
                                     Log(message: message, event: .error)
                                     let errorLog = ErrorLog(description: message)
-                                    GiniConfiguration.shared.errorLogger.postGiniErrorLog(error: errorLog)
+                                    GiniConfiguration.shared.errorLogger.handleErrorLog(error: errorLog)
                                     completion(.failure(error))
                                 }
         }

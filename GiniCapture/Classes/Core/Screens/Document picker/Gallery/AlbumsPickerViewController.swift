@@ -78,8 +78,8 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        library.register(self)
         if #available(iOS 14.0, *) {
+            library.register(self)
             if galleryManager.isGalleryAccessLimited {
                 let footerView = AlbumsFooterView()
                 albumsTableView.tableFooterView = footerView
@@ -118,7 +118,9 @@ final class AlbumsPickerViewController: UIViewController, PHPhotoLibraryChangeOb
     }
 
     deinit {
-        library.unregisterChangeObserver(self)
+        if #available(iOS 14.0, *) {
+            library.unregisterChangeObserver(self)
+        }
     }
 }
 

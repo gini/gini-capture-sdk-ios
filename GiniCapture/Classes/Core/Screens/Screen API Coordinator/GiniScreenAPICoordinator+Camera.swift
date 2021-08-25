@@ -47,7 +47,7 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
                 }
                 
                 let errorLog = ErrorLog(description: errorMessage)
-                self.giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
+                self.giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
             }
         }
     }
@@ -320,7 +320,7 @@ extension GiniScreenAPICoordinator: UploadDelegate {
                 }
                 
                 let errorLog = ErrorLog(description: errorMessage)
-                self.giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
+                self.giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
             }
         }
     }

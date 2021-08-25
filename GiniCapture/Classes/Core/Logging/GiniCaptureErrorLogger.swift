@@ -2,23 +2,21 @@
 //  GiniCaptureErrorLogger.swift
 //  GiniCapture
 //
-//  Created by Alpár Szotyori on 27.07.21.
+//  Created by Nadya Karaban on 24.08.21.
 //
 
 import Foundation
 
-class GiniCaptureErrorLogger: GiniCaptureErrorLoggerDelegate {
-    
+public class GiniCaptureErrorLogger: GiniCaptureErrorLoggerDelegate {
     var isGiniLoggingOn = true
     var customErrorLogger: GiniCaptureErrorLoggerDelegate? = nil
-    
-    func postGiniErrorLog(error: ErrorLog) {
+    var giniErrorLogger: GiniCaptureErrorLoggerDelegate? = nil
+    public func handleErrorLog(error: ErrorLog) {
         if isGiniLoggingOn {
-            print("GiniScreenAPICoordinator : Error logged to Gini: \(error)")
+            giniErrorLogger?.handleErrorLog(error: error)
         }
         if let customErrorLogger = customErrorLogger {
-            customErrorLogger.postGiniErrorLog(error: error)
+            customErrorLogger.handleErrorLog(error: error)
         }
     }
-    
 }

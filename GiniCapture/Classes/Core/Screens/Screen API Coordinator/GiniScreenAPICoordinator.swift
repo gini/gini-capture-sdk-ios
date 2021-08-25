@@ -128,7 +128,7 @@ open class GiniScreenAPICoordinator: NSObject, Coordinator {
             
             if let errorMessage = errorMessage {
                 let errorLog = ErrorLog(description: errorMessage)
-                giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
+                giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
                 fatalError(errorMessage)
             }
         } else {
@@ -278,7 +278,7 @@ extension GiniScreenAPICoordinator {
             
             displayError(withMessage: message, andAction: action)
             let errorLog = ErrorLog(description: message)
-            giniConfiguration.errorLogger.postGiniErrorLog(error: errorLog)
+            giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
         }
         
         self.screenAPINavigationController.pushViewController(analysisViewController!, animated: true)
