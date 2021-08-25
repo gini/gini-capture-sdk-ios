@@ -36,6 +36,7 @@ extension GiniCapture {
                                      userApi: UserDomain = .default,
                                      trackingDelegate: GiniCaptureTrackingDelegate? = nil,
                                      errorLoggerDelegate: GiniCaptureErrorLoggerDelegate? = nil) -> UIViewController {
+        configuration.giniErrorLogger = GiniErrorLogger()
         GiniCapture.setConfiguration(configuration)
         let screenCoordinator = GiniNetworkingScreenAPICoordinator(client: client,
                                                          resultsDelegate: resultsDelegate,
