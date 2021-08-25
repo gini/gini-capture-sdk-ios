@@ -320,6 +320,9 @@
                 <a class="nav-group-task-link" href="../Classes/DocumentService.html">DocumentService</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GiniCaptureErrorLogger.html">GiniCaptureErrorLogger</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/GiniColor.html">GiniColor</a>
               </li>
               <li class="nav-group-task">
@@ -405,6 +408,9 @@
                 <a class="nav-group-task-link" href="../Extensions/UINavigationController.html">UINavigationController</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIViewController.html">UIViewController</a>
               </li>
               <li class="nav-group-task">
@@ -433,6 +439,9 @@
                 <a class="nav-group-task-link" href="../Protocols/DocumentServiceProtocol.html">DocumentServiceProtocol</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/GiniCaptureErrorLoggerDelegate.html">GiniCaptureErrorLoggerDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/LocalizableStringResource.html">LocalizableStringResource</a>
               </li>
               <li class="nav-group-task">
@@ -448,6 +457,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Colors/Gini.html">– Gini</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ErrorLog.html">ErrorLog</a>
               </li>
             </ul>
           </li>
@@ -1183,6 +1195,34 @@ deprecated on iOS 9.0
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
 <span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraNotAuthorizedButtonTitleColor</span><span class="p">:</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@GiniCapture@objc(cs)GiniConfiguration(py)cameraSetupLoadingIndicatorColor"></a>
+                    <a name="//apple_ref/swift/Property/cameraSetupLoadingIndicatorColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@GiniCapture@objc(cs)GiniConfiguration(py)cameraSetupLoadingIndicatorColor">cameraSetupLoadingIndicatorColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the color of the loading indicator on the camera screen to the specified color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraSetupLoadingIndicatorColor</span><span class="p">:</span> <span class="kt">UIColor</span></code></pre>
 
                         </div>
                       </div>
@@ -2991,6 +3031,61 @@ the option won&rsquo;t be shown in the Help menu.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@M@GiniCapture@objc(cs)GiniConfiguration(py)giniErrorLoggerIsOn"></a>
+                    <a name="//apple_ref/swift/Property/giniErrorLoggerIsOn" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@GiniCapture@objc(cs)GiniConfiguration(py)giniErrorLoggerIsOn">giniErrorLoggerIsOn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets if the default error logging implementation is on</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">giniErrorLoggerIsOn</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GiniCapture0A13ConfigurationC06customA19ErrorLoggerDelegateAA0abefG0_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/customGiniErrorLoggerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GiniCapture0A13ConfigurationC06customA19ErrorLoggerDelegateAA0abefG0_pSgvp">customGiniErrorLoggerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Should sets if the custom error logging is implemented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">customGiniErrorLoggerDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GiniCaptureErrorLoggerDelegate.html">GiniCaptureErrorLoggerDelegate</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@M@GiniCapture@objc(cs)GiniConfiguration(py)closeButtonResource"></a>
                     <a name="//apple_ref/swift/Property/closeButtonResource" class="dashAnchor"></a>
                     <a class="token" href="#/c:@M@GiniCapture@objc(cs)GiniConfiguration(py)closeButtonResource">closeButtonResource</a>
@@ -3164,7 +3259,7 @@ the option won&rsquo;t be shown in the Help menu.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://gini.net" target="_blank" rel="external">Gini GmbH</a>. All rights reserved. (Last updated: 2021-07-08)</p>
+      <p>&copy; 2021 <a class="link" href="https://gini.net" target="_blank" rel="external">Gini GmbH</a>. All rights reserved. (Last updated: 2021-08-25)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

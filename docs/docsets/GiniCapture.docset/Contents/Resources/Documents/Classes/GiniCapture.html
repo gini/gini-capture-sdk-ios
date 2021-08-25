@@ -320,6 +320,9 @@
                 <a class="nav-group-task-link" href="../Classes/DocumentService.html">DocumentService</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GiniCaptureErrorLogger.html">GiniCaptureErrorLogger</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/GiniColor.html">GiniColor</a>
               </li>
               <li class="nav-group-task">
@@ -405,6 +408,9 @@
                 <a class="nav-group-task-link" href="../Extensions/UINavigationController.html">UINavigationController</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIViewController.html">UIViewController</a>
               </li>
               <li class="nav-group-task">
@@ -433,6 +439,9 @@
                 <a class="nav-group-task-link" href="../Protocols/DocumentServiceProtocol.html">DocumentServiceProtocol</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/GiniCaptureErrorLoggerDelegate.html">GiniCaptureErrorLoggerDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/LocalizableStringResource.html">LocalizableStringResource</a>
               </li>
               <li class="nav-group-task">
@@ -448,6 +457,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Colors/Gini.html">– Gini</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ErrorLog.html">ErrorLog</a>
               </li>
             </ul>
           </li>
@@ -1104,9 +1116,9 @@ If there is an error retrieving the version the returned value will be an empty 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GiniCaptureAAC14viewController10withClient17importedDocuments13configuration15resultsDelegate16documentMetadata3api7userApi08trackingK0So06UIViewD0C0a3PayP3Lib0F0V_SayAA0aB8Document_pGSgAA0A13ConfigurationCAA0ab7ResultsK0_pAN0U0V0M0VSgAN9APIDomainOAN10UserDomainOAA0ab8TrackingK0_pSgtFZ"></a>
-                    <a name="//apple_ref/swift/Method/viewController(withClient:importedDocuments:configuration:resultsDelegate:documentMetadata:api:userApi:trackingDelegate:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GiniCaptureAAC14viewController10withClient17importedDocuments13configuration15resultsDelegate16documentMetadata3api7userApi08trackingK0So06UIViewD0C0a3PayP3Lib0F0V_SayAA0aB8Document_pGSgAA0A13ConfigurationCAA0ab7ResultsK0_pAN0U0V0M0VSgAN9APIDomainOAN10UserDomainOAA0ab8TrackingK0_pSgtFZ">viewController(withClient:importedDocuments:configuration:resultsDelegate:documentMetadata:api:userApi:trackingDelegate:)</a>
+                    <a name="/s:11GiniCaptureAAC14viewController10withClient17importedDocuments13configuration15resultsDelegate16documentMetadata3api7userApi08trackingK0011errorLoggerK0So06UIViewD0C0a3PayP3Lib0F0V_SayAA0aB8Document_pGSgAA0A13ConfigurationCAA0ab7ResultsK0_pAO0W0V0M0VSgAO9APIDomainOAO10UserDomainOAA0ab8TrackingK0_pSgAA0ab5ErrorsK0_pSgtFZ"></a>
+                    <a name="//apple_ref/swift/Method/viewController(withClient:importedDocuments:configuration:resultsDelegate:documentMetadata:api:userApi:trackingDelegate:errorLoggerDelegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GiniCaptureAAC14viewController10withClient17importedDocuments13configuration15resultsDelegate16documentMetadata3api7userApi08trackingK0011errorLoggerK0So06UIViewD0C0a3PayP3Lib0F0V_SayAA0aB8Document_pGSgAA0A13ConfigurationCAA0ab7ResultsK0_pAO0W0V0M0VSgAO9APIDomainOAO10UserDomainOAA0ab8TrackingK0_pSgAA0ab5ErrorsK0_pSgtFZ">viewController(withClient:importedDocuments:configuration:resultsDelegate:documentMetadata:api:userApi:trackingDelegate:errorLoggerDelegate:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1135,7 +1147,8 @@ all screens and transitions out of the box, including the networking.</p>
                                  <span class="nv">documentMetadata</span><span class="p">:</span> <span class="kt">Document</span><span class="o">.</span><span class="kt">Metadata</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
                                  <span class="nv">api</span><span class="p">:</span> <span class="kt">APIDomain</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
                                  <span class="nv">userApi</span><span class="p">:</span> <span class="kt">UserDomain</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
-                                 <span class="nv">trackingDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:11GiniCapture0aB16TrackingDelegateP">GiniCaptureTrackingDelegate</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span></code></pre>
+                                 <span class="nv">trackingDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:11GiniCapture0aB16TrackingDelegateP">GiniCaptureTrackingDelegate</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                                 <span class="nv">errorLoggerDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GiniCaptureErrorLoggerDelegate.html">GiniCaptureErrorLoggerDelegate</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span></code></pre>
 
                         </div>
                       </div>
@@ -1227,6 +1240,18 @@ all screens and transitions out of the box, including the networking.</p>
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>errorLoggerDelegate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A delegate object to log the errors</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -1272,7 +1297,7 @@ all screens and transitions out of the box, including the networking.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://gini.net" target="_blank" rel="external">Gini GmbH</a>. All rights reserved. (Last updated: 2021-07-08)</p>
+      <p>&copy; 2021 <a class="link" href="https://gini.net" target="_blank" rel="external">Gini GmbH</a>. All rights reserved. (Last updated: 2021-08-25)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
