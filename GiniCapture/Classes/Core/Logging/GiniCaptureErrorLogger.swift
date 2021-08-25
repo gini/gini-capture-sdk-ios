@@ -7,15 +7,16 @@
 
 import Foundation
 
-public class GiniCaptureErrorLogger: GiniCaptureErrorLoggerDelegate  {
+public class GiniCaptureErrorLogger: GiniCaptureErrorLoggerDelegate {
     var isGiniLoggingOn = true
     var customErrorLogger: GiniCaptureErrorLoggerDelegate? = nil
-    public func postGiniErrorLog(error: ErrorLog, apiLibVersion: String? = "") {
+    var giniErrorLogger: GiniCaptureErrorLoggerDelegate? = nil
+    public func postGiniErrorLog(error: ErrorLog) {
         if isGiniLoggingOn {
-            print("GiniScreenAPICoordinator : Error logged to Gini: \(error)")
+            giniErrorLogger?.postGiniErrorLog(error: error)
         }
         if let customErrorLogger = customErrorLogger {
-            customErrorLogger.postGiniErrorLog(error: error, apiLibVersion: "")
+            customErrorLogger.postGiniErrorLog(error: error)
         }
     }
 }

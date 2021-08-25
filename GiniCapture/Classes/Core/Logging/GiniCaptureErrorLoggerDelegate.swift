@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol GiniCaptureErrorLoggerDelegate: AnyObject {
-    func postGiniErrorLog(error: ErrorLog, apiLibVersion: String?)
+    func postGiniErrorLog(error: ErrorLog)
 }

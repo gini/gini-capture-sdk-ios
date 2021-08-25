@@ -7,8 +7,8 @@
 
 import Foundation
 extension ErrorLog {
-    func apiLibVerion() -> String {
-      return Bundle(identifier: "org.cocoapods.GiniPayApiLib")?.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    public func apiLibVerion() -> String {
+        return Bundle(identifier: "org.cocoapods.GiniPayApiLib")?.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     }
 }
 
