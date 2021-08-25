@@ -14,7 +14,7 @@ protocol ComponentAPICoordinatorDelegate: AnyObject {
     func componentAPI(coordinator: ComponentAPICoordinator, didFinish:())
 }
 
-//swiftlint:disable file_length
+// swiftlint:disable file_length
 final class ComponentAPICoordinator: NSObject, Coordinator {
     
     weak var delegate: ComponentAPICoordinatorDelegate?
