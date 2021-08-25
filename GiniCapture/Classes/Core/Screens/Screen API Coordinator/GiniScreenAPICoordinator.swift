@@ -93,40 +93,49 @@ open class GiniScreenAPICoordinator: NSObject, Coordinator {
                                     configEntry: self.giniConfiguration.navigationBarHelpScreenTitleBackToMenuButton)
     
     public init(withDelegate delegate: GiniCaptureDelegate?,
-         giniConfiguration: GiniConfiguration) {
+                giniConfiguration: GiniConfiguration) {
         self.visionDelegate = delegate
         self.giniConfiguration = giniConfiguration
         super.init()
     }
     
     public func start(withDocuments documents: [GiniCaptureDocument]?) -> UIViewController {
-        let viewControllers: [UIViewController]
-        
+        var viewControllers: [UIViewController] = []
+
         if let documents = documents, !documents.isEmpty {
-            if documents.count > 1, !giniConfiguration.multipageEnabled {
-                fatalError("You are trying to import several files from other app when the Multipage feature is not " +
-                    "enabled. To enable it just set `multipageEnabled` to `true` in the `GiniConfiguration`")
-            }
+            var errorMessage: String? = nil
             
+            if documents.count > 1, !giniConfiguration.multipageEnabled {
+                errorMessage = "You are trying to import several files from other app when the Multipage feature is not " +
+                    "enabled. To enable it just set `multipageEnabled` to `true` in the `GiniConfiguration`"
+                
+            }
+
             if !documents.containsDifferentTypes {
                 let pages: [GiniCapturePage] = documents.map { GiniCapturePage(document: $0) }
                 self.addToDocuments(new: pages)
                 if !giniConfiguration.openWithEnabled {
-                    fatalError("You are trying to import a file from other app when the Open With feature is not " +
-                        "enabled. To enable it just set `openWithEnabled` to `true` in the `GiniConfiguration`")
+                    errorMessage = "You are trying to import a file from other app when the Open With feature is not " +
+                        "enabled. To enable it just set `openWithEnabled` to `true` in the `GiniConfiguration`"
                 }
-                
+
                 pages.forEach { visionDelegate?.didCapture(document: $0.document, networkDelegate: self) }
                 viewControllers = initialViewControllers(with: pages)
             } else {
-                fatalError("You are trying to import both PDF and images at the same time. " +
-                    "For now it is only possible to import either images or one PDF")
+                errorMessage = "You are trying to import both PDF and images at the same time. " +
+                    "For now it is only possible to import either images or one PDF"
+            }
+            
+            if let errorMessage = errorMessage {
+                let errorLog = ErrorLog(description: errorMessage)
+                giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
+                fatalError(errorMessage)
             }
         } else {
             self.cameraViewController = self.createCameraViewController()
             viewControllers = [self.cameraViewController!]
         }
-        
+
         self.screenAPINavigationController.setViewControllers(viewControllers, animated: false)
         return ContainerNavigationController(rootViewController: self.screenAPINavigationController,
                                              parent: self)
@@ -266,7 +275,10 @@ extension GiniScreenAPICoordinator {
         analysisViewController?.trackingDelegate = trackingDelegate
         
         if let (message, action) = analysisErrorAndAction {
+            
             displayError(withMessage: message, andAction: action)
+            let errorLog = ErrorLog(description: message)
+            giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
         }
         
         self.screenAPINavigationController.pushViewController(analysisViewController!, animated: true)

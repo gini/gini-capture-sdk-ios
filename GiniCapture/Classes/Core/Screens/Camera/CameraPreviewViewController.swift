@@ -27,6 +27,13 @@ final class CameraPreviewViewController: UIViewController {
         }
     }
     
+    private lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .whiteLarge)
+        spinner.color = self.giniConfiguration.cameraSetupLoadingIndicatorColor
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     fileprivate let giniConfiguration: GiniConfiguration
     fileprivate typealias FocusIndicator = UIImageView
     fileprivate var camera: CameraProtocol
@@ -90,6 +97,7 @@ final class CameraPreviewViewController: UIViewController {
         
         view.insertSubview(previewView, at: 0)
         Constraints.pin(view: previewView, toSuperView: view)
+        addLoadingIndicator()
     }
 
     override func viewDidLoad() {
@@ -100,6 +108,7 @@ final class CameraPreviewViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         camera.start()
+        startLoadingIndicator()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -113,6 +122,11 @@ final class CameraPreviewViewController: UIViewController {
         coordinator.animate(alongsideTransition: { [weak self] _ in
             self?.updatePreviewViewOrientation()
         })
+    }
+    
+    public override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        spinner.center = previewView.center
     }
     
     func captureImage(completion: @escaping (Data?, CameraError?) -> Void) {
@@ -165,16 +179,29 @@ final class CameraPreviewViewController: UIViewController {
             } else {
                 self.delegate?.cameraDidSetUp(self, camera: self.camera)
             }
+            self.stopLoadingIndicator()
         }
         
         if giniConfiguration.qrCodeScanningEnabled {
-            camera.setupQRScanningOutput()
             camera.didDetectQR = { [weak self] qrDocument in
                 guard let self = self else { return }
                 self.delegate?.cameraPreview(self, didDetect: qrDocument)
             }
         }
     }
+    
+    func addLoadingIndicator(){
+        view.addSubview(spinner)
+    }
+    
+    func startLoadingIndicator(){
+        spinner.startAnimating()
+    }
+    
+    func stopLoadingIndicator(){
+        spinner.stopAnimating()
+    }
+
 }
 
 // MARK: - Fileprivate

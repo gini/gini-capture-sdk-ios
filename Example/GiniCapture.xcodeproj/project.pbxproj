@@ -54,6 +54,11 @@
 		67B9E1B91E44F1EF8FC88A17 /* Pods_Example_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24EC46D05341E8FBE67200E /* Pods_Example_Tests.framework */; };
 		893FB04617E7F986C8A8A0CD /* Pods_GiniCapture_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A27CBCAD82E975E230061775 /* Pods_GiniCapture_UITests.framework */; };
 		8BADACBC5F555ADF61544477 /* Pods_Example_ObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A4847A0DD006AE116E45BC /* Pods_Example_ObjC.framework */; };
+		F42F027926D65DF2003A3695 /* AlbumsPickerViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F027826D65DF2003A3695 /* AlbumsPickerViewControllerTests.swift */; };
+		F42F027B26D65F67003A3695 /* GalleryCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F027A26D65F67003A3695 /* GalleryCoordinatorTests.swift */; };
+		F42F027D26D65FC0003A3695 /* GalleryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F027C26D65FC0003A3695 /* GalleryManagerTests.swift */; };
+		F42F027F26D66029003A3695 /* GalleryCoordinatorDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F027E26D66029003A3695 /* GalleryCoordinatorDelegateTests.swift */; };
+		F42F028126D660B3003A3695 /* AlbumsPickerViewControllerDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F028026D660B3003A3695 /* AlbumsPickerViewControllerDelegateTests.swift */; };
 		F4BB7CEE2695D66C003FD77E /* CustomMenuItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BB7CED2695D66C003FD77E /* CustomMenuItemViewController.swift */; };
 		F4BB7CF02695D96B003FD77E /* CustomMenuItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4BB7CEF2695D96B003FD77E /* CustomMenuItems.storyboard */; };
 		F4E561552686315100415EE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4E561572686315100415EE8 /* Localizable.strings */; };
@@ -162,6 +167,11 @@
 		DD01EEEAEFA0CC62938744B9 /* Pods_Example_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40B4064252C9CC700D04B6F /* Credentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		F42B13D425B5FCFB007DB593 /* GiniCapture.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = GiniCapture.podspec; path = ../GiniCapture.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F42F027826D65DF2003A3695 /* AlbumsPickerViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsPickerViewControllerTests.swift; sourceTree = "<group>"; };
+		F42F027A26D65F67003A3695 /* GalleryCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinatorTests.swift; sourceTree = "<group>"; };
+		F42F027C26D65FC0003A3695 /* GalleryManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryManagerTests.swift; sourceTree = "<group>"; };
+		F42F027E26D66029003A3695 /* GalleryCoordinatorDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinatorDelegateTests.swift; sourceTree = "<group>"; };
+		F42F028026D660B3003A3695 /* AlbumsPickerViewControllerDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsPickerViewControllerDelegateTests.swift; sourceTree = "<group>"; };
 		F4BB7CED2695D66C003FD77E /* CustomMenuItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuItemViewController.swift; sourceTree = "<group>"; };
 		F4BB7CEF2695D96B003FD77E /* CustomMenuItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomMenuItems.storyboard; sourceTree = "<group>"; };
 		F4E561562686315100415EE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -376,8 +386,13 @@
 			isa = PBXGroup;
 			children = (
 				1F9411871FB9F4AE0019DECD /* ComponentAPICoordinatorTests.swift */,
+				F42F028026D660B3003A3695 /* AlbumsPickerViewControllerDelegateTests.swift */,
+				F42F027E26D66029003A3695 /* GalleryCoordinatorDelegateTests.swift */,
+				F42F027826D65DF2003A3695 /* AlbumsPickerViewControllerTests.swift */,
 				1F94118A1FBAEB7D0019DECD /* ScreenAPICoordinatorTests.swift */,
 				1F578E121FBD81A300C17F62 /* SettingsViewControllerTests.swift */,
+				F42F027A26D65F67003A3695 /* GalleryCoordinatorTests.swift */,
+				F42F027C26D65FC0003A3695 /* GalleryManagerTests.swift */,
 				1FF3A41B20C6B9F300081A32 /* Helpers */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -795,8 +810,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42F028126D660B3003A3695 /* AlbumsPickerViewControllerDelegateTests.swift in Sources */,
+				F42F027D26D65FC0003A3695 /* GalleryManagerTests.swift in Sources */,
 				1F9411881FB9F4AE0019DECD /* ComponentAPICoordinatorTests.swift in Sources */,
+				F42F027F26D66029003A3695 /* GalleryCoordinatorDelegateTests.swift in Sources */,
+				F42F027B26D65F67003A3695 /* GalleryCoordinatorTests.swift in Sources */,
 				1F94118B1FBAEB7D0019DECD /* ScreenAPICoordinatorTests.swift in Sources */,
+				F42F027926D65DF2003A3695 /* AlbumsPickerViewControllerTests.swift in Sources */,
 				1F4ABF8E2153A2EE00020A3B /* DocumentServiceMock.swift in Sources */,
 				1F578E131FBD81A300C17F62 /* SettingsViewControllerTests.swift in Sources */,
 			);
@@ -938,7 +958,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 1.0.6;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = net.gini.ios.ginicapture.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1209,7 +1229,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 1.0.6;
 				MODULE_NAME = ExampleApp;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = net.gini.ios.ginicapture.dev;
@@ -1237,7 +1257,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Example Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 1.0.6;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.gini.ios.ginicapture.in-house";
 				PRODUCT_NAME = "$(TARGET_NAME)";

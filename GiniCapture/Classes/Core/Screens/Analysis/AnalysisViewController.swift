@@ -47,6 +47,7 @@ import UIKit
     fileprivate static let loadingIndicatorContainerHeight: CGFloat = 60
     
     public weak var trackingDelegate: AnalysisScreenTrackingDelegate?
+
     
     // User interface
     fileprivate var imageView: UIImageView = {
@@ -79,11 +80,6 @@ import UIKit
                                                              size: size))
         loadingIndicatorContainer.backgroundColor = .white
         loadingIndicatorContainer.layer.cornerRadius = AnalysisViewController.loadingIndicatorContainerHeight / 2
-        loadingIndicatorContainer.layer.shadowOffset = CGSize(width: 0, height: 0)
-        loadingIndicatorContainer.layer.shadowRadius = 0.8
-        loadingIndicatorContainer.layer.shadowOpacity = 0.2
-        loadingIndicatorContainer.layer.shadowColor = UIColor.black.cgColor
-        loadingIndicatorContainer.layer.shadowPath = UIBezierPath(rect: loadingIndicatorContainer.bounds).cgPath
         return loadingIndicatorContainer
     }()
     
@@ -189,6 +185,9 @@ import UIKit
     public func showError(with message: String, action: @escaping () -> Void ) {
         
         trackingDelegate?.onAnalysisScreenEvent(event: Event(type: .error, info: ["message" : message]))
+        
+        let errorLog = ErrorLog(description: message)
+        giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
         
         errorView.textLabel.text = message
         errorView.userAction = NoticeAction(title: NoticeActionType.retry.title, action: { [weak self] in

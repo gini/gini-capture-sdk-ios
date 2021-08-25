@@ -52,7 +52,6 @@ import GiniPayApiLib
                                                                                   documentMetadata: documentMetadata,
                                                                                   giniConfiguration: giniConfiguration,
                                                                                   for: api)
-        
         super.init(withDelegate: nil,
                    giniConfiguration: giniConfiguration)
         

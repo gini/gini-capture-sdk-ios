@@ -181,7 +181,7 @@ public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
      - parameter importedDocuments: Documents that come from a source different than `CameraViewController`.
      There should be either images or one PDF, and they should be validated before calling this method.
      - parameter trackingDelegate: A delegate object to receive user events
-     
+
      - returns: A presentable view controller.
      */
     public class func viewController(withDelegate delegate: GiniCaptureDelegate,
@@ -190,7 +190,6 @@ public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
         let screenCoordinator = GiniScreenAPICoordinator(withDelegate: delegate,
                                                          giniConfiguration: GiniConfiguration.shared)
         screenCoordinator.trackingDelegate = trackingDelegate
-        
         return screenCoordinator.start(withDocuments: importedDocuments)
     }
     
@@ -214,6 +213,7 @@ public typealias GiniCaptureNetworkDelegate = AnalysisDelegate & UploadDelegate
         
         return viewController(withDelegate: delegate, importedDocuments: documents)
     }
+    
     
     /**
      Returns a view controller which will handle the analysis process.

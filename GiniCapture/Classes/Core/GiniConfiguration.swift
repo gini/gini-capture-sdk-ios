@@ -229,6 +229,11 @@ import UIKit
     @objc public var cameraNotAuthorizedButtonTitleColor = UIColor.white
     
     /**
+     Sets the color of the loading indicator on the camera screen to the specified color.
+     */
+    @objc public var cameraSetupLoadingIndicatorColor = UIColor.white
+    
+    /**
      Sets the color of camera preview corner guides
      */
     @objc public var cameraPreviewCornerGuidesColor = UIColor.white
@@ -627,6 +632,46 @@ import UIKit
      Set an array of additional custom help menu items . Those items will be presented as table view cells on the help menu screen. By selecting the cell the user will be redirected to the page, which represented by viewController provided by customer during the  `HelpMenuViewController.Item` initialization.
     */
     public var customMenuItems: [HelpMenuViewController.Item] = []
+    
+    /**
+     Sets the default error logger. It is only used when giniErrorLoggerIsOn is true.
+     
+     - note: Internal usage only.
+     */
+    internal var giniErrorLogger: GiniCaptureErrorLoggerDelegate? {
+        get {
+            return errorLogger.giniErrorLogger
+        }
+        set {
+            errorLogger.giniErrorLogger = newValue
+        }
+    }
+    
+    let errorLogger = GiniCaptureErrorLogger()
+    
+    /**
+     Sets if the default error logging implementation is on
+     */
+    @objc public var giniErrorLoggerIsOn: Bool {
+        get {
+            return errorLogger.isGiniLoggingOn
+        }
+        set {
+            errorLogger.isGiniLoggingOn = newValue
+        }
+    }
+    
+    /**
+     Should sets if the custom error logging is implemented
+     */
+    public var customGiniErrorLoggerDelegate : GiniCaptureErrorLoggerDelegate? {
+        get {
+            return errorLogger.customErrorLogger
+        }
+        set {
+            errorLogger.customErrorLogger = newValue
+        }
+    }
     
     // Undocumented--Xamarin only
     @objc public var closeButtonResource: PreferredButtonResource?

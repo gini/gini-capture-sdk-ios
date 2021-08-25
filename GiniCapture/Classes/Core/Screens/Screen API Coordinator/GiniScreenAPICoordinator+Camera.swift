@@ -36,12 +36,18 @@ extension GiniScreenAPICoordinator: CameraViewControllerDelegate {
                     self.showNextScreenAfterPicking(pages: [validatedPage])
                 }
             case .failure(let error):
+                var errorMessage = String(describing: error)
+
                 if let error = error as? FilePickerError,
                     (error == .maxFilesPickedCountExceeded || error == .mixedDocumentsUnsupported) {
+                    errorMessage = error.message
                     viewController.showErrorDialog(for: error) {
                         self.showMultipageReview()
                     }
                 }
+                
+                let errorLog = ErrorLog(description: errorMessage)
+                self.giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
             }
         }
     }
@@ -303,11 +309,18 @@ extension GiniScreenAPICoordinator: UploadDelegate {
             self.update(document, withError: error, isUploaded: false)
             
             if document.type != .image || !self.giniConfiguration.multipageEnabled {
-                guard let error = error as? GiniCaptureError else { return }
-                self.displayError(withMessage: error.message, andAction: { [weak self] in
-                    guard let self = self else { return }
-                    self.didCaptureAndValidate(document)
-                })
+                var errorMessage = String(describing: error)
+                
+                if let error = error as? GiniCaptureError {
+                    errorMessage = error.message
+                    self.displayError(withMessage: error.message, andAction: { [weak self] in
+                        guard let self = self else { return }
+                        self.didCaptureAndValidate(document)
+                    })
+                }
+                
+                let errorLog = ErrorLog(description: errorMessage)
+                self.giniConfiguration.errorLogger.handleErrorLog(error: errorLog)
             }
         }
     }

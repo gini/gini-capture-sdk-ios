@@ -75,6 +75,8 @@ public final class DocumentService: DocumentServiceProtocol {
             case .failure(let error):
                 let message = "Error sending feedback for document with id: \(document.id) error: \(error)"
                 Log(message: message, event: .error)
+                let errorLog = ErrorLog(description: message)
+                GiniConfiguration.shared.errorLogger.handleErrorLog(error: errorLog)
             }
             
         }
@@ -128,11 +130,12 @@ fileprivate extension DocumentService {
                                                 "for vision document \(document.id)", event: "📄")
                                             completion(.success(createdDocument))
                                         case .failure(let error):
-                                            Log(message: "Document creation failed", event: .error)
-                                            
+                                            let message = "Document creation failed"
+                                            Log(message: message, event: .error)
+                                            let errorLog = ErrorLog(description: message)
+                                            GiniConfiguration.shared.errorLogger.handleErrorLog(error: errorLog)
                                             completion(.failure(error))
                                         }
-                                        
         }
     }
     
@@ -143,9 +146,11 @@ fileprivate extension DocumentService {
                 Log(message: "Deleted \(document.sourceClassification.rawValue) document with id: \(document.id)",
                     event: "🗑")
             case .failure:
-                Log(message: "Error deleting \(document.sourceClassification.rawValue) document with" +
-                    " id: \(document.id)",
-                    event: .error)
+                let message = "Error deleting \(document.sourceClassification.rawValue) document with" +
+                    " id: \(document.id)"
+                Log(message: message,event: .error)
+                let errorLog = ErrorLog(description: message)
+                GiniConfiguration.shared.errorLogger.handleErrorLog(error: errorLog)
             }
         }
     }
@@ -172,7 +177,10 @@ fileprivate extension DocumentService {
                                                      cancellationToken: self.analysisCancellationToken!,
                                                      completion: self.handleResults(completion: completion))
                                 case .failure(let error):
-                                    Log(message: "Composite document creation failed", event: .error)
+                                    let message = "Composite document creation failed"
+                                    Log(message: message, event: .error)
+                                    let errorLog = ErrorLog(description: message)
+                                    GiniConfiguration.shared.errorLogger.handleErrorLog(error: errorLog)
                                     completion(.failure(error))
                                 }
         }
