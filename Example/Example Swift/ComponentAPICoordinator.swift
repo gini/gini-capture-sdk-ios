@@ -41,18 +41,23 @@ final class ComponentAPICoordinator: NSObject, Coordinator {
         navBarViewController.navigationBar.barTintColor = self.giniColor
         navBarViewController.navigationBar.tintColor = .white
         navBarViewController.view.backgroundColor = .black
-        
+        navBarViewController.applyStyle(withConfiguration: giniConfiguration)
         return navBarViewController
     }()
     
     fileprivate lazy var componentAPITabBarController: UITabBarController = {
         let tabBarViewController = UITabBarController()
-        tabBarViewController.tabBar.barTintColor = self.giniColor
-        tabBarViewController.tabBar.tintColor = .white
-        tabBarViewController.view.backgroundColor = .black
-        
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = self.giniColor
+            tabBarViewController.tabBar.standardAppearance = appearance
+            tabBarViewController.tabBar.scrollEdgeAppearance = tabBarViewController.tabBar.standardAppearance
+        } else {
+            tabBarViewController.tabBar.barTintColor = self.giniColor
+        }
+
         tabBarViewController.tabBar.unselectedItemTintColor = UIColor.white.withAlphaComponent(0.6)
-        
         return tabBarViewController
     }()
     
@@ -186,7 +191,8 @@ extension ComponentAPICoordinator {
         resultsScreen = storyboard.instantiateViewController(withIdentifier: "resultScreen")
             as? ResultTableViewController
         resultsScreen?.result = extractions
-        
+        navigationController.applyStyle(withConfiguration: giniConfiguration)
+
         if navigationController.viewControllers.first is AnalysisViewController {
             resultsScreen!.navigationItem
                 .rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("close",
@@ -213,7 +219,6 @@ extension ComponentAPICoordinator {
             genericNoResults!.delegate = self
             vc = genericNoResults!
         }
-        
         push(viewController: vc, removing: [reviewScreen, analysisScreen])
         
     }
