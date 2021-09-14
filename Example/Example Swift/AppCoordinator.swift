@@ -92,6 +92,8 @@ final class AppCoordinator: Coordinator {
                 } catch {
                     self.showExternalDocumentNotValidDialog()
                 }
+            } else {
+                self.showExternalDocumentNotValidDialog()
             }
         }
     }
