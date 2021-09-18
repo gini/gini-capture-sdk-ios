@@ -109,6 +109,20 @@ public final class DocumentService: DocumentServiceProtocol {
             }
         }
     }
+    
+    public func log(errorEvent: ErrorEvent) {
+        documentService.log(errorEvent: errorEvent) { result in
+            switch result {
+            case .success:
+                Log(message: "Error event sent to Gini", event: .success)
+                break
+            case .failure(let error):
+                Log(message: "Failed to send error event to Gini: \(error)", event: .error)
+                break
+            }
+        }
+    }
+    
 }
 
 // MARK: - File private methods
