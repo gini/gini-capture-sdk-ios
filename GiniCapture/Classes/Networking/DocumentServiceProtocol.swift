@@ -26,6 +26,7 @@ public protocol DocumentServiceProtocol: AnyObject {
     func upload(document: GiniCaptureDocument,
                 completion: UploadDocumentCompletion?)
     func update(imageDocument: GiniImageDocument)
+    func log(errorEvent: ErrorEvent)
 }
 
 extension DocumentServiceProtocol {
