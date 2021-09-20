@@ -22,7 +22,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Bolts
-  https://github.com/gini/gini-podspecs.git:
+  https://github.com/gini/gini-podspecs:
     - Gini-iOS-SDK
     - GiniPayApiLib
 
@@ -38,4 +38,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4388413edb9a8300e79cf2b4ad755c81370a6ec0
 
-COCOAPODS: 1.11.0.beta.2
+COCOAPODS: 1.11.2
