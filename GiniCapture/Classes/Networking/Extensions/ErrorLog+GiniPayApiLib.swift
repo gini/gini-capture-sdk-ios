@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import GiniPayApiLib
+
 extension ErrorLog {
-    public func apiLibVerion() -> String {
-        return Bundle(identifier: "org.cocoapods.GiniPayApiLib")?.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    
+    var apiLibVersion: String {
+        Bundle(for: GiniApiLib.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
     }
 }
 

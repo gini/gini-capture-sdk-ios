@@ -84,8 +84,12 @@ final class ScreenAPICoordinator: NSObject, Coordinator {
         let customResultsScreen = (UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "resultScreen") as? ResultTableViewController)!
         customResultsScreen.result = results
-        
+
         DispatchQueue.main.async { [weak self] in
+            if #available(iOS 15.0, *) {
+                let config = self?.visionConfiguration
+                self?.screenAPIViewController.applyStyle(withConfiguration: config ?? GiniConfiguration())
+            }
             self?.screenAPIViewController.setNavigationBarHidden(false, animated: false)
             self?.screenAPIViewController.pushViewController(customResultsScreen, animated: true)
         }

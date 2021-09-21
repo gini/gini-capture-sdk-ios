@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'GiniCapture'
-  s.version          = '1.0.6'
+  s.version          = '1.0.7'
   s.summary          = 'Computer Vision Library for scanning documents.'
 
   s.description      = <<-DESC
@@ -29,13 +29,13 @@ The Gini Capture SDK for iOS provides functionality to capture documents with mo
   s.subspec 'Networking' do |networking|
     networking.source_files = 'GiniCapture/Classes/Networking/*.swift', 'GiniCapture/Classes/Networking/Extensions/*.swift'
     networking.dependency "GiniCapture/Core"
-    networking.dependency 'GiniPayApiLib/DocumentsAPI', '>= 1.0.2'
+    networking.dependency 'GiniPayApiLib/DocumentsAPI', '>= 1.0.10'
   end
 
   s.subspec 'Networking+Pinning' do |pinning|
     pinning.source_files = 'GiniCapture/Classes/Networking/Pinning/*'
     pinning.dependency "GiniCapture/Networking"
-    pinning.dependency 'GiniPayApiLib/Pinning', '>= 1.0.2'
+    pinning.dependency 'GiniPayApiLib/Pinning', '>= 1.0.10'
   end
 
   s.test_spec 'Tests' do |test_spec|

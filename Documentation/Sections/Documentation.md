@@ -30,6 +30,7 @@ On *iPhone*, the Gini Capture SDK has been designed for portrait orientation. In
   - [Open with guide](open-with-guide.html)
   - [QR Code scanning guide](qr-code-scanning-guide.html)
   - [Event tracking guide](event-tracking-guide.html)
+  - [Error logging guide](error-logging-guide.html)
 
 ## API
 
