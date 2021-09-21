@@ -546,7 +546,7 @@ extension ComponentAPICoordinator: DocumentPickerCoordinatorDelegate {
                             }
                         }
                         
-                    case .photoLibraryAccessDenied:
+                    case .photoLibraryAccessDenied, .failedToOpenDocument:
                         break
                     }
                 }
@@ -561,7 +561,18 @@ extension ComponentAPICoordinator: DocumentPickerCoordinatorDelegate {
             }
             
         }
-    }    
+    }
+    
+    func documentPicker(_ coordinator: DocumentPickerCoordinator, failedToPickDocumentsAt urls: [URL]) {
+        let error = FilePickerError.failedToOpenDocument
+        if coordinator.currentPickerDismissesAutomatically {
+            self.cameraScreen?.showErrorDialog(for: error,
+                                               positiveAction: nil)
+        } else {
+            coordinator.currentPickerViewController?.showErrorDialog(for: error,
+                                                                     positiveAction: nil)
+        }
+    }
 }
 
 // MARK: - ReviewViewControllerDelegate
