@@ -8,7 +8,6 @@ You can disable the default error logging by passing false to `GiniConfiguration
 If you would like to get informed of error logging events you need to set `GiniConfiguration().customGiniErrorLoggerDelegate` which confirms to `GiniCaptureErrorLoggerDelegate`:
 
 ```swift
-customGiniErrorLoggerDelegate
 class CustomErrorLogger: GiniCaptureErrorLoggerDelegate {
     func handleErrorLog(error: ErrorLog) {
         //TODO
