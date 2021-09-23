@@ -53,7 +53,7 @@ let viewController = GiniCapture.viewController(withClient: client,
 
 present(viewController, animated: true, completion:nil)
 ```
-
+**Note**: Starting from Gini Capture SDK version 1.0.6 the pinning certification we suppo**iOS 12**
 
 > ⚠️  **Important**
 > - The document metadata for the upload process is intended to be used for reporting.
@@ -92,3 +92,42 @@ The components that can be found in the SDK are:
 * **Analysis**: Provides a UI for the analysis process of the document by showing the user capture tips when an image is analyzed or the document information when it is a PDF. In both cases an image preview of the document analyzed will be shown (`AnalysisViewController`).
 * **Help**: Helpful tutorials indicating how to use the open with feature, which are the supported file types and how to capture better photos for a good analysis (`HelpMenuViewController`).
 * **No results**: Shows some suggestions to capture better photos when there are no results after an analysis (`ImageAnalysisNoResultsViewController`).
+
+## Sending Feedback
+
+Your app should send feedback for the extractions the Gini Pay API delivered. Feedback should be sent only for the extractions the user has seen and accepted (or corrected).
+
+For additional information about feedback see the [Gini Pay API documentation](https://pay-api.gini.net/documentation/#send-feedback-and-get-even-better-extractions-next-time).
+
+### Default Implementation
+
+The example below shows how to correct extractions and send feedback using the default networking implementation:
+
+You should send feedback only for extractions the user has seen and accepted.
+
+
+```swift
+var sendFeedbackBlock: (([String: Extraction]) -> Void)?
+var extractions: [String: Extraction] = []
+
+func giniCaptureAnalysisDidFinishWith(result: AnalysisResult,
+                           sendFeedbackBlock: @escaping ([String: Extraction]) -> Void){
+        
+    self.extractions = result.extractions
+    self.sendFeedbackBlock = sendFeedbackBlock
+    showResultsScreen(results: result.extractions.map { $0.value })
+}
+.
+.
+.
+// In this example only the amountToPay was wrong and we can reuse the other extractions.
+let updatedExtractions = self.extractions
+updatedExtractions.map{$0.value}.first(where: {$0.name == "amountToPay"})?.value = "31,25:EUR"
+sendFeedbackBlock(updatedExtractions)
+
+```
+### Custom Implementation
+
+If you use your own networking implementation and directly communicate with the Gini Pay API then see [this section](https://pay-api.gini.net/documentation/#submitting-feedback-on-extractions) in its documentation on how to send feedback.
+
+In case you use the [Gini Pay API Library](https://developer.gini.net/gini-pay-api-lib-ios/docs/getting-started.html) then see this section in its documentation for details.
