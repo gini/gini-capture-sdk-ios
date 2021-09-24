@@ -129,4 +129,4 @@ sendFeedbackBlock(updatedExtractions)
 
 If you use your own networking implementation and directly communicate with the Gini Pay API then see [this section](https://pay-api.gini.net/documentation/#submitting-feedback-on-extractions) in its documentation on how to send feedback.
 
-In case you use the [Gini Pay API Library](https://developer.gini.net/gini-pay-api-lib-ios/docs/getting-started.html) then see this section in its documentation for details.
+In case you use the [Gini Pay API Library](https://developer.gini.net/gini-pay-api-lib-ios/docs/) then see [this section](https://developer.gini.net/gini-pay-api-lib-ios/docs/getting-started.html) in its documentation for details.
