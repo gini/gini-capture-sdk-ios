@@ -105,7 +105,6 @@ The example below shows how to correct extractions and send feedback using the d
 
 You should send feedback only for extractions the user has seen and accepted.
 
-
 ```swift
 var sendFeedbackBlock: (([String: Extraction]) -> Void)?
 var extractions: [String: Extraction] = []
