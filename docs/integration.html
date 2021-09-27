@@ -539,6 +539,8 @@ The Screen API, in turn, offers two different ways of implementation:</p>
 <span class="nf">present</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span><span class="kc">nil</span><span class="p">)</span>
 </code></pre>
 
+<p><strong>Note</strong>: Starting from Gini Capture SDK version 1.0.6 the pinning certification we suppo*<em>iOS 12</em>*</p>
+
 <blockquote>
 <p>⚠️  <strong>Important</strong></p>
 
@@ -577,6 +579,40 @@ The Screen API, in turn, offers two different ways of implementation:</p>
 <li><strong>Help</strong>: Helpful tutorials indicating how to use the open with feature, which are the supported file types and how to capture better photos for a good analysis (<code><a href="Classes/HelpMenuViewController.html">HelpMenuViewController</a></code>).</li>
 <li><strong>No results</strong>: Shows some suggestions to capture better photos when there are no results after an analysis (<code><a href="Classes/ImageAnalysisNoResultsViewController.html">ImageAnalysisNoResultsViewController</a></code>).</li>
 </ul>
+<h2 id='sending-feedback' class='heading'>Sending Feedback</h2>
+
+<p>Your app should send feedback for the extractions the Gini Pay API delivered. Feedback should be sent only for the extractions the user has seen and accepted (or corrected).</p>
+
+<p>For additional information about feedback see the <a href="https://pay-api.gini.net/documentation/#send-feedback-and-get-even-better-extractions-next-time">Gini Pay API documentation</a>.</p>
+<h3 id='default-implementation' class='heading'>Default Implementation</h3>
+
+<p>The example below shows how to correct extractions and send feedback using the default networking implementation:</p>
+
+<p>You should send feedback only for extractions the user has seen and accepted.</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">sendFeedbackBlock</span><span class="p">:</span> <span class="p">(([</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Extraction</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span>
+<span class="k">var</span> <span class="nv">extractions</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Extraction</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="kd">func</span> <span class="nf">giniCaptureAnalysisDidFinishWith</span><span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">AnalysisResult</span><span class="p">,</span>
+                           <span class="nv">sendFeedbackBlock</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Extraction</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">){</span>
+
+    <span class="k">self</span><span class="o">.</span><span class="n">extractions</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">extractions</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">sendFeedbackBlock</span> <span class="o">=</span> <span class="n">sendFeedbackBlock</span>
+    <span class="nf">showResultsScreen</span><span class="p">(</span><span class="nv">results</span><span class="p">:</span> <span class="n">result</span><span class="o">.</span><span class="n">extractions</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">value</span> <span class="p">})</span>
+<span class="p">}</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="c1">// In this example only the amountToPay was wrong and we can reuse the other extractions.</span>
+<span class="k">let</span> <span class="nv">updatedExtractions</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">extractions</span>
+<span class="n">updatedExtractions</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="nv">$0</span><span class="o">.</span><span class="n">value</span><span class="p">}</span><span class="o">.</span><span class="nf">first</span><span class="p">(</span><span class="nv">where</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">"amountToPay"</span><span class="p">})?</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"31,25:EUR"</span>
+<span class="nf">sendFeedbackBlock</span><span class="p">(</span><span class="n">updatedExtractions</span><span class="p">)</span>
+
+</code></pre>
+<h3 id='custom-implementation' class='heading'>Custom Implementation</h3>
+
+<p>If you use your own networking implementation and directly communicate with the Gini Pay API then see <a href="https://pay-api.gini.net/documentation/#submitting-feedback-on-extractions">this section</a> in its documentation on how to send feedback.</p>
+
+<p>In case you use the <a href="https://developer.gini.net/gini-pay-api-lib-ios/docs/">Gini Pay API Library</a> then see <a href="https://developer.gini.net/gini-pay-api-lib-ios/docs/getting-started.html">this section</a> in its documentation for details.</p>
 
           </div>
         </section>
@@ -585,7 +621,7 @@ The Screen API, in turn, offers two different ways of implementation:</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://gini.net" target="_blank" rel="external">Gini GmbH</a>. All rights reserved. (Last updated: 2021-09-22)</p>
+      <p>&copy; 2021 <a class="link" href="https://gini.net" target="_blank" rel="external">Gini GmbH</a>. All rights reserved. (Last updated: 2021-09-27)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
