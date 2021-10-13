@@ -672,6 +672,10 @@ import UIKit
             errorLogger.customErrorLogger = newValue
         }
     }
+    /**
+     Should be set if the default name "Localizable.strings" are not used
+     */
+    public var localizedStringsTableName: String?
     
     // Undocumented--Xamarin only
     @objc public var closeButtonResource: PreferredButtonResource?
