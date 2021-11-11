@@ -19,9 +19,8 @@
  A few breaking changes were necessary, but these are easy to fix. You can find the steps in this 
  [migration guide](https://developer.gini.net/gini-mobile-ios/GiniCaptureSDK/customization-guide.html).
 
- Introduction
- ------------
- 
+ ## Introduction
+
 The Gini Capture SDK provides components for capturing, reviewing and analyzing photos of invoices and remittance slips.
 
 By integrating this library into your application you can allow your users to easily take a picture of a document, review it and get analysis results from the Gini backend.
