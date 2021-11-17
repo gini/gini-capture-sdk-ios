@@ -18,7 +18,7 @@
  [version](https://github.com/gini/capture-sdk-ios) released from the new repository.
 
  A few breaking changes were necessary, but these are easy to fix. You can find the steps in this 
- [migration guide](https://developer.gini.net/gini-mobile-ios/GiniCaptureSDK/customization-guide.html).
+ [migration guide](https://developer.gini.net/gini-mobile-ios/GiniCaptureSDK/migration-guide.html).
 
  ## Introduction
 
