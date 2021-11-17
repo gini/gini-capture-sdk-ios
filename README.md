@@ -10,14 +10,14 @@
 **Deprecation Notice**
  ----------------------
 
- Development of the Gini Capture SDK for iOS will be continued in a 
- [new repository](https://github.com/gini/capture-sdk-ios).
+Development of the Gini Capture SDK for iOS will be continued in 
+[new repository for Gini Capture SDK](https://github.com/gini/capture-sdk-ios) and
+[new repository for Gini Capture SDK Pinning](https://github.com/gini/capture-sdk-pinning-ios).
 
- No new versions will be released from this repository and we kindly ask you to update to the 
- [version](https://github.com/gini/capture-sdk-ios) released from the new repository.
+The first public version of the Gini Capture SDK as a swift package would be 1.1.0 ([1.0.7](https://github.com/gini/gini-capture-sdk-ios/releases/tag/1.0.7) is the latest version that we released for CocoaPods).
 
- A few breaking changes were necessary, but these are easy to fix. You can find the steps in this 
- [migration guide](https://developer.gini.net/gini-mobile-ios/GiniCaptureSDK/customization-guide.html).
+A few breaking changes were necessary, but these are easy to fix. You can find the steps in this 
+[migration guide](https://developer.gini.net/gini-mobile-ios/GiniCaptureSDK/migration-guide.html).
 
  ## Introduction
 
