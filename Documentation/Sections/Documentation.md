@@ -17,8 +17,7 @@ Development of the Gini Capture SDK for iOS will be continued in
 
 No new versions will be released using CocoaPods. We kindly ask you to update to the [version](https://github.com/gini/gini-mobile-ios/releases/tag/GiniCaptureSDK%3B1.1.0) available as a swift package.
 
-A few breaking changes were necessary, but these are easy to fix. You can find the steps in this 
-[migration guide](https://developer.gini.net/gini-mobile-ios/GiniCaptureSDK/migration-guide.html).
+You can find the steps needed to switch to swift package manager in this [migration guide](https://developer.gini.net/gini-mobile-ios/GiniCaptureSDK/migration-guide.html).
 
  ## Introduction
 
