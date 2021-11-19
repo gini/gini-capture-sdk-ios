@@ -8,6 +8,18 @@
 [![Devices](https://img.shields.io/badge/devices-iPhone%20%7C%20iPad-blue.svg)]()
 [![Swift version](https://img.shields.io/badge/swift-5.0-orange.svg)]()
 
+**Deprecation Notice**
+ ----------------------
+
+Development of the Gini Capture SDK for iOS will be continued in 
+[new repository for Gini Capture SDK](https://github.com/gini/capture-sdk-ios) and
+[new repository for Gini Capture SDK Pinning](https://github.com/gini/capture-sdk-pinning-ios).
+
+No new versions will be released using CocoaPods. We kindly ask you to update to the [version](https://github.com/gini/gini-mobile-ios/releases/tag/GiniCaptureSDK%3B1.1.0) available as a swift package.
+
+You can find the steps needed to switch to swift package manager in this [migration guide](https://developer.gini.net/gini-mobile-ios/GiniCaptureSDK/migration-guide.html).
+
+ ## Introduction
 
 The Gini Capture SDK provides components for capturing, reviewing and analyzing photos of invoices and remittance slips.
 
